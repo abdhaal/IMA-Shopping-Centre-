@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>All Products | IMA Shopping Centre</title>
+
+    <meta
+        name="description"
+        content="Explore trusted products at IMA Shopping Centre."
+    >
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/products.css">
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header class="navbar">
+
+    <div class="nav-container">
+
+        <!-- Logo -->
+
+        <a href="index.html" class="logo">
+            <span>IMA</span> Shopping Centre
+        </a>
+
+
+        <!-- Location -->
+
+        <div class="location-box">
+            <small>Deliver to</small>
+            <strong>India</strong>
+        </div>
+
+
+        <!-- Search -->
+
+        <div class="search-box">
+
+            <select id="categorySelect">
+
+                <option value="all">
+                    All
+                </option>
+
+                <option value="electronics">
+                    Electronics
+                </option>
+
+                <option value="fashion">
+                    Fashion
+                </option>
+
+                <option value="home">
+                    Home
+                </option>
+
+                <option value="kitchen">
+                    Kitchen
+                </option>
+
+                <option value="beauty">
+                    Beauty
+                </option>
+
+            </select>
+
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search products..."
+            >
+
+
+            <button
+                type="button"
+                onclick="searchProducts()"
+            >
+                🔍
+            </button>
+
+        </div>
+
+
+        <!-- Account -->
+
+        <a href="login.html" class="nav-item">
+
+            <small>Hello, Sign in</small>
+
+            <strong>Account</strong>
+
+        </a>
+
+
+        <!-- Orders -->
+
+        <a href="orders.html" class="nav-item">
+
+            <small>Track</small>
+
+            <strong>Orders</strong>
+
+        </a>
+
+
+        <!-- Wishlist -->
+
+        <a href="wishlist.html" class="nav-icon">
+
+            ❤️
+
+            <span id="wishlistCount">
+                0
+            </span>
+
+        </a>
+
+
+        <!-- Cart -->
+
+        <a href="cart.html" class="nav-icon">
+
+            🛒
+
+            <span id="cartCount">
+                0
+            </span>
+
+        </a>
+
+    </div>
+
+</header>
+
+
+<!-- ================= CATEGORY BAR ================= -->
+
+<nav class="category-bar">
+
+    <div class="category-container">
+
+        <a href="index.html">
+            🏠 Home
+        </a>
+
+        <a
+            href="products.html?category=electronics"
+        >
+            Electronics
+        </a>
+
+        <a
+            href="products.html?category=fashion"
+        >
+            Fashion
+        </a>
+
+        <a
+            href="products.html?category=home"
+        >
+            Home
+        </a>
+
+        <a
+            href="products.html?category=kitchen"
+        >
+            Kitchen
+        </a>
+
+        <a
+            href="products.html?category=beauty"
+        >
+            Beauty
+        </a>
+
+        <a
+            href="products.html?deal=true"
+        >
+            🔥 Today's Deals
+        </a>
+
+        <a href="creator/dashboard.html">
+            💰 Creator
+        </a>
+
+    </div>
+
+</nav>
+
+
+<!-- ================= BREADCRUMB ================= -->
+
+<div class="products-breadcrumb">
+
+    <a href="index.html">
+        Home
+    </a>
+
+    <span>›</span>
+
+    <span>
+        Products
+    </span>
+
+</div>
+
+
+<!-- ================= PRODUCTS PAGE ================= -->
+
+<main class="products-page">
+
+
+    <!-- PAGE TOP -->
+
+    <div class="products-top">
+
+        <div>
+
+            <h1 id="pageTitle">
+                All Products
+            </h1>
+
+            <p id="productResultText">
+                Explore trusted products at great prices
+            </p>
+
+        </div>
+
+
+        <!-- Sort -->
+
+        <div class="sort-box">
+
+            <label for="sortSelect">
+                Sort:
+            </label>
+
+            <select id="sortSelect">
+
+                <option value="recommended">
+                    Recommended
+                </option>
+
+                <option value="price-low">
+                    Price: Low to High
+                </option>
+
+                <option value="price-high">
+                    Price: High to Low
+                </option>
+
+                <option value="rating">
+                    Customer Rating
+                </option>
+
+                <option value="discount">
+                    Biggest Discount
+                </option>
+
+            </select>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= MAIN CONTENT ================= -->
+
+    <div class="products-layout">
+
+
+        <!-- FILTER -->
+
+        <aside
+            id="filterSidebar"
+            class="filter-sidebar"
+        >
+
+            <div class="filter-title">
+
+                <h3>
+                    Filters
+                </h3>
+
+                <button
+                    onclick="clearFilters()"
+                >
+                    Clear
+                </button>
+
+            </div>
+
+
+            <!-- CATEGORY -->
+
+            <div class="filter-group">
+
+                <h4>
+                    Category
+                </h4>
+
+
+                <label>
+                    <input
+                        type="checkbox"
+                        class="category-filter"
+                        value="electronics"
+                    >
+
+                    Electronics
+                </label>
+
+
+                <label>
+                    <input
+                        type="checkbox"
+                        class="category-filter"
+                        value="fashion"
+                    >
+
+                    Fashion
+                </label>
+
+
+                <label>
+                    <input
+                        type="checkbox"
+                        class="category-filter"
+                        value="home"
+                    >
+
+                    Home
+                </label>
+
+
+                <label>
+                    <input
+                        type="checkbox"
+                        class="category-filter"
+                        value="kitchen"
+                    >
+
+                    Kitchen
+                </label>
+
+
+                <label>
+                    <input
+                        type="checkbox"
+                        class="category-filter"
+                        value="beauty"
+                    >
+
+                    Beauty
+                </label>
+
+            </div>
+
+
+            <!-- PRICE -->
+
+            <div class="filter-group">
+
+                <h4>
+                    Price
+                </h4>
+
+
+                <label>
+                    <input
+                        type="radio"
+                        name="price"
+                        value="0-500"
+                    >
+
+                    Under ₹500
+                </label>
+
+
+                <label>
+                    <input
+                        type="radio"
+                        name="price"
+                        value="500-1000"
+                    >
+
+                    ₹500 – ₹1,000
+                </label>
+
+
+                <label>
+                    <input
+                        type="radio"
+                        name="price"
+                        value="1000-5000"
+                    >
+
+                    ₹1,000 – ₹5,000
+                </label>
+
+
+                <label>
+                    <input
+                        type="radio"
+                        name="price"
+                        value="5000+"
+                    >
+
+                    Above ₹5,000
+                </label>
+
+            </div>
+
+
+            <!-- RATING -->
+
+            <div class="filter-group">
+
+                <h4>
+                    Customer Rating
+                </h4>
+
+
+                <label>
+                    <input
+                        type="radio"
+                        name="rating"
+                        value="4"
+                    >
+
+                    ⭐ 4★ & above
+                </label>
+
+
+                <label>
+                    <input
+                        type="radio"
+                        name="rating"
+                        value="3"
+                    >
+
+                    ⭐ 3★ & above
+                </label>
+
+            </div>
+
+
+            <!-- TRUST -->
+
+            <div class="filter-group">
+
+                <h4>
+                    Trust & Safety
+                </h4>
+
+
+                <label>
+
+                    <input
+                        type="checkbox"
+                        id="verifiedSellerFilter"
+                    >
+
+                    ✓ Verified Seller
+
+                </label>
+
+
+                <label>
+
+                    <input
+                        type="checkbox"
+                        id="realVideoFilter"
+                    >
+
+                    🎥 Real Product Video
+
+                </label>
+
+            </div>
+
+
+            <!-- DELIVERY -->
+
+            <div class="filter-group">
+
+                <h4>
+                    Delivery
+                </h4>
+
+
+                <label>
+
+                    <input
+                        type="checkbox"
+                        id="fastDeliveryFilter"
+                    >
+
+                    🚚 Fast Delivery
+
+                </label>
+
+            </div>
+
+        </aside>
+
+
+        <!-- PRODUCTS -->
+
+        <section class="products-content">
+
+
+            <!-- Mobile Filter Button -->
+
+            <button
+                class="mobile-filter-button"
+                onclick="toggleFilters()"
+            >
+                ⚙️ Filters
+            </button>
+
+
+            <!-- PRODUCT GRID -->
+
+            <div
+                id="productsGrid"
+                class="products-grid"
+            >
+            </div>
+
+
+            <!-- EMPTY -->
+
+            <div
+                id="noProducts"
+                class="no-products"
+            >
+
+                <div class="no-product-icon">
+                    🔍
+                </div>
+
+                <h2>
+                    No products found
+                </h2>
+
+                <p>
+                    Try another search or remove some filters.
+                </p>
+
+                <button
+                    class="primary-btn"
+                    onclick="clearFilters()"
+                >
+                    View All Products
+                </button>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</main>
+
+
+<!-- ================= TRUST SECTION ================= -->
+
+<section class="products-trust">
+
+    <div class="trust-inner">
+
+        <div class="trust-icon">
+            🛡️
+        </div>
+
+        <div>
+
+            <h3>
+                Shop with Trust
+            </h3>
+
+            <p>
+                Verified sellers • Genuine reviews •
+                Transparent pricing • Real product information
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="footer">
+
+    <div class="footer-container">
+
+
+        <div class="footer-column">
+
+            <h3>
+                IMA Shopping Centre
+            </h3>
+
+            <p>
+                Shop Smart. Shop with Trust.
+            </p>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h4>
+                Shop
+            </h4>
+
+            <a href="products.html">
+                All Products
+            </a>
+
+            <a href="wishlist.html">
+                Wishlist
+            </a>
+
+            <a href="cart.html">
+                Cart
+            </a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h4>
+                Customer
+            </h4>
+
+            <a href="orders.html">
+                Orders
+            </a>
+
+            <a href="#">
+                Returns & Refunds
+            </a>
+
+            <a href="#">
+                Help Centre
+            </a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h4>
+                Earn with IMA
+            </h4>
+
+            <a href="creator/dashboard.html">
+                Creator Program
+            </a>
+
+            <a href="seller/dashboard.html">
+                Sell on IMA
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        © 2026 IMA Shopping Centre. All Rights Reserved.
+
+    </div>
+
+</footer>
+
+
+<!-- ================= MOBILE NAV ================= -->
+
+<div class="mobile-bottom-nav">
+
+    <a href="index.html">
+
+        🏠
+
+        <span>
+            Home
+        </span>
+
+    </a>
+
+
+    <a href="products.html">
+
+        🔎
+
+        <span>
+            Shop
+        </span>
+
+    </a>
+
+
+    <a href="wishlist.html">
+
+        ❤️
+
+        <span>
+            Wishlist
+        </span>
+
+    </a>
+
+
+    <a href="orders.html">
+
+        📦
+
+        <span>
+            Orders
+        </span>
+
+    </a>
+
+
+    <a href="account.html">
+
+        👤
+
+        <span>
+            Account
+        </span>
+
+    </a>
+
+</div>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script src="js/products.js"></script>
+<script src="js/main.js"></script>
+
+
+<script>
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        /*
+         * Initial products
+         */
+
+        if (
+            typeof displayProducts ===
+            "function"
+        ) {
+
+            displayProducts(products);
+
+        }
+
+
+        /*
+         * Sort
+         */
+
+        const sort =
+            document.getElementById(
+                "sortSelect"
+            );
+
+
+        if (sort) {
+
+            sort.addEventListener(
+                "change",
+                function () {
+
+                    sortProducts(
+                        this.value
+                    );
+
+                }
+            );
+
+        }
+
+
+        /*
+         * Category filters
+         */
+
+        document
+            .querySelectorAll(
+                ".category-filter"
+            )
+            .forEach(
+                function (element) {
+
+                    element.addEventListener(
+                        "change",
+                        applyFilters
+                    );
+
+                }
+            );
+
+
+        /*
+         * Price filters
+         */
+
+        document
+            .querySelectorAll(
+                'input[name="price"]'
+            )
+            .forEach(
+                function (element) {
+
+                    element.addEventListener(
+                        "change",
+                        applyFilters
+                    );
+
+                }
+            );
+
+
+        /*
+         * Rating filters
+         */
+
+        document
+            .querySelectorAll(
+                'input[name="rating"]'
+            )
+            .forEach(
+                function (element) {
+
+                    element.addEventListener(
+                        "change",
+                        applyFilters
+                    );
+
+                }
+            );
+
+
+        /*
+         * Trust filters
+         */
+
+        [
+            "verifiedSellerFilter",
+            "realVideoFilter",
+            "fastDeliveryFilter"
+        ].forEach(
+            function (id) {
+
+                const element =
+                    document.getElementById(id);
+
+                if (element) {
+
+                    element.addEventListener(
+                        "change",
+                        applyFilters
+                    );
+
+                }
+
+            }
+        );
+
+
+        /*
+         * URL category
+         */
+
+        const params =
+            new URLSearchParams(
+                window.location.search
+            );
+
+
+        const category =
+            params.get("category");
+
+
+        if (category) {
+
+            const checkbox =
+                document.querySelector(
+                    `.category-filter[value="${category}"]`
+                );
+
+
+            if (checkbox) {
+
+                checkbox.checked = true;
+
+                applyFilters();
+
+            }
+
+        }
+
+    }
+);
+
+
+/* ================= SORT ================= */
+
+function sortProducts(type) {
+
+    let sorted =
+        [...products];
+
+
+    if (type === "price-low") {
+
+        sorted.sort(
+            (a, b) =>
+                a.price - b.price
+        );
+
+    }
+
+
+    else if (type === "price-high") {
+
+        sorted.sort(
+            (a, b) =>
+                b.price - a.price
+        );
+
+    }
+
+
+    else if (type === "rating") {
+
+        sorted.sort(
+            (a, b) =>
+                b.rating - a.rating
+        );
+
+    }
+
+
+    else if (type === "discount") {
+
+        sorted.sort(
+            (a, b) =>
+                parseInt(b.discount) -
+                parseInt(a.discount)
+        );
+
+    }
+
+
+    displayProducts(sorted);
+
+}
+
+
+/* ================= FILTER ================= */
+
+function applyFilters() {
+
+    let filtered =
+        [...products];
+
+
+    /*
+     * Category
+     */
+
+    const categories =
+        Array.from(
+            document.querySelectorAll(
+                ".category-filter:checked"
+            )
+        ).map(
+            item => item.value
+        );
+
+
+    if (categories.length) {
+
+        filtered =
+            filtered.filter(
+                product =>
+                    categories.includes(
+                        product.category
+                    )
+            );
+
+    }
+
+
+    /*
+     * Price
+     */
+
+    const price =
+        document.querySelector(
+            'input[name="price"]:checked'
+        );
+
+
+    if (price) {
+
+        if (price.value === "0-500") {
+
+            filtered =
+                filtered.filter(
+                    p => p.price < 500
+                );
+
+        }
+
+
+        if (price.value === "500-1000") {
+
+            filtered =
+                filtered.filter(
+                    p =>
+                        p.price >= 500 &&
+                        p.price <= 1000
+                );
+
+        }
+
+
+        if (price.value === "1000-5000") {
+
+            filtered =
+                filtered.filter(
+                    p =>
+                        p.price >= 1000 &&
+                        p.price <= 5000
+                );
+
+        }
+
+
+        if (price.value === "5000+") {
+
+            filtered =
+                filtered.filter(
+                    p => p.price > 5000
+                );
+
+        }
+
+    }
+
+
+    /*
+     * Rating
+     */
+
+    const rating =
+        document.querySelector(
+            'input[name="rating"]:checked'
+        );
+
+
+    if (rating) {
+
+        filtered =
+            filtered.filter(
+                p =>
+                    p.rating >=
+                    Number(rating.value)
+            );
+
+    }
+
+
+    /*
+     * Verified Seller
+     */
+
+    const verified =
+        document.getElementById(
+            "verifiedSellerFilter"
+        );
+
+
+    if (
+        verified &&
+        verified.checked
+    ) {
+
+        filtered =
+            filtered.filter(
+                p =>
+                    p.verifiedSeller === true
+            );
+
+    }
+
+
+    /*
+     * Display
+     */
+
+    displayProducts(filtered);
+
+
+    /*
+     * Count
+     */
+
+    const resultText =
+        document.getElementById(
+            "productResultText"
+        );
+
+
+    if (resultText) {
+
+        resultText.textContent =
+            `${filtered.length} products found`;
+
+    }
+
+
+    /*
+     * Empty state
+     */
+
+    const empty =
+        document.getElementById(
+            "noProducts"
+        );
+
+
+    if (empty) {
+
+        empty.style.display =
+            filtered.length === 0
+                ? "block"
+                : "none";
+
+    }
+
+}
+
+
+/* ================= CLEAR
+================= */
+
+function clearFilters() {
+
+    document
+        .querySelectorAll(
+            ".category-filter"
+        )
+        .forEach(
+            item =>
+                item.checked = false
+        );
+
+    document
+        .querySelectorAll(
+            'input[name="price"], input[name="rating"]'
+        )
+        .forEach(
+            item =>
+                item.checked = false
+        );
+
+    [
+        "verifiedSellerFilter",
+        "realVideoFilter",
+        "fastDeliveryFilter"
+    ].forEach(
+        function (id) {
+
+            const element =
+                document.getElementById(id);
+
+            if (element) {
+
+                element.checked = false;
+
+            }
+
+        }
+    );
+
+    const result =
+        document.getElementById(
+            "productResultText"
+        );
+
+    if (result) {
+
+        result.textContent =
+            "Explore trusted products at great prices";
+
+    }
+
+    document.getElementById(
+        "noProducts"
+    ).style.display =
+        "none";
+
+    displayProducts(products);
+
+}
+
+/* ================= MOBILE FILTER
+================= */
+
+function toggleFilters() {
+
+    const sidebar =
+        document.getElementById(
+            "filterSidebar"
+        );
+
+    if (sidebar) {
+
+        sidebar.classList.toggle(
+            "show"
+        );
+
+    }
+
+}
+</script>
+
+</body>
+</html>
