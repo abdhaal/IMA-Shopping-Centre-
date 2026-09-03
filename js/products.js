@@ -1,3 +1,11 @@
+/* =====================================================
+   IMA SHOPPING CENTRE
+   PRODUCTS DATA + FUNCTIONS
+===================================================== */
+
+
+/* ================= PRODUCT DATA ================= */
+
 const products = [
 
     {
@@ -12,6 +20,8 @@ const products = [
         trustScore: 94,
         seller: "IMA Verified Store",
         verifiedSeller: true,
+        realVideo: true,
+        fastDelivery: true,
         image: "assets/images/bulb.jpg"
     },
 
@@ -27,6 +37,8 @@ const products = [
         trustScore: 91,
         seller: "Smart Deals",
         verifiedSeller: true,
+        realVideo: true,
+        fastDelivery: true,
         image: "assets/images/fan.jpg"
     },
 
@@ -42,6 +54,8 @@ const products = [
         trustScore: 89,
         seller: "Home Store",
         verifiedSeller: true,
+        realVideo: false,
+        fastDelivery: true,
         image: "assets/images/storage.jpg"
     },
 
@@ -57,11 +71,17 @@ const products = [
         trustScore: 96,
         seller: "IMA Home",
         verifiedSeller: true,
+        realVideo: true,
+        fastDelivery: true,
         image: "assets/images/light.jpg"
     }
 
 ];
 
+
+/* =====================================================
+   PRODUCT CARD
+===================================================== */
 
 function productCard(product) {
 
@@ -69,28 +89,38 @@ function productCard(product) {
 
         <div class="product-card">
 
-            <a href="product.html?id=${product.id}">
+            <!-- Product Image -->
+
+            <a
+                href="product.html?id=${product.id}"
+                class="product-image-link"
+            >
 
                 <img
                     class="product-image"
                     src="${product.image}"
                     alt="${product.name}"
                     onerror="
-                    this.src='https://placehold.co/500x500?text=IMA+Product'
+                        this.onerror=null;
+                        this.src='https://placehold.co/500x500?text=IMA+Product';
                     "
                 >
 
             </a>
 
 
+            <!-- Product Information -->
+
             <div class="product-info">
 
-                <h3>
+                <h3 class="product-name">
                     ${product.name}
                 </h3>
 
 
-                <div>
+                <!-- Price -->
+
+                <div class="product-price-row">
 
                     <span class="price">
                         ₹${product.price}
@@ -100,52 +130,101 @@ function productCard(product) {
                         ₹${product.oldPrice}
                     </span>
 
+                    <span class="discount">
+                        ${product.discount} OFF
+                    </span>
+
                 </div>
 
+
+                <!-- Rating -->
 
                 <div class="rating">
 
-                    ⭐ ${product.rating}
+                    <strong>
+                        ⭐ ${product.rating}
+                    </strong>
 
-                    · ${product.reviews}
-                    verified reviews
+                    <span>
+                        (${product.reviews})
+                    </span>
 
-                    · ${product.discount} OFF
+                    <span>
+                        verified reviews
+                    </span>
 
                 </div>
 
+
+                <!-- Trust -->
 
                 <div class="trust">
 
                     🛡️ Trust Score:
-                    ${product.trustScore}/100
+                    <strong>
+                        ${product.trustScore}/100
+                    </strong>
+
+                </div>
+
+
+                <!-- Seller -->
+
+                <div class="seller-info">
 
                     ${
                         product.verifiedSeller
-                        ? " · ✓ Verified Seller"
+                        ? `<span class="verified-seller">
+                            ✓ Verified Seller
+                           </span>`
+                        : ""
+                    }
+
+                    <span>
+                        ${product.seller}
+                    </span>
+
+                </div>
+
+
+                <!-- Extra Trust Features -->
+
+                <div class="product-features">
+
+                    ${
+                        product.realVideo
+                        ? `<span>🎥 Real Video</span>`
+                        : ""
+                    }
+
+                    ${
+                        product.fastDelivery
+                        ? `<span>🚚 Fast Delivery</span>`
                         : ""
                     }
 
                 </div>
 
 
+                <!-- Buttons -->
+
                 <div class="product-actions">
 
                     <button
+                        type="button"
                         class="add-cart"
-                        onclick="addToCart(${product.id})">
-
-                        🛒 Add
-
+                        onclick="event.preventDefault(); addToCart(${product.id})"
+                    >
+                        🛒 Add to Cart
                     </button>
 
 
                     <button
+                        type="button"
                         class="buy-now"
-                        onclick="buyProduct(${product.id})">
-
+                        onclick="event.preventDefault(); buyProduct(${product.id})"
+                    >
                         Buy Now
-
                     </button>
 
                 </div>
@@ -158,30 +237,106 @@ function productCard(product) {
 }
 
 
+/* =====================================================
+   DISPLAY PRODUCTS
+===================================================== */
+
 function displayProducts(list = products) {
 
-    const container =
-        document.getElementById("productContainer");
+    /*
+     * IMPORTANT:
+     * products.html uses productsGrid
+     */
 
-    if (!container) return;
+    const container =
+        document.getElementById("productsGrid");
+
+
+    if (!container) {
+        return;
+    }
+
+
+    /*
+     * No products
+     */
+
+    if (!list || list.length === 0) {
+
+        container.innerHTML = "";
+
+        const noProducts =
+            document.getElementById("noProducts");
+
+        if (noProducts) {
+            noProducts.style.display = "block";
+        }
+
+        return;
+    }
+
+
+    /*
+     * Hide empty message
+     */
+
+    const noProducts =
+        document.getElementById("noProducts");
+
+    if (noProducts) {
+        noProducts.style.display = "none";
+    }
+
+
+    /*
+     * Render products
+     */
 
     container.innerHTML =
         list.map(productCard).join("");
 
+
+    /*
+     * Update result count
+     */
+
+    const resultText =
+        document.getElementById(
+            "productResultText"
+        );
+
+
+    if (resultText) {
+
+        resultText.textContent =
+            `${list.length} products found`;
+
+    }
+
 }
 
+
+/* =====================================================
+   DISPLAY DEALS
+===================================================== */
 
 function displayDeals() {
 
     const container =
         document.getElementById("dealProducts");
 
-    if (!container) return;
+
+    if (!container) {
+        return;
+    }
+
 
     const deals =
         products.filter(
-            product => product.discount
+            product =>
+                product.discount
         );
+
 
     container.innerHTML =
         deals.map(productCard).join("");
@@ -189,36 +344,73 @@ function displayDeals() {
 }
 
 
+/* =====================================================
+   SEARCH PRODUCTS
+===================================================== */
+
 function searchProducts() {
 
     const input =
-        document.getElementById("searchInput");
+        document.getElementById(
+            "searchInput"
+        );
 
-    if (!input) return;
+
+    if (!input) {
+        return;
+    }
+
 
     const keyword =
-        input.value.toLowerCase().trim();
+        input.value
+            .toLowerCase()
+            .trim();
+
+
+    const categoryElement =
+        document.getElementById(
+            "categorySelect"
+        );
 
 
     const category =
-        document.getElementById("categorySelect")
-        ?.value || "all";
+        categoryElement
+            ? categoryElement.value
+            : "all";
 
 
-    let result = products.filter(product => {
+    const result =
+        products.filter(
+            product => {
 
-        const matchName =
-            product.name
-                .toLowerCase()
-                .includes(keyword);
+                const name =
+                    product.name
+                        .toLowerCase();
 
-        const matchCategory =
-            category === "all" ||
-            product.category === category;
 
-        return matchName && matchCategory;
+                const seller =
+                    product.seller
+                        .toLowerCase();
 
-    });
+
+                const matchKeyword =
+                    keyword === "" ||
+                    name.includes(keyword) ||
+                    seller.includes(keyword);
+
+
+                const matchCategory =
+                    category === "all" ||
+                    product.category === category;
+
+
+                return (
+                    matchKeyword &&
+                    matchCategory
+                );
+
+            }
+        );
 
 
     displayProducts(result);
@@ -226,36 +418,58 @@ function searchProducts() {
 }
 
 
+/* =====================================================
+   ADD TO CART
+===================================================== */
+
 function addToCart(id) {
 
     let cart =
         JSON.parse(
-            localStorage.getItem("ima_cart")
+            localStorage.getItem(
+                "ima_cart"
+            )
         ) || [];
 
 
     const product =
-        products.find(p => p.id === id);
+        products.find(
+            p => p.id === id
+        );
 
-    if (!product) return;
+
+    if (!product) {
+        return;
+    }
 
 
     const existing =
-        cart.find(item => item.id === id);
+        cart.find(
+            item =>
+                item.id === id
+        );
 
 
     if (existing) {
 
         existing.quantity += 1;
 
-    } else {
+    }
+
+    else {
 
         cart.push({
+
             id: product.id,
+
             name: product.name,
+
             price: product.price,
+
             image: product.image,
+
             quantity: 1
+
         });
 
     }
@@ -269,9 +483,37 @@ function addToCart(id) {
 
     updateCartCount();
 
-    alert("Product added to cart!");
+
+    /*
+     * Use main.js notification
+     * if available
+     */
+
+    if (
+        typeof showNotification ===
+        "function"
+    ) {
+
+        showNotification(
+            `${product.name} added to cart`
+        );
+
+    }
+
+    else {
+
+        alert(
+            `${product.name} added to cart`
+        );
+
+    }
+
 }
 
+
+/* =====================================================
+   BUY NOW
+===================================================== */
 
 function buyProduct(id) {
 
@@ -283,32 +525,74 @@ function buyProduct(id) {
 }
 
 
+/* =====================================================
+   UPDATE CART COUNT
+===================================================== */
+
 function updateCartCount() {
 
     const cart =
         JSON.parse(
-            localStorage.getItem("ima_cart")
+            localStorage.getItem(
+                "ima_cart"
+            )
         ) || [];
 
 
     const count =
         cart.reduce(
             (total, item) =>
-                total + item.quantity,
+                total +
+                Number(
+                    item.quantity || 0
+                ),
             0
         );
 
 
     const element =
-        document.getElementById("cartCount");
+        document.getElementById(
+            "cartCount"
+        );
+
 
     if (element) {
-        element.textContent = count;
+
+        element.textContent =
+            count;
+
     }
 
 }
 
 
-displayProducts();
-displayDeals();
-updateCartCount();
+/* =====================================================
+   PAGE INITIALIZATION
+===================================================== */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        /*
+         * Products page
+         */
+
+        displayProducts();
+
+
+        /*
+         * Home page deals
+         */
+
+        displayDeals();
+
+
+        /*
+         * Cart count
+         */
+
+        updateCartCount();
+
+    }
+);
