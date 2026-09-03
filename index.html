@@ -1,35 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>IMA Shopping Centre</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <meta name="description"
-        content="IMA Shopping Centre - Shop with Trust, Buy with Confidence">
+          content="IMA Shopping Centre - Shop with Trust. Discover verified sellers, genuine reviews, real product videos and transparent pricing.">
 
+    <meta name="keywords"
+          content="IMA Shopping Centre, online shopping, trusted shopping, verified sellers, genuine reviews, affiliate shopping">
+
+    <meta name="author"
+          content="IMA Shopping Centre">
+
+    <title>IMA Shopping Centre | Shop Smart. Shop with Trust.</title>
+
+    <!-- Common CSS -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-<!-- ================= NAVBAR ================= -->
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
 
 <header class="navbar">
 
-    <div class="nav-top">
+    <div class="nav-container">
 
+        <!-- Logo -->
         <a href="index.html" class="logo">
-            <strong>IMA</strong>
-            <span>Shopping Centre</span>
+            <span>IMA</span>
+            <small>SHOPPING CENTRE</small>
         </a>
 
-        <div class="location">
-            📍 <span>Select Location</span>
+        <!-- Location -->
+        <div class="location-box">
+            <span class="location-icon">📍</span>
+
+            <div>
+                <small>Deliver to</small>
+                <strong>Select location</strong>
+            </div>
         </div>
 
+        <!-- Search -->
         <div class="search-box">
 
             <select id="categorySelect">
@@ -42,84 +60,135 @@
             </select>
 
             <input
-                type="text"
+                type="search"
                 id="searchInput"
                 placeholder="Search products, brands and more..."
             >
 
-            <button onclick="searchProducts()">🔍</button>
+            <button
+                type="button"
+                onclick="searchProducts()"
+                aria-label="Search">
+                🔍
+            </button>
 
         </div>
 
-        <div class="nav-account">
+        <!-- Navigation -->
+        <nav class="nav-links">
 
-            <a href="login.html">
+            <a href="login.html" class="nav-item">
+                <span>👤</span>
                 <small>Hello, Sign in</small>
-                <strong>Account ▾</strong>
+                <strong>Account</strong>
             </a>
 
-            <a href="orders.html">
-                <small>Returns</small>
-                <strong>& Orders</strong>
+            <a href="wishlist.html" class="nav-item">
+                <span>❤️</span>
+                <small>My</small>
+                <strong>Wishlist</strong>
+                <b id="wishlistCount">0</b>
             </a>
 
-            <a href="cart.html" class="cart">
-                🛒 <strong>Cart</strong>
+            <a href="orders.html" class="nav-item">
+                <span>📦</span>
+                <small>My</small>
+                <strong>Orders</strong>
+            </a>
+
+            <a href="cart.html" class="nav-icon cart-nav">
+                🛒
                 <span id="cartCount">0</span>
             </a>
 
-        </div>
-
-    </div>
-
-
-    <!-- CATEGORY NAVIGATION -->
-
-    <div class="category-bar">
-
-        <a href="products.html">☰ All</a>
-        <a href="products.html?category=electronics">Electronics</a>
-        <a href="products.html?category=fashion">Fashion</a>
-        <a href="products.html?category=home">Home</a>
-        <a href="products.html?category=kitchen">Kitchen</a>
-        <a href="products.html?category=beauty">Beauty</a>
-        <a href="products.html?category=deals">Today's Deals</a>
-        <a href="creator/dashboard.html">Creator</a>
+        </nav>
 
     </div>
 
 </header>
 
 
-<!-- ================= HERO ================= -->
+<!-- =====================================================
+     CATEGORY BAR
+===================================================== -->
+
+<div class="category-bar">
+
+    <div class="category-container">
+
+        <a href="products.html">☰ All</a>
+
+        <a href="products.html?category=electronics">
+            Electronics
+        </a>
+
+        <a href="products.html?category=fashion">
+            Fashion
+        </a>
+
+        <a href="products.html?category=home">
+            Home
+        </a>
+
+        <a href="products.html?category=kitchen">
+            Kitchen
+        </a>
+
+        <a href="products.html?category=beauty">
+            Beauty
+        </a>
+
+        <a href="products.html">
+            All Products
+        </a>
+
+        <a href="creator/dashboard.html">
+            Creator Zone
+        </a>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     HERO SECTION
+===================================================== -->
 
 <section class="hero">
 
-    <div class="hero-content">
+    <div class="container hero-content">
 
-        <div class="hero-label">
-            🛡️ TRUSTED ONLINE SHOPPING
-        </div>
+        <div class="hero-text">
 
-        <h1>
-            Shop Smart.<br>
-            Shop with Trust.
-        </h1>
+            <span class="hero-badge">
+                🛡️ TRUSTED ONLINE SHOPPING
+            </span>
 
-        <p>
-            Real product videos, verified sellers,
-            genuine reviews and transparent pricing.
-        </p>
+            <h1>
+                Shop Smart.<br>
+                <strong>Shop with Trust.</strong>
+            </h1>
 
-        <div class="hero-buttons">
+            <p>
+                Real product videos, verified sellers, genuine reviews
+                and transparent pricing — everything you need before
+                you buy.
+            </p>
 
-            <a href="products.html" class="btn-primary">
-                Shop Now →
-            </a>
+            <div class="hero-buttons">
 
-            <a href="#why-ima" class="btn-outline">
-                Why IMA?
-            </a>
+                <a href="products.html"
+                   class="primary-btn">
+                    Shop Now →
+                </a>
+
+                <a href="#trust"
+                   class="secondary-btn">
+                    Why IMA?
+                </a>
+
+            </div>
 
         </div>
 
@@ -128,75 +197,103 @@
 </section>
 
 
-<!-- ================= TRUST FEATURES ================= -->
+<!-- =====================================================
+     TRUST SECTION
+===================================================== -->
 
-<section class="section" id="why-ima">
+<section class="trust-section" id="trust">
 
-    <div class="section-heading center">
+    <div class="container">
 
-        <span>WHY IMA SHOPPING CENTRE</span>
+        <div class="section-heading">
 
-        <h2>
-            Shopping You Can Trust
-        </h2>
+            <span>
+                WHY IMA SHOPPING CENTRE
+            </span>
 
-        <p>
-            Everything you need to make a confident buying decision.
-        </p>
-
-    </div>
-
-
-    <div class="feature-grid">
-
-        <div class="feature-card">
-
-            <div class="feature-icon">🎥</div>
-
-            <h3>Real Product Videos</h3>
+            <h2>
+                Shopping You Can Trust
+            </h2>
 
             <p>
-                See the actual product before buying.
+                Everything you need to make a confident buying decision.
             </p>
 
         </div>
 
 
-        <div class="feature-card">
+        <div class="trust-grid">
 
-            <div class="feature-icon">🛡️</div>
+            <!-- Real Product Videos -->
+            <div class="trust-card">
 
-            <h3>Verified Sellers</h3>
+                <div class="trust-icon">
+                    🎥
+                </div>
 
-            <p>
-                Shop from trusted sellers.
-            </p>
+                <h3>
+                    Real Product Videos
+                </h3>
 
-        </div>
+                <p>
+                    See the actual product before buying.
+                </p>
 
-
-        <div class="feature-card">
-
-            <div class="feature-icon">⭐</div>
-
-            <h3>Genuine Reviews</h3>
-
-            <p>
-                Reviews from verified buyers.
-            </p>
-
-        </div>
+            </div>
 
 
-        <div class="feature-card">
+            <!-- Verified Sellers -->
+            <div class="trust-card">
 
-            <div class="feature-icon">💰</div>
+                <div class="trust-icon">
+                    🛡️
+                </div>
 
-            <h3>Transparent Pricing</h3>
+                <h3>
+                    Verified Sellers
+                </h3>
 
-            <p>
-                Know the complete price before checkout.
-            </p>
+                <p>
+                    Shop from trusted and verified sellers.
+                </p>
+
+            </div>
+
+
+            <!-- Genuine Reviews -->
+            <div class="trust-card">
+
+                <div class="trust-icon">
+                    ⭐
+                </div>
+
+                <h3>
+                    Genuine Reviews
+                </h3>
+
+                <p>
+                    Reviews from verified buyers.
+                </p>
+
+            </div>
+
+
+            <!-- Transparent Pricing -->
+            <div class="trust-card">
+
+                <div class="trust-icon">
+                    💰
+                </div>
+
+                <h3>
+                    Transparent Pricing
+                </h3>
+
+                <p>
+                    Know the complete price before checkout.
+                </p>
+
+            </div>
 
         </div>
 
@@ -205,278 +302,318 @@
 </section>
 
 
-<!-- ================= CATEGORIES ================= -->
+<!-- =====================================================
+     CATEGORY SECTION
+===================================================== -->
 
 <section class="section category-section">
 
-    <div class="section-heading">
+    <div class="container">
 
-        <div>
+        <div class="section-heading section-heading-row">
 
-            <span>EXPLORE</span>
+            <div>
+                <span>
+                    EXPLORE
+                </span>
 
-            <h2>Shop by Category</h2>
+                <h2>
+                    Shop by Category
+                </h2>
+            </div>
+
+            <a href="products.html">
+                View All →
+            </a>
 
         </div>
 
-        <a href="products.html">
-            View All →
-        </a>
 
-    </div>
+        <div class="category-grid">
 
+            <!-- Electronics -->
+            <a href="products.html?category=electronics"
+               class="category-card">
 
-    <div class="category-grid">
+                <div class="category-icon">
+                    📱
+                </div>
 
-        <a href="products.html?category=electronics"
-            class="category-card">
+                <h3>
+                    Electronics
+                </h3>
 
-            <div>📱</div>
+                <p>
+                    Explore →
+                </p>
 
-            <strong>Electronics</strong>
-
-            <span>Explore →</span>
-
-        </a>
-
-
-        <a href="products.html?category=fashion"
-            class="category-card">
-
-            <div>👕</div>
-
-            <strong>Fashion</strong>
-
-            <span>Explore →</span>
-
-        </a>
+            </a>
 
 
-        <a href="products.html?category=home"
-            class="category-card">
+            <!-- Fashion -->
+            <a href="products.html?category=fashion"
+               class="category-card">
 
-            <div>🏠</div>
+                <div class="category-icon">
+                    👕
+                </div>
 
-            <strong>Home</strong>
+                <h3>
+                    Fashion
+                </h3>
 
-            <span>Explore →</span>
+                <p>
+                    Explore →
+                </p>
 
-        </a>
-
-
-        <a href="products.html?category=kitchen"
-            class="category-card">
-
-            <div>🍳</div>
-
-            <strong>Kitchen</strong>
-
-            <span>Explore →</span>
-
-        </a>
+            </a>
 
 
-        <a href="products.html?category=beauty"
-            class="category-card">
+            <!-- Home -->
+            <a href="products.html?category=home"
+               class="category-card">
 
-            <div>💄</div>
+                <div class="category-icon">
+                    🏠
+                </div>
 
-            <strong>Beauty</strong>
+                <h3>
+                    Home
+                </h3>
 
-            <span>Explore →</span>
+                <p>
+                    Explore →
+                </p>
 
-        </a>
+            </a>
 
 
-        <a href="products.html"
-            class="category-card">
+            <!-- Kitchen -->
+            <a href="products.html?category=kitchen"
+               class="category-card">
 
-            <div>🛍️</div>
+                <div class="category-icon">
+                    🍳
+                </div>
 
-            <strong>All Products</strong>
+                <h3>
+                    Kitchen
+                </h3>
 
-            <span>Explore →</span>
+                <p>
+                    Explore →
+                </p>
 
-        </a>
+            </a>
+
+
+            <!-- Beauty -->
+            <a href="products.html?category=beauty"
+               class="category-card">
+
+                <div class="category-icon">
+                    💄
+                </div>
+
+                <h3>
+                    Beauty
+                </h3>
+
+                <p>
+                    Explore →
+                </p>
+
+            </a>
+
+
+            <!-- All Products -->
+            <a href="products.html"
+               class="category-card">
+
+                <div class="category-icon">
+                    🛍️
+                </div>
+
+                <h3>
+                    All Products
+                </h3>
+
+                <p>
+                    Explore →
+                </p>
+
+            </a>
+
+        </div>
 
     </div>
 
 </section>
 
 
-<!-- ================= DEALS ================= -->
+<!-- =====================================================
+     DEALS OF THE DAY
+===================================================== -->
 
 <section class="section deals-section">
 
-    <div class="section-heading">
+    <div class="container">
 
-        <div>
+        <div class="section-heading section-heading-row">
 
-            <span>LIMITED TIME</span>
+            <div>
 
-            <h2>🔥 Deals of the Day</h2>
+                <span>
+                    LIMITED TIME
+                </span>
+
+                <h2>
+                    🔥 Deals of the Day
+                </h2>
+
+            </div>
+
+            <a href="products.html">
+                View All →
+            </a>
 
         </div>
 
-        <a href="products.html?category=deals">
-            View All →
-        </a>
 
-    </div>
+        <!-- products.js will load products here -->
+        <div
+            id="dealProducts"
+            class="product-grid">
+        </div>
 
-
-    <div id="dealProducts"
-        class="product-grid">
     </div>
 
 </section>
 
 
-<!-- ================= TRENDING ================= -->
+<!-- =====================================================
+     TRENDING PRODUCTS
+===================================================== -->
 
-<section class="section">
+<section class="section trending-section">
 
-    <div class="section-heading">
+    <div class="container">
 
-        <div>
+        <div class="section-heading section-heading-row">
 
-            <span>CUSTOMER FAVOURITES</span>
+            <div>
 
-            <h2>⭐ Trending Products</h2>
+                <span>
+                    CUSTOMER FAVOURITES
+                </span>
+
+                <h2>
+                    ⭐ Trending Products
+                </h2>
+
+            </div>
+
+            <a href="products.html">
+                View All →
+            </a>
 
         </div>
 
-        <a href="products.html">
-            View All →
-        </a>
 
-    </div>
+        <!-- Trending products -->
+        <div
+            id="trendingProducts"
+            class="product-grid">
+        </div>
 
-
-    <div id="productContainer"
-        class="product-grid">
     </div>
 
 </section>
 
 
-<!-- ================= CREATOR ================= -->
+<!-- =====================================================
+     CREATOR AFFILIATE SECTION
+===================================================== -->
 
 <section class="creator-section">
 
-    <div class="creator-content">
+    <div class="container">
 
-        <span>FOR CONTENT CREATORS</span>
+        <div class="creator-content">
 
-        <h2>
-            Turn Your Content<br>
-            Into Earnings.
-        </h2>
+            <div class="creator-text">
 
-        <p>
-            Share products with your audience,
-            generate affiliate links and earn
-            commission on successful orders.
-        </p>
+                <span>
+                    JOIN CONTENT CREATORS
+                </span>
 
-        <a href="creator/dashboard.html"
-            class="btn-primary">
-            Start Earning →
-        </a>
+                <h2>
+                    Turn Your Content<br>
+                    Into Earnings.
+                </h2>
 
-    </div>
+                <p>
+                    Share products with your audience, generate
+                    affiliate links and earn commission on eligible
+                    successful orders.
+                </p>
 
+                <div class="creator-features">
 
-    <div class="creator-card">
+                    <div>
+                        🔗 Generate Affiliate Links
+                    </div>
 
-        <div class="creator-stat">
-            <span>💰</span>
-            <strong>₹12,450</strong>
-            <small>Total Earnings</small>
-        </div>
+                    <div>
+                        📊 Track Clicks & Orders
+                    </div>
 
-        <div class="creator-stat">
-            <span>🛒</span>
-            <strong>186</strong>
-            <small>Orders</small>
-        </div>
+                    <div>
+                        💰 Earn Commission
+                    </div>
 
-        <div class="creator-stat">
-            <span>🔗</span>
-            <strong>4,820</strong>
-            <small>Link Clicks</small>
-        </div>
+                </div>
 
-    </div>
+                <a href="creator/dashboard.html"
+                   class="primary-btn">
+                    Start Earning →
+                </a>
 
-</section>
+            </div>
 
 
-<!-- ================= HOW IT WORKS ================= -->
+            <div class="creator-card">
 
-<section class="section">
+                <div class="creator-card-title">
+                    Creator Earnings
+                </div>
 
-    <div class="section-heading center">
+                <div class="creator-amount">
+                    ₹12,450
+                </div>
 
-        <span>HOW IT WORKS</span>
+                <small>
+                    Estimated Earnings
+                </small>
 
-        <h2>
-            Buy With Confidence
-        </h2>
+                <hr>
 
-    </div>
+                <div class="creator-stat">
+                    <span>🔗 Clicks</span>
+                    <strong>1,850</strong>
+                </div>
 
+                <div class="creator-stat">
+                    <span>🛒 Orders</span>
+                    <strong>126</strong>
+                </div>
 
-    <div class="steps">
+                <div class="creator-stat">
+                    <span>💰 Commission</span>
+                    <strong>₹4,820</strong>
+                </div>
 
-        <div class="step">
-
-            <div class="step-number">01</div>
-
-            <h3>Find Your Product</h3>
-
-            <p>
-                Search thousands of products.
-            </p>
-
-        </div>
-
-
-        <div class="step">
-
-            <div class="step-number">02</div>
-
-            <h3>Check Trust Score</h3>
-
-            <p>
-                Check seller and product trust.
-            </p>
-
-        </div>
-
-
-        <div class="step">
-
-            <div class="step-number">03</div>
-
-            <h3>See Real Reviews</h3>
-
-            <p>
-                Watch customer videos and photos.
-            </p>
-
-        </div>
-
-
-        <div class="step">
-
-            <div class="step-number">04</div>
-
-            <h3>Buy Confidently</h3>
-
-            <p>
-                Order with complete confidence.
-            </p>
+            </div>
 
         </div>
 
@@ -485,108 +622,409 @@
 </section>
 
 
-<!-- ================= FOOTER ================= -->
+<!-- =====================================================
+     BUY WITH CONFIDENCE
+===================================================== -->
 
-<footer>
+<section class="section confidence-section">
 
-    <div class="footer-main">
+    <div class="container">
 
-        <div>
+        <div class="section-heading">
 
-            <h2>IMA Shopping Centre</h2>
+            <span>
+                IMA TRUST SYSTEM
+            </span>
 
-            <p>
-                Shop with Trust, Buy with Confidence.
-            </p>
-
-        </div>
-
-
-        <div>
-
-            <h4>Shop</h4>
-
-            <a href="products.html">All Products</a>
-            <a href="products.html?category=deals">Deals</a>
-            <a href="wishlist.html">Wishlist</a>
-            <a href="cart.html">Cart</a>
+            <h2>
+                Buy With Confidence
+            </h2>
 
         </div>
 
 
-        <div>
+        <div class="confidence-grid">
 
-            <h4>Help</h4>
+            <!-- Step 1 -->
+            <div class="confidence-card">
 
-            <a href="#">Contact Us</a>
-            <a href="#">Returns</a>
-            <a href="#">Refund Policy</a>
-            <a href="#">Shipping</a>
+                <div class="confidence-number">
+                    01
+                </div>
 
-        </div>
+                <h3>
+                    Find Your Product
+                </h3>
+
+                <p>
+                    Search thousands of products.
+                </p>
+
+            </div>
 
 
-        <div>
+            <!-- Step 2 -->
+            <div class="confidence-card">
 
-            <h4>Earn With IMA</h4>
+                <div class="confidence-number">
+                    02
+                </div>
 
-            <a href="creator/dashboard.html">
-                Creator Affiliate
-            </a>
+                <h3>
+                    Check Trust Score
+                </h3>
 
-            <a href="seller/dashboard.html">
-                Sell on IMA
-            </a>
+                <p>
+                    Check seller and product trust.
+                </p>
+
+            </div>
+
+
+            <!-- Step 3 -->
+            <div class="confidence-card">
+
+                <div class="confidence-number">
+                    03
+                </div>
+
+                <h3>
+                    See Real Reviews
+                </h3>
+
+                <p>
+                    Watch customer reviews and photos.
+                </p>
+
+            </div>
+
+
+            <!-- Step 4 -->
+            <div class="confidence-card">
+
+                <div class="confidence-number">
+                    04
+                </div>
+
+                <h3>
+                    Buy Confidently
+                </h3>
+
+                <p>
+                    Order with complete confidence.
+                </p>
+
+            </div>
 
         </div>
 
     </div>
 
+</section>
 
-    <div class="footer-bottom">
 
-        © 2026 IMA Shopping Centre
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="footer">
+
+    <div class="container">
+
+        <div class="footer-grid">
+
+            <!-- Brand -->
+            <div class="footer-brand">
+
+                <h2>
+                    IMA Shopping Centre
+                </h2>
+
+                <p>
+                    Shop Smart. Shop with Trust.
+                </p>
+
+                <p>
+                    Real products. Trusted sellers.
+                    Genuine reviews.
+                </p>
+
+            </div>
+
+
+            <!-- Shop -->
+            <div class="footer-column">
+
+                <h3>
+                    Shop
+                </h3>
+
+                <a href="products.html">
+                    All Products
+                </a>
+
+                <a href="products.html?category=electronics">
+                    Electronics
+                </a>
+
+                <a href="products.html?category=fashion">
+                    Fashion
+                </a>
+
+                <a href="products.html?category=home">
+                    Home
+                </a>
+
+                <a href="products.html?category=kitchen">
+                    Kitchen
+                </a>
+
+                <a href="products.html?category=beauty">
+                    Beauty
+                </a>
+
+            </div>
+
+
+            <!-- Help -->
+            <div class="footer-column">
+
+                <h3>
+                    Help
+                </h3>
+
+                <a href="account.html">
+                    My Account
+                </a>
+
+                <a href="orders.html">
+                    My Orders
+                </a>
+
+                <a href="cart.html">
+                    Cart
+                </a>
+
+                <a href="wishlist.html">
+                    Wishlist
+                </a>
+
+                <a href="#">
+                    Contact Us
+                </a>
+
+            </div>
+
+
+            <!-- Creator -->
+            <div class="footer-column">
+
+                <h3>
+                    Work With IMA
+                </h3>
+
+                <a href="creator/dashboard.html">
+                    Creator Affiliate
+                </a>
+
+                <a href="seller/dashboard.html">
+                    Sell on IMA
+                </a>
+
+                <a href="#">
+                    Brand Partnership
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 IMA Shopping Centre.
+                All rights reserved.
+            </p>
+
+            <div>
+
+                <a href="#">
+                    Privacy
+                </a>
+
+                <a href="#">
+                    Terms
+                </a>
+
+                <a href="#">
+                    Refund Policy
+                </a>
+
+            </div>
+
+        </div>
 
     </div>
 
 </footer>
 
 
-<!-- MOBILE BOTTOM NAV -->
+<!-- =====================================================
+     MOBILE BOTTOM NAVIGATION
+===================================================== -->
 
-<div class="mobile-nav">
+<nav class="mobile-bottom-nav">
 
     <a href="index.html">
-        🏠
-        <span>Home</span>
+        <span>🏠</span>
+        <small>Home</small>
     </a>
 
     <a href="products.html">
-        🔍
-        <span>Shop</span>
+        <span>🛍️</span>
+        <small>Shop</small>
     </a>
 
     <a href="wishlist.html">
-        ❤️
-        <span>Wishlist</span>
+        <span>❤️</span>
+        <small>Wishlist</small>
     </a>
 
     <a href="account.html">
-        👤
-        <span>Account</span>
+        <span>👤</span>
+        <small>Account</small>
     </a>
 
     <a href="cart.html">
-        🛒
-        <span>Cart</span>
+        <span>🛒</span>
+        <small>Cart</small>
     </a>
 
-</div>
+</nav>
 
+
+<!-- =====================================================
+     SCRIPTS
+===================================================== -->
 
 <script src="js/products.js"></script>
 <script src="js/main.js"></script>
 
-</body>
 
-          </html>
+<script>
+
+/*
+========================================
+        INDEX PAGE PRODUCT DISPLAY
+========================================
+*/
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    /*
+     * products.js already loads:
+     * - Deals of the Day
+     * - Product data
+     *
+     * Here we also create the Trending
+     * Products section.
+     */
+
+    if (
+        typeof products !== "undefined" &&
+        typeof productCard === "function"
+    ) {
+
+        const trendingContainer =
+            document.getElementById("trendingProducts");
+
+        if (trendingContainer) {
+
+            const trendingProducts =
+                [...products]
+                    .sort(function (a, b) {
+                        return (
+                            (b.rating || 0) -
+                            (a.rating || 0)
+                        );
+                    })
+                    .slice(0, 4);
+
+            trendingContainer.innerHTML =
+                trendingProducts
+                    .map(productCard)
+                    .join("");
+
+        }
+
+    }
+
+});
+
+
+/*
+========================================
+        SEARCH ON ENTER
+========================================
+*/
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const searchInput =
+        document.getElementById("searchInput");
+
+    if (searchInput) {
+
+        searchInput.addEventListener(
+            "keydown",
+            function (event) {
+
+                if (event.key === "Enter") {
+
+                    if (
+                        typeof searchProducts ===
+                        "function"
+                    ) {
+
+                        searchProducts();
+
+                    }
+
+                }
+
+            }
+        );
+
+    }
+
+});
+
+
+/*
+========================================
+        UPDATE CART / WISHLIST COUNT
+========================================
+*/
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    if (
+        typeof updateCartCount ===
+        "function"
+    ) {
+        updateCartCount();
+    }
+
+    if (
+        typeof updateWishlistCount ===
+        "function"
+    ) {
+        updateWishlistCount();
+    }
+
+});
+
+</script>
+</body>
+</html>
