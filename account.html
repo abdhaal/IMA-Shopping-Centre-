@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Account | IMA Shopping Centre</title>
+    <meta name="description" content="Manage your IMA Shopping Centre account, orders, wishlist, addresses and security.">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/account.css">
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<header class="navbar">
+    <div class="nav-container">
+
+        <a href="index.html" class="logo">
+            IMA <span>Shopping Centre</span>
+        </a>
+
+        <div class="location-box">
+            <span class="location-icon">📍</span>
+            <div>
+                <small>Deliver to</small>
+                <strong>Select Location</strong>
+            </div>
+        </div>
+
+        <div class="search-box">
+            <select id="categorySelect">
+                <option value="all">All</option>
+                <option value="electronics">Electronics</option>
+                <option value="fashion">Fashion</option>
+                <option value="home">Home</option>
+                <option value="kitchen">Kitchen</option>
+                <option value="beauty">Beauty</option>
+            </select>
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search products..."
+            >
+
+            <button id="searchButton" type="button">🔍</button>
+        </div>
+
+        <div class="nav-actions">
+
+            <a href="account.html" class="nav-item active">
+                <span>👤</span>
+                <small>Account</small>
+            </a>
+
+            <a href="wishlist.html" class="nav-item">
+                <span>♡</span>
+                <small>Wishlist</small>
+                <b id="wishlistCount">0</b>
+            </a>
+
+            <a href="orders.html" class="nav-item">
+                <span>📦</span>
+                <small>Orders</small>
+            </a>
+
+            <a href="cart.html" class="nav-item cart-nav">
+                <span>🛒</span>
+                <small>Cart</small>
+                <b id="cartCount">0</b>
+            </a>
+
+        </div>
+
+    </div>
+</header>
+
+
+<!-- ================= CATEGORY BAR ================= -->
+<nav class="category-bar">
+    <div class="category-container">
+
+        <a href="products.html">All Products</a>
+        <a href="products.html?category=electronics">Electronics</a>
+        <a href="products.html?category=fashion">Fashion</a>
+        <a href="products.html?category=home">Home</a>
+        <a href="products.html?category=kitchen">Kitchen</a>
+        <a href="products.html?category=beauty">Beauty</a>
+        <a href="products.html?category=deals">Deals</a>
+
+    </div>
+</nav>
+
+
+<!-- ================= ACCOUNT PAGE ================= -->
+<main class="account-page">
+
+    <div class="account-container">
+
+        <!-- Breadcrumb -->
+        <div class="account-breadcrumb">
+            <a href="index.html">Home</a>
+            <span>›</span>
+            <strong>My Account</strong>
+        </div>
+
+
+        <!-- ================= PROFILE HEADER ================= -->
+        <section class="account-profile">
+
+            <div class="profile-left">
+
+                <div class="profile-avatar" id="profileAvatar">
+                    U
+                </div>
+
+                <div class="profile-info">
+                    <span class="profile-label">Welcome back</span>
+
+                    <h1 id="profileName">
+                        User
+                    </h1>
+
+                    <p id="profileEmail">
+                        user@example.com
+                    </p>
+
+                    <span class="customer-badge">
+                        ✓ Customer
+                    </span>
+                </div>
+
+            </div>
+
+            <button class="edit-profile-btn" id="editProfileBtn">
+                ✏️ Edit Profile
+            </button>
+
+        </section>
+
+
+        <!-- ================= ACCOUNT GRID ================= -->
+        <section class="account-grid">
+
+            <!-- PROFILE -->
+            <div class="account-card profile-card">
+
+                <div class="card-icon blue">
+                    👤
+                </div>
+
+                <div class="card-content">
+                    <h3>Personal Information</h3>
+                    <p>Manage your name, email and phone number.</p>
+
+                    <button class="account-link" data-action="profile">
+                        View Profile →
+                    </button>
+                </div>
+
+            </div>
+
+
+            <!-- ORDERS -->
+            <a href="orders.html" class="account-card">
+
+                <div class="card-icon purple">
+                    📦
+                </div>
+
+                <div class="card-content">
+                    <h3>My Orders</h3>
+                    <p>Track your orders and view order history.</p>
+
+                    <span class="account-link">
+                        View Orders →
+                    </span>
+                </div>
+
+            </a>
+
+
+            <!-- WISHLIST -->
+            <a href="wishlist.html" class="account-card">
+
+                <div class="card-icon pink">
+                    ♡
+                </div>
+
+                <div class="card-content">
+                    <h3>My Wishlist</h3>
+                    <p>View and manage your saved products.</p>
+
+                    <span class="account-link">
+                        View Wishlist →
+                    </span>
+                </div>
+
+            </a>
+
+
+            <!-- CART -->
+            <a href="cart.html" class="account-card">
+
+                <div class="card-icon orange">
+                    🛒
+                </div>
+
+                <div class="card-content">
+                    <h3>My Cart</h3>
+                    <p>Continue shopping with products in your cart.</p>
+
+                    <span class="account-link">
+                        View Cart →
+                    </span>
+                </div>
+
+            </a>
+
+
+            <!-- RETURNS -->
+            <a href="orders.html?filter=returns" class="account-card">
+
+                <div class="card-icon red">
+                    ↩️
+                </div>
+
+                <div class="card-content">
+                    <h3>Returns & Refunds</h3>
+                    <p>Manage returns, refunds and replacement requests.</p>
+
+                    <span class="account-link">
+                        Manage Returns →
+                    </span>
+                </div>
+
+            </a>
+
+
+            <!-- REVIEWS -->
+            <div class="account-card">
+
+                <div class="card-icon green">
+                    ⭐
+                </div>
+
+                <div class="card-content">
+                    <h3>My Reviews</h3>
+                    <p>View and manage your product reviews.</p>
+
+                    <button class="account-link" data-action="reviews">
+                        My Reviews →
+                    </button>
+                </div>
+
+            </div>
+
+
+            <!-- ADDRESSES -->
+            <div class="account-card">
+
+                <div class="card-icon teal">
+                    📍
+                </div>
+
+                <div class="card-content">
+                    <h3>My Addresses</h3>
+                    <p>Add or manage your delivery addresses.</p>
+
+                    <button class="account-link" data-action="addresses">
+                        Manage Addresses →
+                    </button>
+                </div>
+
+            </div>
+
+
+            <!-- NOTIFICATIONS -->
+            <div class="account-card">
+
+                <div class="card-icon yellow">
+                    🔔
+                </div>
+
+                <div class="card-content">
+                    <h3>Notifications</h3>
+                    <p>Manage order and offer notifications.</p>
+
+                    <button class="account-link" data-action="notifications">
+                        Notification Settings →
+                    </button>
+                </div>
+
+            </div>
+
+
+            <!-- SECURITY -->
+            <div class="account-card">
+
+                <div class="card-icon dark">
+                    🔐
+                </div>
+
+                <div class="card-content">
+                    <h3>Security</h3>
+                    <p>Manage your account security settings.</p>
+
+                    <button class="account-link" data-action="security">
+                        Security Settings →
+                    </button>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= TRUST BOX ================= -->
+        <section class="account-trust">
+
+            <div class="trust-icon">
+                🛡️
+            </div>
+
+            <div>
+                <h2>Your account is protected</h2>
+
+                <p>
+                    IMA Shopping Centre is designed with secure authentication,
+                    protected customer data and trusted shopping features.
+                </p>
+
+                <div class="trust-points">
+                    <span>✓ Secure Login</span>
+                    <span>✓ Protected Orders</span>
+                    <span>✓ Safe Payments</span>
+                    <span>✓ Privacy Protection</span>
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- ================= LOGOUT ================= -->
+        <section class="logout-section">
+
+            <button id="logoutBtn" class="logout-btn">
+                🚪 Logout
+            </button>
+
+        </section>
+
+    </div>
+
+</main>
+
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+
+    <div class="footer-container">
+
+        <div class="footer-brand">
+            <h2>IMA Shopping Centre</h2>
+
+            <p>
+                Shop with Trust, Buy with Confidence.
+            </p>
+        </div>
+
+        <div class="footer-column">
+            <h3>Shopping</h3>
+            <a href="products.html">All Products</a>
+            <a href="products.html?category=electronics">Electronics</a>
+            <a href="products.html?category=fashion">Fashion</a>
+            <a href="products.html?category=home">Home</a>
+        </div>
+
+        <div class="footer-column">
+            <h3>Customer</h3>
+            <a href="account.html">My Account</a>
+            <a href="orders.html">My Orders</a>
+            <a href="wishlist.html">Wishlist</a>
+            <a href="cart.html">Cart</a>
+        </div>
+
+        <div class="footer-column">
+            <h3>Support</h3>
+            <a href="#">Help Centre</a>
+            <a href="#">Returns</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms & Conditions</a>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        © 2026 IMA Shopping Centre. All rights reserved.
+    </div>
+
+</footer>
+
+
+<!-- ================= MOBILE NAV ================= -->
+<div class="mobile-bottom-nav">
+
+    <a href="index.html">
+        <span>⌂</span>
+        <small>Home</small>
+    </a>
+
+    <a href="products.html">
+        <span>▦</span>
+        <small>Products</small>
+    </a>
+
+    <a href="wishlist.html">
+        <span>♡</span>
+        <small>Wishlist</small>
+    </a>
+
+    <a href="cart.html">
+        <span>🛒</span>
+        <small>Cart</small>
+    </a>
+
+    <a href="account.html" class="active">
+        <span>👤</span>
+        <small>Account</small>
+    </a>
+
+</div>
+
+
+<script src="js/main.js"></script>
+<script src="js/account.js"></script>
+
+</body>
+              </html>
