@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Wishlist | IMA Shopping Centre</title>
+    <meta name="description" content="Save your favourite products in your IMA Shopping Centre wishlist.">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/wishlist.css">
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<header class="navbar">
+    <div class="nav-container">
+
+        <a href="index.html" class="logo">
+            IMA <span>Shopping Centre</span>
+        </a>
+
+        <div class="location-box">
+            <span class="location-icon">📍</span>
+            <div>
+                <small>Deliver to</small>
+                <strong>Select Location</strong>
+            </div>
+        </div>
+
+        <div class="search-box">
+
+            <select id="categorySelect">
+                <option value="all">All</option>
+                <option value="electronics">Electronics</option>
+                <option value="fashion">Fashion</option>
+                <option value="home">Home</option>
+                <option value="kitchen">Kitchen</option>
+                <option value="beauty">Beauty</option>
+            </select>
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search products..."
+            >
+
+            <button
+                id="searchButton"
+                type="button"
+            >
+                🔍
+            </button>
+
+        </div>
+
+        <div class="nav-actions">
+
+            <a href="account.html" class="nav-item">
+                <span>👤</span>
+                <small>Account</small>
+            </a>
+
+            <a href="wishlist.html" class="nav-item active">
+                <span>♡</span>
+                <small>Wishlist</small>
+                <b id="wishlistCount">0</b>
+            </a>
+
+            <a href="orders.html" class="nav-item">
+                <span>📦</span>
+                <small>Orders</small>
+            </a>
+
+            <a href="cart.html" class="nav-item cart-nav">
+                <span>🛒</span>
+                <small>Cart</small>
+                <b id="cartCount">0</b>
+            </a>
+
+        </div>
+
+    </div>
+</header>
+
+
+<!-- ================= CATEGORY BAR ================= -->
+<nav class="category-bar">
+
+    <div class="category-container">
+
+        <a href="products.html">
+            All Products
+        </a>
+
+        <a href="products.html?category=electronics">
+            Electronics
+        </a>
+
+        <a href="products.html?category=fashion">
+            Fashion
+        </a>
+
+        <a href="products.html?category=home">
+            Home
+        </a>
+
+        <a href="products.html?category=kitchen">
+            Kitchen
+        </a>
+
+        <a href="products.html?category=beauty">
+            Beauty
+        </a>
+
+        <a href="products.html?category=deals">
+            Deals
+        </a>
+
+    </div>
+
+</nav>
+
+
+<!-- ================= WISHLIST ================= -->
+<main class="wishlist-page">
+
+    <div class="wishlist-container">
+
+        <!-- Breadcrumb -->
+
+        <div class="wishlist-breadcrumb">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <span>›</span>
+
+            <strong>
+                My Wishlist
+            </strong>
+
+        </div>
+
+
+        <!-- Header -->
+
+        <div class="wishlist-header">
+
+            <div>
+
+                <h1>
+                    My Wishlist
+                </h1>
+
+                <p id="wishlistSubtitle">
+                    Your saved products
+                </p>
+
+            </div>
+
+            <a
+                href="products.html"
+                class="continue-shopping"
+            >
+                Continue Shopping
+            </a>
+
+        </div>
+
+
+        <!-- Wishlist Grid -->
+
+        <section
+            id="wishlistGrid"
+            class="wishlist-grid"
+        ></section>
+
+
+        <!-- Empty Wishlist -->
+
+        <section
+            id="emptyWishlist"
+            class="empty-wishlist"
+            style="display:none;"
+        >
+
+            <div class="empty-heart">
+                ♡
+            </div>
+
+            <h2>
+                Your wishlist is empty
+            </h2>
+
+            <p>
+                Save products you love and find them here later.
+            </p>
+
+            <a
+                href="products.html"
+                class="wishlist-shop-btn"
+            >
+                Explore Products
+            </a>
+
+        </section>
+
+
+        <!-- ================= TRUST SECTION ================= -->
+
+        <section class="wishlist-trust">
+
+            <div class="wishlist-trust-icon">
+                🛡️
+            </div>
+
+            <div>
+
+                <h2>
+                    Shop with confidence
+                </h2>
+
+                <p>
+                    Before buying, check our verified seller,
+                    genuine review, real product video and
+                    product trust information.
+                </p>
+
+                <div class="wishlist-trust-points">
+
+                    <span>✓ Verified Sellers</span>
+                    <span>✓ Genuine Reviews</span>
+                    <span>✓ Real Product Videos</span>
+                    <span>✓ Transparent Pricing</span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</main>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="footer">
+
+    <div class="footer-container">
+
+        <div class="footer-brand">
+
+            <h2>
+                IMA Shopping Centre
+            </h2>
+
+            <p>
+                Shop with Trust, Buy with Confidence.
+            </p>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h3>
+                Shopping
+            </h3>
+
+            <a href="products.html">
+                All Products
+            </a>
+
+            <a href="products.html?category=electronics">
+                Electronics
+            </a>
+
+            <a href="products.html?category=fashion">
+                Fashion
+            </a>
+
+            <a href="products.html?category=home">
+                Home
+            </a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h3>
+                Customer
+            </h3>
+
+            <a href="account.html">
+                My Account
+            </a>
+
+            <a href="orders.html">
+                My Orders
+            </a>
+
+            <a href="wishlist.html">
+                Wishlist
+            </a>
+
+            <a href="cart.html">
+                Cart
+            </a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h3>
+                Support
+            </h3>
+
+            <a href="#">
+                Help Centre
+            </a>
+
+            <a href="#">
+                Returns
+            </a>
+
+            <a href="#">
+                Privacy Policy
+            </a>
+
+            <a href="#">
+                Terms & Conditions
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        © 2026 IMA Shopping Centre.
+        All rights reserved.
+
+    </div>
+
+</footer>
+
+
+<!-- ================= MOBILE NAV ================= -->
+
+<div class="mobile-bottom-nav">
+
+    <a href="index.html">
+        <span>⌂</span>
+        <small>Home</small>
+    </a>
+
+    <a href="products.html">
+        <span>▦</span>
+        <small>Products</small>
+    </a>
+
+    <a
+        href="wishlist.html"
+        class="active"
+    >
+        <span>♡</span>
+        <small>Wishlist</small>
+    </a>
+
+    <a href="cart.html">
+        <span>🛒</span>
+        <small>Cart</small>
+    </a>
+
+    <a href="account.html">
+        <span>👤</span>
+        <small>Account</small>
+    </a>
+
+</div>
+
+
+<script src="js/main.js"></script>
+<script src="js/products.js"></script>
+<script src="js/wishlist.js"></script>
+
+</body>
+                      </html>
