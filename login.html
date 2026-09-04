@@ -5,19 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Login | IMA Shopping Centre</title>
-
-    <meta
-        name="description"
-        content="Login or create your IMA Shopping Centre account."
-    >
+    <meta name="description" content="Login to IMA Shopping Centre">
 
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/login.css">
 </head>
 
 <body>
-
-<!-- ================= HEADER ================= -->
 
 <header class="navbar">
     <div class="nav-container">
@@ -26,69 +20,58 @@
             <span>IMA</span> Shopping Centre
         </a>
 
-        <div class="login-header-link">
-            <a href="index.html">← Back to Shopping</a>
+        <div class="nav-actions">
+            <a href="index.html" class="back-home">
+                ← Back to Shopping
+            </a>
         </div>
 
     </div>
 </header>
 
 
-<!-- ================= LOGIN PAGE ================= -->
-
 <main class="login-page">
 
     <div class="login-wrapper">
 
-        <!-- LEFT SIDE -->
+        <!-- Left Side -->
+        <section class="login-info">
 
-        <section class="login-benefits">
+            <div class="login-brand">
+                <div class="brand-icon">IMA</div>
 
-            <div class="benefits-logo">
-                IMA
+                <h1>Shop with Trust,<br>Buy with Confidence.</h1>
+
+                <p>
+                    Welcome to IMA Shopping Centre.
+                    Login to access your account, orders,
+                    wishlist and more.
+                </p>
             </div>
 
-            <h1>
-                Shop with Trust,<br>
-                Buy with Confidence.
-            </h1>
+            <div class="login-benefits">
 
-            <p>
-                Sign in to access your account, orders,
-                wishlist and personalised shopping experience.
-            </p>
-
-            <div class="benefit-list">
-
-                <div class="benefit-item">
-                    <span>🛡️</span>
+                <div class="benefit">
+                    <div class="benefit-icon">✓</div>
                     <div>
-                        <strong>Trusted Shopping</strong>
-                        <small>Verified sellers and transparent information.</small>
+                        <h3>Verified Sellers</h3>
+                        <p>Shop from trusted sellers.</p>
                     </div>
                 </div>
 
-                <div class="benefit-item">
-                    <span>📦</span>
+                <div class="benefit">
+                    <div class="benefit-icon">✓</div>
                     <div>
-                        <strong>Track Your Orders</strong>
-                        <small>Manage and track all your purchases.</small>
+                        <h3>Genuine Reviews</h3>
+                        <p>See verified buyer reviews.</p>
                     </div>
                 </div>
 
-                <div class="benefit-item">
-                    <span>❤️</span>
+                <div class="benefit">
+                    <div class="benefit-icon">✓</div>
                     <div>
-                        <strong>Wishlist</strong>
-                        <small>Save products for later.</small>
-                    </div>
-                </div>
-
-                <div class="benefit-item">
-                    <span>⚡</span>
-                    <div>
-                        <strong>Faster Checkout</strong>
-                        <small>Save your details for a smoother checkout.</small>
+                        <h3>Secure Shopping</h3>
+                        <p>Your account stays protected.</p>
                     </div>
                 </div>
 
@@ -97,368 +80,165 @@
         </section>
 
 
-        <!-- RIGHT SIDE -->
-
+        <!-- Login Card -->
         <section class="login-card">
 
-            <!-- LOGIN FORM -->
+            <div class="login-header">
 
-            <div id="loginFormSection">
+                <div class="mobile-logo">IMA</div>
 
-                <div class="login-title">
+                <h2>Welcome Back!</h2>
 
-                    <h2>Welcome Back 👋</h2>
+                <p>Login to your IMA Shopping Centre account</p>
 
-                    <p>
-                        Login to your IMA Shopping Centre account
-                    </p>
+            </div>
+
+
+            <form id="loginForm">
+
+                <!-- Email -->
+                <div class="form-group">
+
+                    <label for="email">
+                        Email Address
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="Enter your email"
+                        autocomplete="email"
+                        required
+                    >
+
+                    <small class="error-message" id="emailError"></small>
 
                 </div>
 
 
-                <form id="loginForm">
+                <!-- Password -->
+                <div class="form-group">
 
-                    <div class="form-group">
+                    <div class="password-label">
 
-                        <label for="loginEmail">
-                            Email Address
-                        </label>
-
-                        <input
-                            type="email"
-                            id="loginEmail"
-                            placeholder="Enter your email"
-                            autocomplete="email"
-                            required
-                        >
-
-                    </div>
-
-
-                    <div class="form-group">
-
-                        <label for="loginPassword">
+                        <label for="password">
                             Password
                         </label>
 
-                        <div class="password-wrapper">
-
-                            <input
-                                type="password"
-                                id="loginPassword"
-                                placeholder="Enter your password"
-                                autocomplete="current-password"
-                                required
-                            >
-
-                            <button
-                                type="button"
-                                class="password-toggle"
-                                id="loginPasswordToggle"
-                            >
-                                👁️
-                            </button>
-
-                        </div>
+                        <a href="#" id="forgotPassword">
+                            Forgot Password?
+                        </a>
 
                     </div>
 
+                    <div class="password-wrapper">
 
-                    <div class="form-options">
-
-                        <label class="remember-me">
-
-                            <input
-                                type="checkbox"
-                                id="rememberMe"
-                            >
-
-                            <span>Remember me</span>
-
-                        </label>
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="Enter your password"
+                            autocomplete="current-password"
+                            required
+                        >
 
                         <button
                             type="button"
-                            class="forgot-button"
-                            id="forgotPasswordButton"
+                            id="togglePassword"
+                            class="password-toggle"
+                            aria-label="Show password"
                         >
-                            Forgot password?
+                            👁
                         </button>
 
                     </div>
 
-
-                    <button
-                        type="submit"
-                        class="login-submit"
-                        id="loginButton"
-                    >
-                        Login
-                    </button>
-
-                    <div
-                        class="form-message"
-                        id="loginMessage"
-                    ></div>
-
-                </form>
-
-
-                <div class="divider">
-                    <span>OR</span>
-                </div>
-
-
-                <button
-                    type="button"
-                    class="google-login"
-                    id="googleLoginButton"
-                >
-                    <span>G</span>
-                    Continue with Google
-                </button>
-
-
-                <p class="switch-text">
-
-                    Don't have an account?
-
-                    <button
-                        type="button"
-                        id="showSignupButton"
-                    >
-                        Create Account
-                    </button>
-
-                </p>
-
-            </div>
-
-
-            <!-- SIGN UP FORM -->
-
-            <div
-                id="signupFormSection"
-                class="hidden"
-            >
-
-                <div class="login-title">
-
-                    <h2>Create Account 🚀</h2>
-
-                    <p>
-                        Join IMA Shopping Centre today
-                    </p>
+                    <small class="error-message" id="passwordError"></small>
 
                 </div>
 
 
-                <form id="signupForm">
+                <!-- Remember -->
+                <div class="login-options">
 
-                    <div class="form-group">
-
-                        <label for="signupName">
-                            Full Name
-                        </label>
-
-                        <input
-                            type="text"
-                            id="signupName"
-                            placeholder="Enter your full name"
-                            autocomplete="name"
-                            required
-                        >
-
-                    </div>
-
-
-                    <div class="form-group">
-
-                        <label for="signupEmail">
-                            Email Address
-                        </label>
-
-                        <input
-                            type="email"
-                            id="signupEmail"
-                            placeholder="Enter your email"
-                            autocomplete="email"
-                            required
-                        >
-
-                    </div>
-
-
-                    <div class="form-group">
-
-                        <label for="signupPassword">
-                            Password
-                        </label>
-
-                        <div class="password-wrapper">
-
-                            <input
-                                type="password"
-                                id="signupPassword"
-                                placeholder="Create a password"
-                                autocomplete="new-password"
-                                minlength="6"
-                                required
-                            >
-
-                            <button
-                                type="button"
-                                class="password-toggle"
-                                id="signupPasswordToggle"
-                            >
-                                👁️
-                            </button>
-
-                        </div>
-
-                        <small class="password-hint">
-                            Minimum 6 characters
-                        </small>
-
-                    </div>
-
-
-                    <div class="form-group">
-
-                        <label for="signupConfirmPassword">
-                            Confirm Password
-                        </label>
-
-                        <input
-                            type="password"
-                            id="signupConfirmPassword"
-                            placeholder="Confirm your password"
-                            autocomplete="new-password"
-                            required
-                        >
-
-                    </div>
-
-
-                    <label class="terms-check">
+                    <label class="remember-me">
 
                         <input
                             type="checkbox"
-                            id="termsCheckbox"
-                            required
+                            id="rememberMe"
                         >
 
-                        <span>
-                            I agree to the
-                            <a href="#">Terms & Conditions</a>
-                            and
-                            <a href="#">Privacy Policy</a>.
-                        </span>
+                        <span>Remember me</span>
 
                     </label>
-
-
-                    <button
-                        type="submit"
-                        class="login-submit"
-                        id="signupButton"
-                    >
-                        Create Account
-                    </button>
-
-
-                    <div
-                        class="form-message"
-                        id="signupMessage"
-                    ></div>
-
-                </form>
-
-
-                <p class="switch-text">
-
-                    Already have an account?
-
-                    <button
-                        type="button"
-                        id="showLoginButton"
-                    >
-                        Login
-                    </button>
-
-                </p>
-
-            </div>
-
-
-            <!-- FORGOT PASSWORD -->
-
-            <div
-                id="forgotFormSection"
-                class="hidden"
-            >
-
-                <div class="login-title">
-
-                    <div class="forgot-icon">
-                        🔐
-                    </div>
-
-                    <h2>Reset Password</h2>
-
-                    <p>
-                        Enter your email and we'll send you
-                        a password reset link.
-                    </p>
 
                 </div>
 
 
-                <form id="forgotForm">
-
-                    <div class="form-group">
-
-                        <label for="forgotEmail">
-                            Email Address
-                        </label>
-
-                        <input
-                            type="email"
-                            id="forgotEmail"
-                            placeholder="Enter your email"
-                            autocomplete="email"
-                            required
-                        >
-
-                    </div>
+                <!-- Login Button -->
+                <button
+                    type="submit"
+                    class="login-btn"
+                    id="loginBtn"
+                >
+                    Login
+                </button>
 
 
-                    <button
-                        type="submit"
-                        class="login-submit"
-                    >
-                        Send Reset Link
-                    </button>
+                <div
+                    class="login-message"
+                    id="loginMessage"
+                ></div>
+
+            </form>
 
 
-                    <div
-                        class="form-message"
-                        id="forgotMessage"
-                    ></div>
-
-                </form>
+            <!-- Divider -->
+            <div class="divider">
+                <span>OR</span>
+            </div>
 
 
-                <p class="switch-text">
+            <!-- Google Login -->
+            <button
+                type="button"
+                class="google-btn"
+                id="googleLogin"
+            >
+                <span class="google-icon">G</span>
+                Continue with Google
+            </button>
 
-                    <button
-                        type="button"
-                        id="backToLoginButton"
-                    >
-                        ← Back to Login
-                    </button>
 
-                </p>
+            <!-- Register -->
+            <div class="register-text">
+
+                <span>Don't have an account?</span>
+
+                <a href="#" id="createAccount">
+                    Create Account
+                </a>
+
+            </div>
+
+
+            <!-- Role Login -->
+            <div class="role-login">
+
+                <p>Are you a partner?</p>
+
+                <div class="role-links">
+
+                    <a href="#" id="sellerLogin">
+                        Seller Login
+                    </a>
+
+                    <a href="#" id="creatorLogin">
+                        Creator Login
+                    </a>
+
+                </div>
 
             </div>
 
@@ -469,25 +249,126 @@
 </main>
 
 
-<!-- ================= FOOTER ================= -->
+<!-- Register Modal -->
+<div class="modal-overlay" id="registerModal">
 
-<footer class="login-footer">
+    <div class="register-modal">
 
-    <p>
-        © 2026 IMA Shopping Centre. All Rights Reserved.
-    </p>
+        <button
+            class="modal-close"
+            id="closeRegister"
+        >
+            ×
+        </button>
 
-    <div>
-        <a href="#">Privacy</a>
-        <a href="#">Terms</a>
-        <a href="#">Help</a>
+        <div class="modal-header">
+
+            <div class="modal-logo">IMA</div>
+
+            <h2>Create Account</h2>
+
+            <p>Join IMA Shopping Centre today</p>
+
+        </div>
+
+
+        <form id="registerForm">
+
+            <div class="form-group">
+
+                <label for="registerName">
+                    Full Name
+                </label>
+
+                <input
+                    type="text"
+                    id="registerName"
+                    placeholder="Enter your full name"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="registerEmail">
+                    Email Address
+                </label>
+
+                <input
+                    type="email"
+                    id="registerEmail"
+                    placeholder="Enter your email"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="registerPassword">
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    id="registerPassword"
+                    placeholder="Create a password"
+                    minlength="6"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="registerRole">
+                    Account Type
+                </label>
+
+                <select id="registerRole">
+
+                    <option value="customer">
+                        Customer
+                    </option>
+
+                    <option value="seller">
+                        Seller
+                    </option>
+
+                    <option value="creator">
+                        Creator
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="login-btn"
+            >
+                Create Account
+            </button>
+
+            <div
+                class="register-message"
+                id="registerMessage"
+            ></div>
+
+        </form>
+
     </div>
 
-</footer>
+</div>
 
 
 <script src="js/main.js"></script>
 <script src="js/login.js"></script>
 
 </body>
-                  </html>
+                    </html>
