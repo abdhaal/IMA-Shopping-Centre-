@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Seller Dashboard | IMA Shopping Centre</title>
+    <meta name="description" content="IMA Shopping Centre Seller Dashboard">
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/seller-dashboard.css">
+</head>
+
+<body>
+
+<!-- =================================
+     SELLER NAVBAR
+================================= -->
+
+<header class="seller-navbar">
+
+    <div class="seller-nav-container">
+
+        <a href="../index.html" class="seller-logo">
+            <span>IMA</span> Shopping Centre
+        </a>
+
+        <div class="seller-center-title">
+            Seller Centre
+        </div>
+
+        <div class="seller-nav-right">
+
+            <a href="../products.html">
+                🛍 View Store
+            </a>
+
+            <button
+                class="notification-btn"
+                id="notificationBtn"
+            >
+                🔔
+                <span>4</span>
+            </button>
+
+            <div class="seller-profile">
+
+                <div
+                    class="seller-avatar"
+                    id="sellerAvatar"
+                >
+                    S
+                </div>
+
+                <div class="seller-profile-info">
+
+                    <strong id="sellerName">
+                        Seller
+                    </strong>
+
+                    <small>
+                        Verified Seller
+                    </small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- =================================
+     MAIN
+================================= -->
+
+<main class="seller-page">
+
+    <div class="seller-container">
+
+
+        <!-- =================================
+             HEADER
+        ================================= -->
+
+        <section class="seller-header">
+
+            <div>
+
+                <span class="seller-label">
+                    SELLER CENTRE
+                </span>
+
+                <h1>
+                    Welcome back,
+                    <span id="welcomeSeller">
+                        Seller
+                    </span> 👋
+                </h1>
+
+                <p>
+                    Manage your products, orders, sales and
+                    seller performance.
+                </p>
+
+            </div>
+
+            <button
+                class="primary-action"
+                id="addProductBtn"
+            >
+                + Add New Product
+            </button>
+
+        </section>
+
+
+        <!-- =================================
+             SELLER TRUST SCORE
+        ================================= -->
+
+        <section class="trust-banner">
+
+            <div class="trust-banner-left">
+
+                <div class="trust-score-circle">
+                    <strong>92</strong>
+                    <small>/100</small>
+                </div>
+
+                <div>
+
+                    <span>
+                        SELLER TRUST SCORE
+                    </span>
+
+                    <h2>
+                        Excellent
+                    </h2>
+
+                    <p>
+                        Your store is performing very well.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="trust-items">
+
+                <div>
+                    <strong>98%</strong>
+                    <small>Order Success</small>
+                </div>
+
+                <div>
+                    <strong>96%</strong>
+                    <small>On-time Delivery</small>
+                </div>
+
+                <div>
+                    <strong>4.7 ★</strong>
+                    <small>Buyer Rating</small>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================
+             STATS
+        ================================= -->
+
+        <section class="seller-stats">
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    ₹
+                </div>
+
+                <div>
+
+                    <span>Total Sales</span>
+
+                    <strong>
+                        ₹2,48,650
+                    </strong>
+
+                    <small class="positive">
+                        ↑ 16.8% this month
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    📦
+                </div>
+
+                <div>
+
+                    <span>Total Orders</span>
+
+                    <strong>
+                        684
+                    </strong>
+
+                    <small class="positive">
+                        ↑ 11.2% this month
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    🛍
+                </div>
+
+                <div>
+
+                    <span>Products</span>
+
+                    <strong id="productCount">
+                        48
+                    </strong>
+
+                    <small>
+                        5 low stock
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    💰
+                </div>
+
+                <div>
+
+                    <span>Available Balance</span>
+
+                    <strong>
+                        ₹68,420
+                    </strong>
+
+                    <small>
+                        ₹12,850 pending
+                    </small>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================
+             QUICK ACTIONS
+        ================================= -->
+
+        <section class="quick-actions">
+
+            <button id="quickAddProduct">
+
+                <span>➕</span>
+
+                <div>
+                    <strong>Add Product</strong>
+                    <small>Create a new listing</small>
+                </div>
+
+            </button>
+
+
+            <button id="manageProducts">
+
+                <span>🛍</span>
+
+                <div>
+                    <strong>Manage Products</strong>
+                    <small>Edit your products</small>
+                </div>
+
+            </button>
+
+
+            <button id="manageOrders">
+
+                <span>📦</span>
+
+                <div>
+                    <strong>Manage Orders</strong>
+                    <small>Process customer orders</small>
+                </div>
+
+            </button>
+
+
+            <button id="sellerPayments">
+
+                <span>💳</span>
+
+                <div>
+                    <strong>Payments</strong>
+                    <small>View your earnings</small>
+                </div>
+
+            </button>
+
+        </section>
+
+
+        <!-- =================================
+             SALES + ORDERS
+        ================================= -->
+
+        <section class="dashboard-grid">
+
+
+            <!-- SALES OVERVIEW -->
+
+            <div class="dashboard-box">
+
+                <div class="box-header">
+
+                    <div>
+
+                        <h2>
+                            Sales Overview
+                        </h2>
+
+                        <p>
+                            Your store sales performance
+                        </p>
+
+                    </div>
+
+                    <select id="salesPeriod">
+
+                        <option value="7">
+                            7 Days
+                        </option>
+
+                        <option value="30" selected>
+                            30 Days
+                        </option>
+
+                        <option value="90">
+                            90 Days
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="sales-summary">
+
+                    <div>
+
+                        <span>Total Revenue</span>
+
+                        <strong>
+                            ₹2,48,650
+                        </strong>
+
+                    </div>
+
+                    <div>
+
+                        <span>Orders</span>
+
+                        <strong>
+                            684
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="sales-chart">
+
+                    <div class="chart-bars">
+
+                        <span style="height:35%"></span>
+                        <span style="height:48%"></span>
+                        <span style="height:42%"></span>
+                        <span style="height:61%"></span>
+                        <span style="height:55%"></span>
+                        <span style="height:70%"></span>
+                        <span style="height:64%"></span>
+                        <span style="height:82%"></span>
+                        <span style="height:76%"></span>
+                        <span style="height:90%"></span>
+                        <span style="height:84%"></span>
+                        <span style="height:100%"></span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ORDER SUMMARY -->
+
+            <div class="dashboard-box order-summary">
+
+                <div class="box-header">
+
+                    <div>
+
+                        <h2>
+                            Order Summary
+                        </h2>
+
+                        <p>
+                            Current orders
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="order-status-list">
+
+                    <div class="order-status">
+
+                        <span class="status-dot pending"></span>
+
+                        <div>
+                            <strong>24</strong>
+                            <small>New Orders</small>
+                        </div>
+
+                    </div>
+
+
+                    <div class="order-status">
+
+                        <span class="status-dot processing"></span>
+
+                        <div>
+                            <strong>18</strong>
+                            <small>Processing</small>
+                        </div>
+
+                    </div>
+
+
+                    <div class="order-status">
+
+                        <span class="status-dot shipped"></span>
+
+                        <div>
+                            <strong>31</strong>
+                            <small>Shipped</small>
+                        </div>
+
+                    </div>
+
+
+                    <div class="order-status">
+
+                        <span class="status-dot delivered"></span>
+
+                        <div>
+                            <strong>142</strong>
+                            <small>Delivered</small>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================
+             RECENT ORDERS
+        ================================= -->
+
+        <section class="dashboard-box">
+
+            <div class="box-header">
+
+                <div>
+
+                    <h2>
+                        Recent Orders
+                    </h2>
+
+                    <p>
+                        Latest customer orders
+                    </p>
+
+                </div>
+
+                <button
+                    class="outline-btn"
+                    id="viewAllOrders"
+                >
+                    View All
+                </button>
+
+            </div>
+
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Order ID</th>
+                            <th>Product</th>
+                            <th>Customer</th>
+                            <th>Amount</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                            <th>Action</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="ordersTable">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================
+             PRODUCTS
+        ================================= -->
+
+        <section class="dashboard-box">
+
+            <div class="box-header">
+
+                <div>
+
+                    <h2>
+                        Your Products
+                    </h2>
+
+                    <p>
+                        Recently updated products
+                    </p>
+
+                </div>
+
+                <button
+                    class="outline-btn"
+                    id="viewAllProducts"
+                >
+                    Manage Products
+                </button>
+
+            </div>
+
+
+            <div
+                class="products-grid"
+                id="sellerProducts"
+            ></div>
+
+        </section>
+
+
+        <!-- =================================
+             LOW STOCK
+        ================================= -->
+
+        <section class="dashboard-box">
+
+            <div class="box-header">
+
+                <div>
+
+                    <h2>
+                        ⚠ Low Stock Products
+                    </h2>
+
+                    <p>
+                        Products that need restocking
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div
+                class="stock-list"
+                id="stockList"
+            ></div>
+
+        </section>
+
+
+        <!-- =================================
+             SELLER TRUST
+        ================================= -->
+
+        <section class="seller-trust-info">
+
+            <div class="trust-info-icon">
+                ✓
+            </div>
+
+            <div>
+
+                <h3>
+                    Keep Your Seller Trust Score High
+                </h3>
+
+                <p>
+                    Maintain genuine products, accurate descriptions,
+                    fast processing and on-time delivery to improve
+                    customer trust and store visibility.
+                </p>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</main>
+
+
+<!-- =================================
+     ADD PRODUCT MODAL
+================================= -->
+
+<div
+    class="modal-overlay"
+    id="productModal"
+>
+
+    <div class="product-modal">
+
+        <button
+            class="modal-close"
+            id="closeProductModal"
+        >
+            ×
+        </button>
+
+        <h2>
+            Add New Product
+        </h2>
+
+        <p>
+            Create your product listing.
+        </p>
+
+
+        <form id="productForm">
+
+            <label>
+                Product Name
+            </label>
+
+            <input
+                type="text"
+                id="productName"
+                placeholder="Enter product name"
+                required
+            >
+
+
+            <label>
+                Category
+            </label>
+
+            <select id="productCategory" required>
+
+                <option value="">
+                    Select Category
+                </option>
+
+                <option value="electronics">
+                    Electronics
+                </option>
+
+                <option value="fashion">
+                    Fashion
+                </option>
+
+                <option value="home">
+                    Home
+                </option>
+
+                <option value="kitchen">
+                    Kitchen
+                </option>
+
+                <option value="beauty">
+                    Beauty
+                </option>
+
+            </select>
+
+
+            <div class="two-inputs">
+
+                <div>
+
+                    <label>
+                        Price
+                    </label>
+
+                    <input
+                        type="number"
+                        id="productPrice"
+                        placeholder="₹"
+                        min="1"
+                        required
+                    >
+
+                </div>
+
+
+                <div>
+
+                    <label>
+                        Stock
+                    </label>
+
+                    <input
+                        type="number"
+                        id="productStock"
+                        placeholder="Qty"
+                        min="0"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+
+            <label>
+                Product Image URL
+            </label>
+
+            <input
+                type="url"
+                id="productImage"
+                placeholder="https://..."
+            >
+
+
+            <label class="checkbox-label">
+
+                <input
+                    type="checkbox"
+                    id="realVideo"
+                >
+
+                <span>
+                    This product has a real product video
+                </span>
+
+            </label>
+
+
+            <button
+                type="submit"
+                class="primary-action full-btn"
+            >
+                Add Product
+            </button>
+
+
+            <div
+                id="productMessage"
+                class="form-message"
+            ></div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- =================================
+     NOTIFICATION
+================================= -->
+
+<div
+    class="seller-notification"
+    id="sellerNotification"
+></div>
+
+
+<script src="../js/main.js"></script>
+<script src="../js/seller-dashboard.js"></script>
+
+</body>
+                                 </html>
