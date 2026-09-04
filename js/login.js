@@ -1,317 +1,382 @@
-/* =====================================================
-   IMA SHOPPING CENTRE
-   LOGIN / SIGNUP JAVASCRIPT
-===================================================== */
+/* =================================
+   IMA SHOPPING CENTRE - LOGIN JS
+================================= */
 
 document.addEventListener("DOMContentLoaded", function () {
 
-    setupFormSwitching();
-    setupPasswordToggles();
-    setupLogin();
-    setupSignup();
-    setupForgotPassword();
-    setupGoogleLogin();
+    const loginForm = document.getElementById("loginForm");
+    const loginBtn = document.getElementById("loginBtn");
 
-});
+    const emailInput = document.getElementById("email");
+    const passwordInput = document.getElementById("password");
 
+    const togglePassword =
+        document.getElementById("togglePassword");
 
-/* =====================================================
-   FORM SWITCHING
-===================================================== */
+    const forgotPassword =
+        document.getElementById("forgotPassword");
 
-function setupFormSwitching() {
+    const googleLogin =
+        document.getElementById("googleLogin");
 
-    const loginSection =
-        document.getElementById("loginFormSection");
+    const createAccount =
+        document.getElementById("createAccount");
 
-    const signupSection =
-        document.getElementById("signupFormSection");
+    const registerModal =
+        document.getElementById("registerModal");
 
-    const forgotSection =
-        document.getElementById("forgotFormSection");
+    const closeRegister =
+        document.getElementById("closeRegister");
 
+    const registerForm =
+        document.getElementById("registerForm");
 
-    document.getElementById("showSignupButton")
-        ?.addEventListener("click", function () {
+    const sellerLogin =
+        document.getElementById("sellerLogin");
 
-            loginSection.classList.add("hidden");
-            signupSection.classList.remove("hidden");
-            forgotSection.classList.add("hidden");
+    const creatorLogin =
+        document.getElementById("creatorLogin");
 
-        });
 
+    /* ================================
+       GET REDIRECT URL
+    ================================= */
 
-    document.getElementById("showLoginButton")
-        ?.addEventListener("click", function () {
+    const urlParams =
+        new URLSearchParams(window.location.search);
 
-            signupSection.classList.add("hidden");
-            forgotSection.classList.add("hidden");
-            loginSection.classList.remove("hidden");
+    const redirect =
+        urlParams.get("redirect") || "account.html";
 
-        });
 
+    /* ================================
+       TOGGLE PASSWORD
+    ================================= */
 
-    document.getElementById("forgotPasswordButton")
-        ?.addEventListener("click", function () {
+    if (togglePassword) {
 
-            loginSection.classList.add("hidden");
-            signupSection.classList.add("hidden");
-            forgotSection.classList.remove("hidden");
+        togglePassword.addEventListener("click", function () {
 
-        });
+            if (passwordInput.type === "password") {
 
+                passwordInput.type = "text";
 
-    document.getElementById("backToLoginButton")
-        ?.addEventListener("click", function () {
+                togglePassword.textContent = "🙈";
 
-            forgotSection.classList.add("hidden");
-            signupSection.classList.add("hidden");
-            loginSection.classList.remove("hidden");
+            } else {
 
-        });
-}
+                passwordInput.type = "password";
 
-
-/* =====================================================
-   PASSWORD TOGGLE
-===================================================== */
-
-function setupPasswordToggles() {
-
-    setupPasswordToggle(
-        "loginPassword",
-        "loginPasswordToggle"
-    );
-
-    setupPasswordToggle(
-        "signupPassword",
-        "signupPasswordToggle"
-    );
-}
-
-
-function setupPasswordToggle(inputId, buttonId) {
-
-    const input = document.getElementById(inputId);
-    const button = document.getElementById(buttonId);
-
-    if (!input || !button) return;
-
-    button.addEventListener("click", function () {
-
-        if (input.type === "password") {
-
-            input.type = "text";
-            button.textContent = "🙈";
-
-        } else {
-
-            input.type = "password";
-            button.textContent = "👁️";
-
-        }
-
-    });
-}
-
-
-/* =====================================================
-   LOGIN
-===================================================== */
-
-function setupLogin() {
-
-    const form =
-        document.getElementById("loginForm");
-
-    if (!form) return;
-
-
-    form.addEventListener("submit", function (event) {
-
-        event.preventDefault();
-
-        const email =
-            document.getElementById("loginEmail")
-                .value
-                .trim();
-
-        const password =
-            document.getElementById("loginPassword")
-                .value;
-
-        const remember =
-            document.getElementById("rememberMe")
-                .checked;
-
-
-        if (!email || !password) {
-
-            showMessage(
-                "loginMessage",
-                "Please enter email and password.",
-                "error"
-            );
-
-            return;
-        }
-
-
-        /*
-         * FRONTEND DEMO
-         *
-         * Supabase Auth will be connected here.
-         */
-
-        const button =
-            document.getElementById("loginButton");
-
-        button.disabled = true;
-        button.textContent = "Logging in...";
-
-
-        setTimeout(function () {
-
-            const user = {
-                email: email,
-                name: email.split("@")[0]
-            };
-
-            localStorage.setItem(
-                "ima_user",
-                JSON.stringify(user)
-            );
-
-            localStorage.setItem(
-                "ima_user_role",
-                "customer"
-            );
-
-
-            if (remember) {
-
-                localStorage.setItem(
-                    "ima_remember",
-                    "true"
-                );
+                togglePassword.textContent = "👁";
 
             }
 
+        });
 
-            showMessage(
-                "loginMessage",
-                "Login successful! Redirecting...",
-                "success"
-            );
+    }
+
+
+    /* ================================
+       LOGIN
+    ================================= */
+
+    if (loginForm) {
+
+        loginForm.addEventListener("submit", function (event) {
+
+            event.preventDefault();
+
+            clearErrors();
+
+            const email =
+                emailInput.value.trim();
+
+            const password =
+                passwordInput.value.trim();
+
+            if (!email) {
+
+                showError(
+                    "emailError",
+                    "Please enter your email address."
+                );
+
+                return;
+            }
+
+
+            if (!isValidEmail(email)) {
+
+                showError(
+                    "emailError",
+                    "Please enter a valid email address."
+                );
+
+                return;
+            }
+
+
+            if (!password) {
+
+                showError(
+                    "passwordError",
+                    "Please enter your password."
+                );
+
+                return;
+            }
+
+
+            if (password.length < 6) {
+
+                showError(
+                    "passwordError",
+                    "Password must contain at least 6 characters."
+                );
+
+                return;
+            }
+
+
+            /* Demo login */
+
+            loginBtn.disabled = true;
+            loginBtn.textContent = "Logging in...";
 
 
             setTimeout(function () {
 
-                redirectAfterLogin();
+                const user = {
+
+                    id: "demo-user-" + Date.now(),
+
+                    name: email
+                        .split("@")[0]
+                        .replace(/[._-]/g, " "),
+
+                    email: email,
+
+                    role: "customer"
+
+                };
+
+
+                localStorage.setItem(
+                    "ima_user",
+                    JSON.stringify(user)
+                );
+
+                localStorage.setItem(
+                    "ima_user_role",
+                    "customer"
+                );
+
+
+                showMessage(
+                    "Login successful! Redirecting...",
+                    "success"
+                );
+
+
+                setTimeout(function () {
+
+                    window.location.href = redirect;
+
+                }, 700);
 
             }, 700);
 
+        });
 
-        }, 700);
-
-    });
-}
+    }
 
 
-/* =====================================================
-   SIGNUP
-===================================================== */
+    /* ================================
+       FORGOT PASSWORD
+    ================================= */
 
-function setupSignup() {
+    if (forgotPassword) {
 
-    const form =
-        document.getElementById("signupForm");
+        forgotPassword.addEventListener("click", function (event) {
 
-    if (!form) return;
+            event.preventDefault();
 
+            const email =
+                emailInput.value.trim();
 
-    form.addEventListener("submit", function (event) {
+            if (!email) {
 
-        event.preventDefault();
+                showMessage(
+                    "Enter your email address first to reset your password.",
+                    "error"
+                );
 
+                emailInput.focus();
 
-        const name =
-            document.getElementById("signupName")
-                .value
-                .trim();
-
-        const email =
-            document.getElementById("signupEmail")
-                .value
-                .trim();
-
-        const password =
-            document.getElementById("signupPassword")
-                .value;
-
-        const confirmPassword =
-            document.getElementById("signupConfirmPassword")
-                .value;
-
-        const terms =
-            document.getElementById("termsCheckbox")
-                .checked;
+                return;
+            }
 
 
-        if (password.length < 6) {
+            if (!isValidEmail(email)) {
+
+                showMessage(
+                    "Please enter a valid email address.",
+                    "error"
+                );
+
+                return;
+            }
+
 
             showMessage(
-                "signupMessage",
-                "Password must contain at least 6 characters.",
-                "error"
+                "Password reset feature will be connected to Supabase Auth.",
+                "success"
             );
 
-            return;
-        }
+        });
+
+    }
 
 
-        if (password !== confirmPassword) {
+    /* ================================
+       GOOGLE LOGIN
+    ================================= */
+
+    if (googleLogin) {
+
+        googleLogin.addEventListener("click", function () {
 
             showMessage(
-                "signupMessage",
-                "Passwords do not match.",
-                "error"
+                "Google login will be connected with Supabase Auth.",
+                "success"
             );
 
-            return;
-        }
+        });
+
+    }
 
 
-        if (!terms) {
+    /* ================================
+       CREATE ACCOUNT
+    ================================= */
 
-            showMessage(
-                "signupMessage",
-                "Please accept the Terms & Conditions.",
-                "error"
-            );
+    if (createAccount) {
 
-            return;
-        }
+        createAccount.addEventListener("click", function (event) {
 
+            event.preventDefault();
 
-        const button =
-            document.getElementById("signupButton");
+            registerModal.classList.add("active");
 
-        button.disabled = true;
-        button.textContent = "Creating Account...";
+        });
+
+    }
 
 
-        /*
-         * FRONTEND DEMO
-         *
-         * Supabase Auth will replace this section.
-         */
+    /* ================================
+       CLOSE REGISTER
+    ================================= */
 
-        setTimeout(function () {
+    if (closeRegister) {
+
+        closeRegister.addEventListener("click", function () {
+
+            registerModal.classList.remove("active");
+
+        });
+
+    }
+
+
+    /* Close modal outside */
+
+    if (registerModal) {
+
+        registerModal.addEventListener("click", function (event) {
+
+            if (event.target === registerModal) {
+
+                registerModal.classList.remove("active");
+
+            }
+
+        });
+
+    }
+
+
+    /* ================================
+       REGISTER
+    ================================= */
+
+    if (registerForm) {
+
+        registerForm.addEventListener("submit", function (event) {
+
+            event.preventDefault();
+
+            const name =
+                document.getElementById("registerName")
+                    .value.trim();
+
+            const email =
+                document.getElementById("registerEmail")
+                    .value.trim();
+
+            const password =
+                document.getElementById("registerPassword")
+                    .value.trim();
+
+            const role =
+                document.getElementById("registerRole")
+                    .value;
+
+
+            if (!name || !email || !password) {
+
+                showRegisterMessage(
+                    "Please fill all required fields.",
+                    "error"
+                );
+
+                return;
+            }
+
+
+            if (!isValidEmail(email)) {
+
+                showRegisterMessage(
+                    "Please enter a valid email.",
+                    "error"
+                );
+
+                return;
+            }
+
+
+            if (password.length < 6) {
+
+                showRegisterMessage(
+                    "Password must contain at least 6 characters.",
+                    "error"
+                );
+
+                return;
+            }
+
+
+            /* Demo registration */
 
             const user = {
+
+                id: "demo-user-" + Date.now(),
+
                 name: name,
-                email: email
+
+                email: email,
+
+                role: role
+
             };
 
 
@@ -322,12 +387,11 @@ function setupSignup() {
 
             localStorage.setItem(
                 "ima_user_role",
-                "customer"
+                role
             );
 
 
-            showMessage(
-                "signupMessage",
+            showRegisterMessage(
                 "Account created successfully!",
                 "success"
             );
@@ -335,139 +399,165 @@ function setupSignup() {
 
             setTimeout(function () {
 
-                redirectAfterLogin();
+                if (role === "seller") {
 
-            }, 700);
+                    window.location.href =
+                        "seller/dashboard.html";
 
+                } else if (role === "creator") {
 
-        }, 700);
+                    window.location.href =
+                        "creator/dashboard.html";
 
-    });
-}
+                } else {
 
+                    window.location.href =
+                        redirect;
 
-/* =====================================================
-   FORGOT PASSWORD
-===================================================== */
+                }
 
-function setupForgotPassword() {
+            }, 800);
 
-    const form =
-        document.getElementById("forgotForm");
+        });
 
-    if (!form) return;
-
-
-    form.addEventListener("submit", function (event) {
-
-        event.preventDefault();
-
-
-        const email =
-            document.getElementById("forgotEmail")
-                .value
-                .trim();
-
-
-        if (!email) {
-
-            showMessage(
-                "forgotMessage",
-                "Please enter your email.",
-                "error"
-            );
-
-            return;
-        }
-
-
-        /*
-         * Supabase password reset
-         * will be connected here.
-         */
-
-
-        showMessage(
-            "forgotMessage",
-            "Password reset link will be sent to your email.",
-            "success"
-        );
-
-    });
-}
-
-
-/* =====================================================
-   GOOGLE LOGIN
-===================================================== */
-
-function setupGoogleLogin() {
-
-    const button =
-        document.getElementById("googleLoginButton");
-
-    if (!button) return;
-
-
-    button.addEventListener("click", function () {
-
-        /*
-         * Supabase Google OAuth
-         * will be connected here.
-         */
-
-        showMessage(
-            "loginMessage",
-            "Google login will be connected with Supabase.",
-            "info"
-        );
-
-    });
-}
-
-
-/* =====================================================
-   REDIRECT
-===================================================== */
-
-function redirectAfterLogin() {
-
-    const params =
-        new URLSearchParams(window.location.search);
-
-    const redirect =
-        params.get("redirect");
-
-
-    if (redirect === "checkout") {
-
-        window.location.href = "cart.html";
-
-        return;
     }
 
 
-    window.location.href = "account.html";
-}
+    /* ================================
+       SELLER LOGIN
+    ================================= */
+
+    if (sellerLogin) {
+
+        sellerLogin.addEventListener("click", function (event) {
+
+            event.preventDefault();
+
+            document.getElementById("registerRole").value =
+                "seller";
+
+            registerModal.classList.add("active");
+
+        });
+
+    }
 
 
-/* =====================================================
-   MESSAGE
-===================================================== */
+    /* ================================
+       CREATOR LOGIN
+    ================================= */
 
-function showMessage(
-    elementId,
-    message,
-    type
-) {
+    if (creatorLogin) {
 
-    const element =
-        document.getElementById(elementId);
+        creatorLogin.addEventListener("click", function (event) {
 
-    if (!element) return;
+            event.preventDefault();
 
-    element.textContent = message;
+            document.getElementById("registerRole").value =
+                "creator";
 
-    element.className =
-        "form-message " + type;
-                           }
+            registerModal.classList.add("active");
+
+        });
+
+    }
+
+
+    /* ================================
+       ESCAPE KEY
+    ================================= */
+
+    document.addEventListener("keydown", function (event) {
+
+        if (event.key === "Escape") {
+
+            registerModal.classList.remove("active");
+
+        }
+
+    });
+
+
+    /* ================================
+       FUNCTIONS
+    ================================= */
+
+    function isValidEmail(email) {
+
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+    }
+
+
+    function showError(id, message) {
+
+        const element =
+            document.getElementById(id);
+
+        if (element) {
+
+            element.textContent = message;
+
+        }
+
+    }
+
+
+    function clearErrors() {
+
+        const errors =
+            document.querySelectorAll(".error-message");
+
+        errors.forEach(function (error) {
+
+            error.textContent = "";
+
+        });
+
+    }
+
+
+    function showMessage(message, type) {
+
+        const element =
+            document.getElementById("loginMessage");
+
+        if (!element) return;
+
+        element.textContent = message;
+
+        if (type === "success") {
+
+            element.style.color = "#039855";
+
+        } else {
+
+            element.style.color = "#d92d20";
+
+        }
+
+    }
+
+
+    function showRegisterMessage(message, type) {
+
+        const element =
+            document.getElementById("registerMessage");
+
+        if (!element) return;
+
+        element.textContent = message;
+
+        if (type === "success") {
+
+            element.style.color = "#039855";
+
+        } else {
+
+            element.style.color = "#d92d20";
+
+        }
+
+    }
+
+});
