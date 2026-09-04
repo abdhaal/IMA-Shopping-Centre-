@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Creator Dashboard | IMA Shopping Centre</title>
+    <meta name="description" content="IMA Shopping Centre Creator Affiliate Dashboard">
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/creator-dashboard.css">
+</head>
+
+<body>
+
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<header class="creator-navbar">
+
+    <div class="creator-nav-container">
+
+        <a href="../index.html" class="creator-logo">
+            <span>IMA</span> Shopping Centre
+        </a>
+
+        <div class="creator-nav-right">
+
+            <a href="../index.html">
+                🛍 Shop
+            </a>
+
+            <button id="notificationBtn" class="nav-notification">
+                🔔
+                <span id="notificationCount">3</span>
+            </button>
+
+            <div class="creator-profile">
+
+                <div class="creator-avatar" id="creatorAvatar">
+                    C
+                </div>
+
+                <div class="creator-profile-info">
+
+                    <strong id="creatorName">
+                        Creator
+                    </strong>
+
+                    <small>
+                        Creator
+                    </small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- =========================
+     MAIN
+========================= -->
+
+<main class="creator-page">
+
+    <div class="creator-container">
+
+
+        <!-- =========================
+             PAGE HEADER
+        ========================= -->
+
+        <section class="dashboard-header">
+
+            <div>
+
+                <span class="dashboard-label">
+                    CREATOR CENTRE
+                </span>
+
+                <h1>
+                    Welcome back, <span id="welcomeName">Creator</span> 👋
+                </h1>
+
+                <p>
+                    Manage your affiliate links, track performance
+                    and monitor your earnings.
+                </p>
+
+            </div>
+
+            <button
+                class="primary-action"
+                id="createLinkBtn"
+            >
+                + Create Affiliate Link
+            </button>
+
+        </section>
+
+
+        <!-- =========================
+             STATS
+        ========================= -->
+
+        <section class="creator-stats">
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    🔗
+                </div>
+
+                <div>
+
+                    <span>Total Links</span>
+
+                    <strong id="totalLinks">
+                        24
+                    </strong>
+
+                    <small>
+                        Active affiliate links
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    👆
+                </div>
+
+                <div>
+
+                    <span>Total Clicks</span>
+
+                    <strong id="totalClicks">
+                        12,480
+                    </strong>
+
+                    <small class="positive">
+                        ↑ 18.4% this month
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    🛒
+                </div>
+
+                <div>
+
+                    <span>Orders</span>
+
+                    <strong id="totalOrders">
+                        286
+                    </strong>
+
+                    <small class="positive">
+                        ↑ 12.7% this month
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card earnings-card">
+
+                <div class="stat-icon">
+                    ₹
+                </div>
+
+                <div>
+
+                    <span>Total Earnings</span>
+
+                    <strong id="totalEarnings">
+                        ₹18,640
+                    </strong>
+
+                    <small>
+                        Available + pending
+                    </small>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             EARNINGS SUMMARY
+        ========================= -->
+
+        <section class="dashboard-grid">
+
+            <div class="dashboard-box earnings-overview">
+
+                <div class="box-header">
+
+                    <div>
+
+                        <h2>
+                            Earnings Overview
+                        </h2>
+
+                        <p>
+                            Your affiliate performance
+                        </p>
+
+                    </div>
+
+                    <select id="earningsPeriod">
+
+                        <option value="7">
+                            Last 7 Days
+                        </option>
+
+                        <option value="30" selected>
+                            Last 30 Days
+                        </option>
+
+                        <option value="90">
+                            Last 90 Days
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="earnings-numbers">
+
+                    <div>
+
+                        <span>Approved Earnings</span>
+
+                        <strong>
+                            ₹14,280
+                        </strong>
+
+                    </div>
+
+                    <div>
+
+                        <span>Pending Earnings</span>
+
+                        <strong>
+                            ₹4,360
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="chart">
+
+                    <div class="chart-line">
+                        <span style="height:35%"></span>
+                        <span style="height:48%"></span>
+                        <span style="height:42%"></span>
+                        <span style="height:65%"></span>
+                        <span style="height:54%"></span>
+                        <span style="height:76%"></span>
+                        <span style="height:68%"></span>
+                        <span style="height:88%"></span>
+                        <span style="height:72%"></span>
+                        <span style="height:94%"></span>
+                        <span style="height:82%"></span>
+                        <span style="height:100%"></span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 COMMISSION
+            ========================= -->
+
+            <div class="dashboard-box commission-box">
+
+                <div class="box-header">
+
+                    <div>
+
+                        <h2>
+                            Commission
+                        </h2>
+
+                        <p>
+                            Your current balance
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="commission-main">
+
+                    <span>
+                        Available to Withdraw
+                    </span>
+
+                    <strong>
+                        ₹9,850
+                    </strong>
+
+                </div>
+
+
+                <button
+                    class="withdraw-btn"
+                    id="withdrawBtn"
+                >
+                    Withdraw Earnings
+                </button>
+
+
+                <div class="commission-info">
+
+                    <div>
+                        <span>Pending</span>
+                        <strong>₹4,360</strong>
+                    </div>
+
+                    <div>
+                        <span>Lifetime</span>
+                        <strong>₹28,640</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             QUICK ACTIONS
+        ========================= -->
+
+        <section class="quick-actions">
+
+            <button id="quickCreateLink">
+                <span>🔗</span>
+                <div>
+                    <strong>Create Link</strong>
+                    <small>Generate affiliate link</small>
+                </div>
+            </button>
+
+            <button id="viewProducts">
+                <span>🛍</span>
+                <div>
+                    <strong>Find Products</strong>
+                    <small>Choose products to promote</small>
+                </div>
+            </button>
+
+            <button id="viewOrders">
+                <span>📦</span>
+                <div>
+                    <strong>Affiliate Orders</strong>
+                    <small>View referred orders</small>
+                </div>
+            </button>
+
+            <button id="paymentSettings">
+                <span>💳</span>
+                <div>
+                    <strong>Payment Settings</strong>
+                    <small>Manage payout details</small>
+                </div>
+            </button>
+
+        </section>
+
+
+        <!-- =========================
+             AFFILIATE LINKS
+        ========================= -->
+
+        <section class="dashboard-box links-section">
+
+            <div class="box-header">
+
+                <div>
+
+                    <h2>
+                        My Affiliate Links
+                    </h2>
+
+                    <p>
+                        Track your shared product links
+                    </p>
+
+                </div>
+
+                <button
+                    class="outline-btn"
+                    id="viewAllLinks"
+                >
+                    View All
+                </button>
+
+            </div>
+
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+                            <th>Product</th>
+                            <th>Clicks</th>
+                            <th>Orders</th>
+                            <th>Commission</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="affiliateLinksTable">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             TOP PRODUCTS
+        ========================= -->
+
+        <section class="dashboard-box">
+
+            <div class="box-header">
+
+                <div>
+
+                    <h2>
+                        Top Performing Products
+                    </h2>
+
+                    <p>
+                        Products generating the most commission
+                    </p>
+
+                </div>
+
+                <a
+                    href="../products.html"
+                    class="outline-btn"
+                >
+                    Browse Products
+                </a>
+
+            </div>
+
+
+            <div
+                class="top-products"
+                id="topProducts"
+            ></div>
+
+        </section>
+
+
+        <!-- =========================
+             CREATOR TRUST
+        ========================= -->
+
+        <section class="creator-trust">
+
+            <div class="trust-icon">
+                ✓
+            </div>
+
+            <div>
+
+                <h3>
+                    Transparent Affiliate Earnings
+                </h3>
+
+                <p>
+                    Commission is approved only after the referred
+                    order is successfully delivered and the applicable
+                    return/refund period is completed.
+                </p>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</main>
+
+
+<!-- =========================
+     CREATE LINK MODAL
+========================= -->
+
+<div
+    class="modal-overlay"
+    id="linkModal"
+>
+
+    <div class="link-modal">
+
+        <button
+            class="modal-close"
+            id="closeLinkModal"
+        >
+            ×
+        </button>
+
+        <h2>
+            Create Affiliate Link
+        </h2>
+
+        <p>
+            Select a product and generate your unique affiliate link.
+        </p>
+
+
+        <label>
+            Select Product
+        </label>
+
+        <select id="productSelect">
+
+            <option value="">
+                Choose a product
+            </option>
+
+            <option value="speaker">
+                Premium Wireless Bluetooth Speaker
+            </option>
+
+            <option value="motion-light">
+                Smart LED Motion Sensor Light
+            </option>
+
+            <option value="storage-box">
+                Multi Purpose Kitchen Storage Box
+            </option>
+
+        </select>
+
+
+        <label>
+            Campaign Name
+        </label>
+
+        <input
+            type="text"
+            id="campaignName"
+            placeholder="Example: Instagram Reel"
+        >
+
+
+        <button
+            class="primary-action full-btn"
+            id="generateLink"
+        >
+            Generate Affiliate Link
+        </button>
+
+
+        <div
+            class="generated-link"
+            id="generatedLink"
+        ></div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     NOTIFICATION
+========================= -->
+
+<div
+    class="creator-notification"
+    id="creatorNotification"
+></div>
+
+
+<script src="../js/main.js"></script>
+<script src="../js/creator-dashboard.js"></script>
+
+</body>
+                          </html>
