@@ -1,0 +1,2775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Dashboard | IMA Shopping Centre</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/admin-dashboard.css">
+</head>
+
+<body>
+
+<!-- ================= ADMIN NAVBAR ================= -->
+
+<header class="admin-navbar">
+
+    <div class="admin-nav-left">
+
+        <button class="sidebar-toggle" id="sidebarToggle">
+            ☰
+        </button>
+
+        <a href="../index.html" class="admin-logo">
+            <span>IMA</span> Shopping Centre
+        </a>
+
+    </div>
+
+    <div class="admin-nav-right">
+
+        <button class="admin-notification" id="notificationBtn">
+            🔔
+            <span class="notification-count">5</span>
+        </button>
+
+        <div class="admin-profile" id="adminProfile">
+
+            <div class="admin-avatar">
+                A
+            </div>
+
+            <div class="admin-profile-info">
+                <strong>Admin</strong>
+                <small>Administrator</small>
+            </div>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- ================= ADMIN LAYOUT ================= -->
+
+<div class="admin-layout">
+
+
+<!-- ================= SIDEBAR ================= -->
+
+<aside class="admin-sidebar" id="adminSidebar">
+
+    <div class="sidebar-title">
+        ADMIN PANEL
+    </div>
+
+
+    <nav class="admin-menu">
+
+        <a href="#overview" class="admin-menu-item active">
+            <span>📊</span>
+            <span>Dashboard</span>
+        </a>
+
+        <a href="#orders" class="admin-menu-item">
+            <span>📦</span>
+            <span>Orders</span>
+            <span class="menu-badge">24</span>
+        </a>
+
+        <a href="#products" class="admin-menu-item">
+            <span>🛍️</span>
+            <span>Products</span>
+        </a>
+
+        <a href="#sellers" class="admin-menu-item">
+            <span>🏪</span>
+            <span>Sellers</span>
+            <span class="menu-badge">8</span>
+        </a>
+
+        <a href="#customers" class="admin-menu-item">
+            <span>👥</span>
+            <span>Customers</span>
+        </a>
+
+        <a href="#creators" class="admin-menu-item">
+            <span>🎥</span>
+            <span>Creators</span>
+        </a>
+
+        <a href="#payments" class="admin-menu-item">
+            <span>💳</span>
+            <span>Payments</span>
+        </a>
+
+        <a href="#returns" class="admin-menu-item">
+            <span>↩️</span>
+            <span>Returns & Refunds</span>
+        </a>
+
+        <a href="#reviews" class="admin-menu-item">
+            <span>⭐</span>
+            <span>Reviews</span>
+        </a>
+
+        <a href="#reports" class="admin-menu-item">
+            <span>📈</span>
+            <span>Reports</span>
+        </a>
+
+        <a href="#categories" class="admin-menu-item">
+            <span>🗂️</span>
+            <span>Categories</span>
+        </a>
+
+        <a href="#settings" class="admin-menu-item">
+            <span>⚙️</span>
+            <span>Settings</span>
+        </a>
+
+    </nav>
+
+
+    <div class="sidebar-bottom">
+
+        <a href="../index.html" class="sidebar-link">
+            🏠 View Website
+        </a>
+
+        <button class="sidebar-logout" id="logoutBtn">
+            🚪 Logout
+        </button>
+
+    </div>
+
+</aside>
+
+
+
+<!-- ================= MAIN CONTENT ================= -->
+
+<main class="admin-main">
+
+
+<!-- ================= OVERVIEW ================= -->
+
+<section id="overview" class="admin-section">
+
+    <div class="admin-section-header">
+
+        <div>
+            <span class="section-label">ADMINISTRATION</span>
+            <h1>Dashboard Overview</h1>
+            <p>
+                Manage your IMA Shopping Centre platform from one place.
+            </p>
+        </div>
+
+        <div class="header-date">
+            📅 September 2026
+        </div>
+
+    </div>
+
+
+
+    <!-- ================= STATS ================= -->
+
+    <div class="admin-stats-grid">
+
+        <div class="admin-stat-card">
+
+            <div class="stat-icon sales">
+                💰
+            </div>
+
+            <div class="stat-content">
+                <span>Total Sales</span>
+                <h2>₹24,85,650</h2>
+                <small class="positive">
+                    ↑ 18.5% this month
+                </small>
+            </div>
+
+        </div>
+
+
+
+        <div class="admin-stat-card">
+
+            <div class="stat-icon orders">
+                📦
+            </div>
+
+            <div class="stat-content">
+                <span>Total Orders</span>
+                <h2>8,684</h2>
+                <small class="positive">
+                    ↑ 12.4% this month
+                </small>
+            </div>
+
+        </div>
+
+
+
+        <div class="admin-stat-card">
+
+            <div class="stat-icon customers">
+                👥
+            </div>
+
+            <div class="stat-content">
+                <span>Customers</span>
+                <h2>18,420</h2>
+                <small class="positive">
+                    ↑ 9.8% this month
+                </small>
+            </div>
+
+        </div>
+
+
+
+        <div class="admin-stat-card">
+
+            <div class="stat-icon sellers">
+                🏪
+            </div>
+
+            <div class="stat-content">
+                <span>Active Sellers</span>
+                <h2>684</h2>
+                <small class="positive">
+                    ↑ 6.2% this month
+                </small>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ================= MINI STATS ================= -->
+
+    <div class="mini-stats-grid">
+
+        <div class="mini-stat">
+            <span>Pending Orders</span>
+            <strong>24</strong>
+        </div>
+
+        <div class="mini-stat">
+            <span>Seller Verification</span>
+            <strong>8</strong>
+        </div>
+
+        <div class="mini-stat">
+            <span>Product Approval</span>
+            <strong>16</strong>
+        </div>
+
+        <div class="mini-stat">
+            <span>Refund Requests</span>
+            <strong>7</strong>
+        </div>
+
+        <div class="mini-stat">
+            <span>Reported Reviews</span>
+            <strong>4</strong>
+        </div>
+
+    </div>
+
+
+
+    <!-- ================= SALES OVERVIEW ================= -->
+
+    <div class="admin-card sales-overview-card">
+
+        <div class="card-header">
+
+            <div>
+                <h3>Sales Overview</h3>
+                <p>Platform sales performance</p>
+            </div>
+
+            <select id="salesPeriod">
+                <option value="7">Last 7 Days</option>
+                <option value="30" selected>Last 30 Days</option>
+                <option value="90">Last 3 Months</option>
+                <option value="365">This Year</option>
+            </select>
+
+        </div>
+
+
+        <div class="sales-chart">
+
+            <div class="chart-y-axis">
+                <span>₹5L</span>
+                <span>₹4L</span>
+                <span>₹3L</span>
+                <span>₹2L</span>
+                <span>₹1L</span>
+                <span>₹0</span>
+            </div>
+
+
+            <div class="chart-area">
+
+                <div class="chart-bars">
+
+                    <div class="chart-bar" style="height:45%">
+                        <span>1</span>
+                    </div>
+
+                    <div class="chart-bar" style="height:60%">
+                        <span>2</span>
+                    </div>
+
+                    <div class="chart-bar" style="height:52%">
+                        <span>3</span>
+                    </div>
+
+                    <div class="chart-bar" style="height:75%">
+                        <span>4</span>
+                    </div>
+
+                    <div class="chart-bar" style="height:65%">
+                        <span>5</span>
+                    </div>
+
+                    <div class="chart-bar" style="height:82%">
+                        <span>6</span>
+                    </div>
+
+                    <div class="chart-bar" style="height:72%">
+                        <span>7</span>
+                    </div>
+
+                    <div class="chart-bar" style="height:90%">
+                        <span>8</span>
+                    </div>
+
+                    <div class="chart-bar" style="height:78%">
+                        <span>9</span>
+                    </div>
+
+                    <div class="chart-bar" style="height:96%">
+                        <span>10</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ================= ORDER SUMMARY ================= -->
+
+    <div class="admin-card">
+
+        <div class="card-header">
+
+            <div>
+                <h3>Order Summary</h3>
+                <p>Current order status</p>
+            </div>
+
+            <a href="#orders" class="view-all">
+                View All →
+            </a>
+
+        </div>
+
+
+        <div class="order-summary-grid">
+
+            <div class="order-summary-item">
+
+                <div class="summary-icon new">
+                    🆕
+                </div>
+
+                <div>
+                    <strong>24</strong>
+                    <span>New Orders</span>
+                </div>
+
+            </div>
+
+
+            <div class="order-summary-item">
+
+                <div class="summary-icon processing">
+                    ⚙️
+                </div>
+
+                <div>
+                    <strong>18</strong>
+                    <span>Processing</span>
+                </div>
+
+            </div>
+
+
+            <div class="order-summary-item">
+
+                <div class="summary-icon shipped">
+                    🚚
+                </div>
+
+                <div>
+                    <strong>31</strong>
+                    <span>Shipped</span>
+                </div>
+
+            </div>
+
+
+            <div class="order-summary-item">
+
+                <div class="summary-icon delivered">
+                    ✅
+                </div>
+
+                <div>
+                    <strong>142</strong>
+                    <span>Delivered</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+                      </section>
+
+  <!-- ================= RECENT ORDERS ================= -->
+
+<section class="admin-section">
+
+    <div class="admin-card">
+
+        <div class="card-header">
+
+            <div>
+                <h3>Recent Orders</h3>
+                <p>Latest customer orders</p>
+            </div>
+
+            <a href="#orders" class="view-all">
+                View All →
+            </a>
+
+        </div>
+
+
+        <div class="table-wrapper">
+
+            <table class="admin-table">
+
+                <thead>
+
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Customer</th>
+                        <th>Product</th>
+                        <th>Amount</th>
+                        <th>Status</th>
+                        <th>Date</th>
+                        <th>Action</th>
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    <tr>
+
+                        <td>
+                            <strong>#IMA10045</strong>
+                        </td>
+
+                        <td>
+                            Mohamed
+                        </td>
+
+                        <td>
+                            Wireless Bluetooth Speaker
+                        </td>
+
+                        <td>
+                            ₹799
+                        </td>
+
+                        <td>
+                            <span class="status delivered">
+                                Delivered
+                            </span>
+                        </td>
+
+                        <td>
+                            Sep 09, 2026
+                        </td>
+
+                        <td>
+                            <button class="table-action"
+                                    onclick="viewOrder('IMA10045')">
+                                View
+                            </button>
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+                            <strong>#IMA10044</strong>
+                        </td>
+
+                        <td>
+                            Arjun
+                        </td>
+
+                        <td>
+                            Motion Sensor Light
+                        </td>
+
+                        <td>
+                            ₹399
+                        </td>
+
+                        <td>
+                            <span class="status shipped">
+                                Shipped
+                            </span>
+                        </td>
+
+                        <td>
+                            Sep 09, 2026
+                        </td>
+
+                        <td>
+                            <button class="table-action"
+                                    onclick="viewOrder('IMA10044')">
+                                View
+                            </button>
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+                            <strong>#IMA10043</strong>
+                        </td>
+
+                        <td>
+                            Rahul
+                        </td>
+
+                        <td>
+                            Kitchen Storage Box
+                        </td>
+
+                        <td>
+                            ₹499
+                        </td>
+
+                        <td>
+                            <span class="status processing">
+                                Processing
+                            </span>
+                        </td>
+
+                        <td>
+                            Sep 08, 2026
+                        </td>
+
+                        <td>
+                            <button class="table-action"
+                                    onclick="viewOrder('IMA10043')">
+                                View
+                            </button>
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+                            <strong>#IMA10042</strong>
+                        </td>
+
+                        <td>
+                            Suresh
+                        </td>
+
+                        <td>
+                            LED Desk Lamp
+                        </td>
+
+                        <td>
+                            ₹699
+                        </td>
+
+                        <td>
+                            <span class="status cancelled">
+                                Cancelled
+                            </span>
+                        </td>
+
+                        <td>
+                            Sep 08, 2026
+                        </td>
+
+                        <td>
+                            <button class="table-action"
+                                    onclick="viewOrder('IMA10042')">
+                                View
+                            </button>
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ================= ALERTS + TRUST ================= -->
+
+    <div class="admin-two-column">
+
+
+        <div class="admin-card">
+
+            <div class="card-header">
+
+                <div>
+                    <h3>Platform Alerts</h3>
+                    <p>Things requiring your attention</p>
+                </div>
+
+            </div>
+
+
+            <div class="alert-list">
+
+                <div class="platform-alert warning">
+
+                    <div class="alert-icon">
+                        ⚠️
+                    </div>
+
+                    <div class="alert-content">
+
+                        <strong>8 sellers waiting for verification</strong>
+
+                        <p>
+                            Complete seller verification to activate
+                            their stores.
+                        </p>
+
+                    </div>
+
+                    <a href="#sellers">
+                        Review
+                    </a>
+
+                </div>
+
+
+                <div class="platform-alert warning">
+
+                    <div class="alert-icon">
+                        📦
+                    </div>
+
+                    <div class="alert-content">
+
+                        <strong>16 products waiting for approval</strong>
+
+                        <p>
+                            New products are waiting for admin approval.
+                        </p>
+
+                    </div>
+
+                    <a href="#products">
+                        Review
+                    </a>
+
+                </div>
+
+
+                <div class="platform-alert danger">
+
+                    <div class="alert-icon">
+                        🚨
+                    </div>
+
+                    <div class="alert-content">
+
+                        <strong>4 reviews reported</strong>
+
+                        <p>
+                            Some customer reviews were reported.
+                        </p>
+
+                    </div>
+
+                    <a href="#reviews">
+                        Review
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- TRUST -->
+
+        <div class="admin-card trust-admin-card">
+
+            <div class="card-header">
+
+                <div>
+                    <h3>Trust & Safety</h3>
+                    <p>Platform health</p>
+                </div>
+
+            </div>
+
+
+            <div class="admin-trust-score">
+
+                <div class="trust-circle">
+                    <strong>94</strong>
+                    <span>/100</span>
+                </div>
+
+                <div class="trust-score-info">
+
+                    <strong>Excellent</strong>
+
+                    <p>
+                        Your platform trust score is healthy.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="trust-progress-item">
+
+                <div>
+                    <span>Verified Sellers</span>
+                    <strong>96%</strong>
+                </div>
+
+                <div class="progress">
+                    <span style="width:96%"></span>
+                </div>
+
+            </div>
+
+
+            <div class="trust-progress-item">
+
+                <div>
+                    <span>Genuine Reviews</span>
+                    <strong>94%</strong>
+                </div>
+
+                <div class="progress">
+                    <span style="width:94%"></span>
+                </div>
+
+            </div>
+
+
+            <div class="trust-progress-item">
+
+                <div>
+                    <span>On-time Delivery</span>
+                    <strong>91%</strong>
+                </div>
+
+                <div class="progress">
+                    <span style="width:91%"></span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= ORDERS MANAGEMENT ================= -->
+
+<section id="orders" class="admin-section">
+
+    <div class="admin-section-header">
+
+        <div>
+
+            <span class="section-label">
+                MANAGEMENT
+            </span>
+
+            <h2>Orders Management</h2>
+
+            <p>
+                Monitor and manage all customer orders.
+            </p>
+
+        </div>
+
+        <button class="primary-btn"
+                onclick="exportOrders()">
+            📥 Export Orders
+        </button>
+
+    </div>
+
+
+    <div class="admin-card">
+
+        <div class="management-toolbar">
+
+            <div class="toolbar-search">
+
+                <input
+                    type="text"
+                    id="orderSearch"
+                    placeholder="Search order ID, customer..."
+                >
+
+                <button onclick="searchOrders()">
+                    🔍
+                </button>
+
+            </div>
+
+
+            <select id="orderStatusFilter">
+
+                <option value="all">
+                    All Status
+                </option>
+
+                <option value="processing">
+                    Processing
+                </option>
+
+                <option value="shipped">
+                    Shipped
+                </option>
+
+                <option value="delivered">
+                    Delivered
+                </option>
+
+                <option value="cancelled">
+                    Cancelled
+                </option>
+
+                <option value="returned">
+                    Returned
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="table-wrapper">
+
+            <table class="admin-table">
+
+                <thead>
+
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Customer</th>
+                        <th>Seller</th>
+                        <th>Amount</th>
+                        <th>Payment</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="adminOrdersTable">
+
+                    <tr>
+
+                        <td>
+                            <strong>#IMA10045</strong>
+                        </td>
+
+                        <td>Mohamed</td>
+
+                        <td>IMA Store</td>
+
+                        <td>₹799</td>
+
+                        <td>Online</td>
+
+                        <td>
+                            <span class="status delivered">
+                                Delivered
+                            </span>
+                        </td>
+
+                        <td>
+                            <button class="table-action">
+                                View
+                            </button>
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+                            <strong>#IMA10044</strong>
+                        </td>
+
+                        <td>Arjun</td>
+
+                        <td>Smart Home Store</td>
+
+                        <td>₹399</td>
+
+                        <td>COD</td>
+
+                        <td>
+                            <span class="status shipped">
+                                Shipped
+                            </span>
+                        </td>
+
+                        <td>
+                            <button class="table-action">
+                                View
+                            </button>
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= PRODUCTS MANAGEMENT ================= -->
+
+<section id="products" class="admin-section">
+
+    <div class="admin-section-header">
+
+        <div>
+
+            <span class="section-label">
+                CATALOG
+            </span>
+
+            <h2>Products Management</h2>
+
+            <p>
+                Manage, approve and monitor platform products.
+            </p>
+
+        </div>
+
+        <button class="primary-btn"
+                onclick="openAddProduct()">
+            + Add Product
+        </button>
+
+    </div>
+
+
+    <div class="admin-card">
+
+        <div class="management-toolbar">
+
+            <div class="toolbar-search">
+
+                <input
+                    type="text"
+                    id="productSearch"
+                    placeholder="Search products..."
+                >
+
+                <button onclick="searchProducts()">
+                    🔍
+                </button>
+
+            </div>
+
+
+            <select id="productStatusFilter">
+
+                <option value="all">
+                    All Products
+                </option>
+
+                <option value="pending">
+                    Pending Approval
+                </option>
+
+                <option value="approved">
+                    Approved
+                </option>
+
+                <option value="rejected">
+                    Rejected
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="admin-product-grid">
+
+
+            <div class="admin-product-card">
+
+                <div class="admin-product-image">
+
+                    <img
+                        src="../assets/images/product-1.jpg"
+                        alt="Product"
+                    >
+
+                    <span class="product-status pending">
+                        Pending
+                    </span>
+
+                </div>
+
+
+                <div class="admin-product-info">
+
+                    <h3>
+                        Wireless Bluetooth Speaker
+                    </h3>
+
+                    <p>
+                        Seller: IMA Store
+                    </p>
+
+                    <strong>
+                        ₹799
+                    </strong>
+
+
+                    <div class="admin-product-actions">
+
+                        <button
+                            class="approve-btn"
+                            onclick="approveProduct('P001')">
+                            ✓ Approve
+                        </button>
+
+                        <button
+                            class="reject-btn"
+                            onclick="rejectProduct('P001')">
+                            ✕ Reject
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="admin-product-card">
+
+                <div class="admin-product-image">
+
+                    <img
+                        src="../assets/images/product-2.jpg"
+                        alt="Product"
+                    >
+
+                    <span class="product-status approved">
+                        Approved
+                    </span>
+
+                </div>
+
+
+                <div class="admin-product-info">
+
+                    <h3>
+                        Smart Motion Sensor Light
+                    </h3>
+
+                    <p>
+                        Seller: Smart Home Store
+                    </p>
+
+                    <strong>
+                        ₹399
+                    </strong>
+
+
+                    <div class="admin-product-actions">
+
+                        <button
+                            class="edit-btn"
+                            onclick="editProduct('P002')">
+                            ✏️ Edit
+                        </button>
+
+                        <button
+                            class="delete-btn"
+                            onclick="deleteProduct('P002')">
+                            🗑 Delete
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+  </section>
+
+  <!-- ================= SELLERS ================= -->
+
+<section id="sellers" class="admin-section">
+
+    <div class="admin-section-header">
+
+        <div>
+
+            <span class="section-label">
+                SELLER MANAGEMENT
+            </span>
+
+            <h2>Manage Sellers</h2>
+
+            <p>
+                Verify sellers and monitor seller performance.
+            </p>
+
+        </div>
+
+        <button class="secondary-btn"
+                onclick="exportSellers()">
+            📥 Export Sellers
+        </button>
+
+    </div>
+
+
+    <div class="admin-card">
+
+        <div class="seller-verification-header">
+
+            <div>
+                <strong>Seller Verification Queue</strong>
+                <p>8 sellers waiting for verification</p>
+            </div>
+
+            <span class="queue-count">
+                8
+            </span>
+
+        </div>
+
+
+        <div class="verification-list">
+
+
+            <div class="verification-item">
+
+                <div class="seller-avatar">
+                    S
+                </div>
+
+                <div class="verification-info">
+
+                    <strong>
+                        Smart Home Store
+                    </strong>
+
+                    <span>
+                        Owner: Suresh Kumar
+                    </span>
+
+                    <small>
+                        Applied 2 hours ago
+                    </small>
+
+                </div>
+
+                <div class="seller-score">
+                    <strong>—</strong>
+                    <span>New Seller</span>
+                </div>
+
+                <div class="verification-actions">
+
+                    <button
+                        class="approve-btn"
+                        onclick="verifySeller('S001')">
+                        ✓ Verify
+                    </button>
+
+                    <button
+                        class="reject-btn"
+                        onclick="rejectSeller('S001')">
+                        ✕ Reject
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="verification-item">
+
+                <div class="seller-avatar">
+                    M
+                </div>
+
+                <div class="verification-info">
+
+                    <strong>
+                        Modern Kitchen Store
+                    </strong>
+
+                    <span>
+                        Owner: Mani
+                    </span>
+
+                    <small>
+                        Applied yesterday
+                    </small>
+
+                </div>
+
+                <div class="seller-score">
+
+                    <strong>—</strong>
+
+                    <span>
+                        New Seller
+                    </span>
+
+                </div>
+
+                <div class="verification-actions">
+
+                    <button
+                        class="approve-btn"
+                        onclick="verifySeller('S002')">
+                        ✓ Verify
+                    </button>
+
+                    <button
+                        class="reject-btn"
+                        onclick="rejectSeller('S002')">
+                        ✕ Reject
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- SELLER STATS -->
+
+    <div class="admin-stats-grid seller-stats">
+
+        <div class="admin-stat-card">
+
+            <div class="stat-icon sellers">
+                🏪
+            </div>
+
+            <div class="stat-content">
+
+                <span>Total Sellers</span>
+
+                <h2>684</h2>
+
+                <small>
+                    Active sellers
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <div class="admin-stat-card">
+
+            <div class="stat-icon sales">
+                ✅
+            </div>
+
+            <div class="stat-content">
+
+                <span>Verified Sellers</span>
+
+                <h2>651</h2>
+
+                <small>
+                    95.2% verified
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <div class="admin-stat-card">
+
+            <div class="stat-icon orders">
+                ⏳
+            </div>
+
+            <div class="stat-content">
+
+                <span>Pending Verification</span>
+
+                <h2>8</h2>
+
+                <small>
+                    Requires action
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <div class="admin-stat-card">
+
+            <div class="stat-icon customers">
+                🚫
+            </div>
+
+            <div class="stat-content">
+
+                <span>Suspended</span>
+
+                <h2>25</h2>
+
+                <small>
+                    Policy violations
+                </small>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= CUSTOMERS ================= -->
+
+<section id="customers" class="admin-section">
+
+    <div class="admin-section-header">
+
+        <div>
+
+            <span class="section-label">
+                USER MANAGEMENT
+            </span>
+
+            <h2>Customers</h2>
+
+            <p>
+                Manage customer accounts and activity.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="admin-card">
+
+        <div class="customer-overview-grid">
+
+            <div class="customer-overview">
+
+                <span>Total Customers</span>
+
+                <strong>
+                    18,420
+                </strong>
+
+            </div>
+
+
+            <div class="customer-overview">
+
+                <span>Active Today</span>
+
+                <strong>
+                    2,684
+                </strong>
+
+            </div>
+
+
+            <div class="customer-overview">
+
+                <span>New This Month</span>
+
+                <strong>
+                    1,248
+                </strong>
+
+            </div>
+
+
+            <div class="customer-overview">
+
+                <span>Blocked Accounts</span>
+
+                <strong>
+                    32
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="table-wrapper">
+
+            <table class="admin-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Customer</th>
+                        <th>Email</th>
+                        <th>Orders</th>
+                        <th>Total Spent</th>
+                        <th>Status</th>
+                        <th>Action</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    <tr>
+
+                        <td>
+                            <div class="table-user">
+
+                                <div class="small-avatar">
+                                    M
+                                </div>
+
+                                Mohamed
+                            </div>
+                        </td>
+
+                        <td>
+                            customer@example.com
+                        </td>
+
+                        <td>
+                            18
+                        </td>
+
+                        <td>
+                            ₹14,850
+                        </td>
+
+                        <td>
+                            <span class="status active">
+                                Active
+                            </span>
+                        </td>
+
+                        <td>
+                            <button class="table-action">
+                                View
+                            </button>
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+                            <div class="table-user">
+
+                                <div class="small-avatar">
+                                    A
+                                </div>
+
+                                Arjun
+                            </div>
+                        </td>
+
+                        <td>
+                            arjun@example.com
+                        </td>
+
+                        <td>
+                            12
+                        </td>
+
+                        <td>
+                            ₹9,420
+                        </td>
+
+                        <td>
+                            <span class="status active">
+                                Active
+                            </span>
+                        </td>
+
+                        <td>
+                            <button class="table-action">
+                                View
+                            </button>
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= CREATORS ================= -->
+
+<section id="creators" class="admin-section">
+
+    <div class="admin-section-header">
+
+        <div>
+
+            <span class="section-label">
+                AFFILIATE SYSTEM
+            </span>
+
+            <h2>Creator Affiliate System</h2>
+
+            <p>
+                Manage creators, affiliate links and commissions.
+            </p>
+
+        </div>
+
+        <button class="primary-btn"
+                onclick="exportCreatorData()">
+            📥 Export Data
+        </button>
+
+    </div>
+
+
+    <div class="admin-stats-grid">
+
+        <div class="admin-stat-card">
+
+            <div class="stat-icon customers">
+                🎥
+            </div>
+
+            <div class="stat-content">
+
+                <span>Total Creators</span>
+
+                <h2>1,284</h2>
+
+                <small>
+                    Active creators
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <div class="admin-stat-card">
+
+            <div class="stat-icon sales">
+                🔗
+            </div>
+
+            <div class="stat-content">
+
+                <span>Affiliate Clicks</span>
+
+                <h2>2.8M</h2>
+
+                <small class="positive">
+                    ↑ 22.4%
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <div class="admin-stat-card">
+
+            <div class="stat-icon orders">
+                🛒
+            </div>
+
+            <div class="stat-content">
+
+                <span>Affiliate Orders</span>
+
+                <h2>12,684</h2>
+
+                <small>
+                    This month
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <div class="admin-stat-card">
+
+            <div class="stat-icon sellers">
+                💸
+            </div>
+
+            <div class="stat-content">
+
+                <span>Creator Commission</span>
+
+                <h2>₹4,82,650</h2>
+
+                <small>
+                    Pending + approved
+                </small>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="admin-card">
+
+        <div class="card-header">
+
+            <div>
+
+                <h3>
+                    Top Creators
+                </h3>
+
+                <p>
+                    Highest performing affiliate creators
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="table-wrapper">
+
+            <table class="admin-table">
+
+                <thead>
+
+                    <tr>
+                        <th>Creator</th>
+                        <th>Clicks</th>
+                        <th>Orders</th>
+                        <th>Sales</th>
+                        <th>Commission</th>
+                        <th>Status</th>
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    <tr>
+
+                        <td>
+                            Creator 01
+                        </td>
+
+                        <td>
+                            248K
+                        </td>
+
+                        <td>
+                            1,284
+                        </td>
+
+                        <td>
+                            ₹8,42,650
+                        </td>
+
+                        <td>
+                            ₹84,265
+                        </td>
+
+                        <td>
+                            <span class="status active">
+                                Active
+                            </span>
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+                            Creator 02
+                        </td>
+
+                        <td>
+                            184K
+                        </td>
+
+                        <td>
+                            986
+                        </td>
+
+                        <td>
+                            ₹6,42,400
+                        </td>
+
+                        <td>
+                            ₹64,240
+                        </td>
+
+                        <td>
+                            <span class="status active">
+                                Active
+                            </span>
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= PAYMENTS ================= -->
+
+<section id="payments" class="admin-section">
+
+    <div class="admin-section-header">
+
+        <div>
+
+            <span class="section-label">
+                FINANCE
+            </span>
+
+            <h2>Payments</h2>
+
+            <p>
+                Monitor platform payments and settlements.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="admin-stats-grid">
+
+        <div class="admin-stat-card">
+
+            <div class="stat-icon sales">
+                💰
+            </div>
+
+            <div class="stat-content">
+
+                <span>Total Payment</span>
+
+                <h2>₹24.85L</h2>
+
+            </div>
+
+        </div>
+
+
+        <div class="admin-stat-card">
+
+            <div class="stat-icon orders">
+                ⏳
+            </div>
+
+            <div class="stat-content">
+
+                <span>Pending Settlement</span>
+
+                <h2>₹2.48L</h2>
+
+            </div>
+
+        </div>
+
+
+        <div class="admin-stat-card">
+
+            <div class="stat-icon customers">
+                ✅
+            </div>
+
+            <div class="stat-content">
+
+                <span>Completed</span>
+
+                <h2>₹21.92L</h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="admin-card">
+
+        <div class="card-header">
+
+            <div>
+
+                <h3>
+                    Recent Transactions
+                </h3>
+
+            </div>
+
+        </div>
+
+
+        <div class="table-wrapper">
+
+            <table class="admin-table">
+
+                <thead>
+
+                    <tr>
+                        <th>Transaction ID</th>
+                        <th>Order</th>
+                        <th>Amount</th>
+                        <th>Method</th>
+                        <th>Status</th>
+                        <th>Date</th>
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    <tr>
+
+                        <td>
+                            TXN10001
+                        </td>
+
+                        <td>
+                            #IMA10045
+                        </td>
+
+                        <td>
+                            ₹799
+                        </td>
+
+                        <td>
+                            UPI
+                        </td>
+
+                        <td>
+                            <span class="status delivered">
+                                Success
+                            </span>
+                        </td>
+
+                        <td>
+                            Sep 09
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+                            TXN10002
+                        </td>
+
+                        <td>
+                            #IMA10044
+                        </td>
+
+                        <td>
+                            ₹399
+                        </td>
+
+                        <td>
+                            COD
+                        </td>
+
+                        <td>
+                            <span class="status processing">
+                                Pending
+                            </span>
+                        </td>
+
+                        <td>
+                            Sep 09
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= RETURNS ================= -->
+
+<section id="returns" class="admin-section">
+
+    <div class="admin-section-header">
+
+        <div>
+
+            <span class="section-label">
+                CUSTOMER SERVICE
+            </span>
+
+            <h2>Returns & Refunds</h2>
+
+            <p>
+                Review customer return and refund requests.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="admin-card">
+
+        <div class="return-summary-grid">
+
+            <div>
+                <strong>7</strong>
+                <span>Pending Requests</span>
+            </div>
+
+            <div>
+                <strong>18</strong>
+                <span>Approved</span>
+            </div>
+
+            <div>
+                <strong>4</strong>
+                <span>Rejected</span>
+            </div>
+
+            <div>
+                <strong>₹42,850</strong>
+                <span>Total Refunds</span>
+            </div>
+
+        </div>
+
+
+        <div class="table-wrapper">
+
+            <table class="admin-table">
+
+                <thead>
+
+                    <tr>
+                        <th>Return ID</th>
+                        <th>Order</th>
+                        <th>Customer</th>
+                        <th>Reason</th>
+                        <th>Refund</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    <tr>
+
+                        <td>
+                            RET001
+                        </td>
+
+                        <td>
+                            #IMA10021
+                        </td>
+
+                        <td>
+                            Kumar
+                        </td>
+
+                        <td>
+                            Product damaged
+                        </td>
+
+                        <td>
+                            ₹799
+                        </td>
+
+                        <td>
+                            <span class="status processing">
+                                Pending
+                            </span>
+                        </td>
+
+                        <td>
+
+                            <button
+                                class="table-action"
+                                onclick="reviewReturn('RET001')">
+                                Review
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+  </section>
+
+  <!-- ================= REVIEWS ================= -->
+
+<section id="reviews" class="admin-section">
+
+    <div class="admin-section-header">
+
+        <div>
+
+            <span class="section-label">
+                TRUST & SAFETY
+            </span>
+
+            <h2>Reviews Management</h2>
+
+            <p>
+                Monitor genuine reviews and reported content.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="admin-card">
+
+        <div class="review-management-grid">
+
+            <div class="review-stat">
+
+                <span>Total Reviews</span>
+
+                <strong>
+                    42,684
+                </strong>
+
+            </div>
+
+
+            <div class="review-stat">
+
+                <span>Verified Reviews</span>
+
+                <strong>
+                    40,128
+                </strong>
+
+            </div>
+
+
+            <div class="review-stat">
+
+                <span>Reported</span>
+
+                <strong>
+                    4
+                </strong>
+
+            </div>
+
+
+            <div class="review-stat">
+
+                <span>Removed</span>
+
+                <strong>
+                    28
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="reported-review">
+
+            <div class="review-user-avatar">
+                R
+            </div>
+
+            <div class="reported-review-content">
+
+                <strong>
+                    Rahul
+                </strong>
+
+                <div class="review-stars">
+                    ★ ★ ★ ★ ★
+                </div>
+
+                <p>
+                    Product quality is very good and delivery was fast.
+                </p>
+
+                <small>
+                    Report reason: Suspected fake review
+                </small>
+
+            </div>
+
+
+            <div class="review-actions">
+
+                <button
+                    class="table-action"
+                    onclick="keepReview('R001')">
+                    Keep
+                </button>
+
+                <button
+                    class="reject-btn"
+                    onclick="removeReview('R001')">
+                    Remove
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= REPORTS ================= -->
+
+<section id="reports" class="admin-section">
+
+    <div class="admin-section-header">
+
+        <div>
+
+            <span class="section-label">
+                ANALYTICS
+            </span>
+
+            <h2>Reports & Analytics</h2>
+
+            <p>
+                Analyze sales, products, sellers and customer activity.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="report-grid">
+
+        <button class="report-card"
+                onclick="generateReport('sales')">
+
+            <span>📊</span>
+
+            <strong>
+                Sales Report
+            </strong>
+
+            <small>
+                Revenue and order analytics
+            </small>
+
+        </button>
+
+
+        <button class="report-card"
+                onclick="generateReport('products')">
+
+            <span>🛍️</span>
+
+            <strong>
+                Product Report
+            </strong>
+
+            <small>
+                Best selling products
+            </small>
+
+        </button>
+
+
+        <button class="report-card"
+                onclick="generateReport('seller')">
+
+            <span>🏪</span>
+
+            <strong>
+                Seller Report
+            </strong>
+
+            <small>
+                Seller performance
+            </small>
+
+        </button>
+
+
+        <button class="report-card"
+                onclick="generateReport('creator')">
+
+            <span>🎥</span>
+
+            <strong>
+                Creator Report
+            </strong>
+
+            <small>
+                Affiliate performance
+            </small>
+
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= CATEGORIES ================= -->
+
+<section id="categories" class="admin-section">
+
+    <div class="admin-section-header">
+
+        <div>
+
+            <span class="section-label">
+                CATALOG
+            </span>
+
+            <h2>Categories</h2>
+
+            <p>
+                Manage product categories.
+            </p>
+
+        </div>
+
+        <button class="primary-btn"
+                onclick="addCategory()">
+            + Add Category
+        </button>
+
+    </div>
+
+
+    <div class="admin-card">
+
+        <div class="category-admin-grid">
+
+            <div class="category-admin-card">
+
+                <div class="category-admin-icon">
+                    📱
+                </div>
+
+                <div>
+
+                    <strong>
+                        Electronics
+                    </strong>
+
+                    <span>
+                        248 Products
+                    </span>
+
+                </div>
+
+                <button onclick="editCategory('electronics')">
+                    ✏️
+                </button>
+
+            </div>
+
+
+            <div class="category-admin-card">
+
+                <div class="category-admin-icon">
+                    👕
+                </div>
+
+                <div>
+
+                    <strong>
+                        Fashion
+                    </strong>
+
+                    <span>
+                        186 Products
+                    </span>
+
+                </div>
+
+                <button onclick="editCategory('fashion')">
+                    ✏️
+                </button>
+
+            </div>
+
+
+            <div class="category-admin-card">
+
+                <div class="category-admin-icon">
+                    🏠
+                </div>
+
+                <div>
+
+                    <strong>
+                        Home
+                    </strong>
+
+                    <span>
+                        164 Products
+                    </span>
+
+                </div>
+
+                <button onclick="editCategory('home')">
+                    ✏️
+                </button>
+
+            </div>
+
+
+            <div class="category-admin-card">
+
+                <div class="category-admin-icon">
+                    🍳
+                </div>
+
+                <div>
+
+                    <strong>
+                        Kitchen
+                    </strong>
+
+                    <span>
+                        128 Products
+                    </span>
+
+                </div>
+
+                <button onclick="editCategory('kitchen')">
+                    ✏️
+                </button>
+
+            </div>
+
+
+            <div class="category-admin-card">
+
+                <div class="category-admin-icon">
+                    💄
+                </div>
+
+                <div>
+
+                    <strong>
+                        Beauty
+                    </strong>
+
+                    <span>
+                        96 Products
+                    </span>
+
+                </div>
+
+                <button onclick="editCategory('beauty')">
+                    ✏️
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= SETTINGS ================= -->
+
+<section id="settings" class="admin-section">
+
+    <div class="admin-section-header">
+
+        <div>
+
+            <span class="section-label">
+                PLATFORM
+            </span>
+
+            <h2>Settings</h2>
+
+            <p>
+                Configure your IMA Shopping Centre platform.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="admin-card settings-card">
+
+
+        <div class="settings-row">
+
+            <div>
+
+                <strong>
+                    Platform Name
+                </strong>
+
+                <p>
+                    Name displayed across the website.
+                </p>
+
+            </div>
+
+            <input
+                type="text"
+                value="IMA Shopping Centre"
+                id="platformName"
+            >
+
+        </div>
+
+
+        <div class="settings-row">
+
+            <div>
+
+                <strong>
+                    Creator Commission
+                </strong>
+
+                <p>
+                    Default affiliate commission percentage.
+                </p>
+
+            </div>
+
+            <div class="setting-input-group">
+
+                <input
+                    type="number"
+                    value="10"
+                    min="0"
+                    max="100"
+                    id="creatorCommission"
+                >
+
+                <span>%</span>
+
+            </div>
+
+        </div>
+
+
+        <div class="settings-row">
+
+            <div>
+
+                <strong>
+                    Seller Verification
+                </strong>
+
+                <p>
+                    Require admin approval before seller activation.
+                </p>
+
+            </div>
+
+            <label class="switch">
+
+                <input
+                    type="checkbox"
+                    checked
+                    id="sellerVerification"
+                >
+
+                <span class="slider"></span>
+
+            </label>
+
+        </div>
+
+
+        <div class="settings-row">
+
+            <div>
+
+                <strong>
+                    Product Approval
+                </strong>
+
+                <p>
+                    Require admin approval for new products.
+                </p>
+
+            </div>
+
+            <label class="switch">
+
+                <input
+                    type="checkbox"
+                    checked
+                    id="productApproval"
+                >
+
+                <span class="slider"></span>
+
+            </label>
+
+        </div>
+
+
+        <div class="settings-row">
+
+            <div>
+
+                <strong>
+                    Fake Review Protection
+                </strong>
+
+                <p>
+                    Enable trust and review monitoring.
+                </p>
+
+            </div>
+
+            <label class="switch">
+
+                <input
+                    type="checkbox"
+                    checked
+                    id="reviewProtection"
+                >
+
+                <span class="slider"></span>
+
+            </label>
+
+        </div>
+
+
+        <div class="settings-actions">
+
+            <button
+                class="primary-btn"
+                onclick="saveSettings()">
+                Save Settings
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= ADMIN FOOTER ================= -->
+
+<footer class="admin-footer">
+
+    <p>
+        © 2026 IMA Shopping Centre. Admin Panel.
+    </p>
+
+    <span>
+        Shop with Trust, Buy with Confidence.
+    </span>
+
+</footer>
+
+
+</main>
+
+</div>
+
+
+
+<!-- ================= NOTIFICATION ================= -->
+
+<div id="adminNotification"
+     class="admin-notification-popup">
+
+    <div class="notification-popup-icon">
+        ✓
+    </div>
+
+    <div>
+
+        <strong id="notificationTitle">
+            Success
+        </strong>
+
+        <p id="notificationMessage">
+            Action completed successfully.
+        </p>
+
+    </div>
+
+    <button onclick="closeNotification()">
+        ×
+    </button>
+
+</div>
+
+
+
+<!-- ================= SCRIPTS ================= -->
+
+<script src="../js/products.js"></script>
+<script src="../js/admin-dashboard.js"></script>
+
+
+</body>
+                                  </html>
