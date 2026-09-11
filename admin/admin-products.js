@@ -5,7 +5,7 @@
 
 
 /* =====================================================
-   PRODUCT DATA
+   DEMO PRODUCT DATA
    ===================================================== */
 
 let adminProducts = [
@@ -18,8 +18,11 @@ let adminProducts = [
         stock: 120,
         seller: "IMA Verified Store",
         status: "active",
-        image: "../assets/images/bulb.jpg"
+        image: "../assets/images/bulb.jpg",
+        description: "Smart LED bulb for home lighting.",
+        verifiedSeller: true
     },
+
 
     {
         id: 2,
@@ -29,8 +32,11 @@ let adminProducts = [
         stock: 85,
         seller: "Smart Deals",
         status: "active",
-        image: "../assets/images/fan.jpg"
+        image: "../assets/images/fan.jpg",
+        description: "Portable rechargeable mini fan.",
+        verifiedSeller: true
     },
+
 
     {
         id: 3,
@@ -40,8 +46,11 @@ let adminProducts = [
         stock: 0,
         seller: "Home Store",
         status: "out",
-        image: "../assets/images/storage.jpg"
+        image: "../assets/images/storage.jpg",
+        description: "Useful kitchen storage container.",
+        verifiedSeller: true
     },
+
 
     {
         id: 4,
@@ -51,24 +60,32 @@ let adminProducts = [
         stock: 30,
         seller: "IMA Home",
         status: "pending",
-        image: "../assets/images/light.jpg"
+        image: "../assets/images/light.jpg",
+        description: "Automatic motion sensor light.",
+        verifiedSeller: true
     }
 
 ];
+
 
 
 /* =====================================================
    DISPLAY PRODUCTS
    ===================================================== */
 
-function displayAdminProducts(list = adminProducts) {
+function displayAdminProducts(
+    list = adminProducts
+) {
 
     const table =
         document.getElementById(
             "adminProductTable"
         );
 
-    if (!table) return;
+
+    if (!table) {
+        return;
+    }
 
 
     table.innerHTML = "";
@@ -83,8 +100,8 @@ function displayAdminProducts(list = adminProducts) {
                 <td
                     colspan="7"
                     style="
-                    text-align:center;
-                    padding:50px;
+                        text-align:center;
+                        padding:50px;
                     "
                 >
 
@@ -96,29 +113,46 @@ function displayAdminProducts(list = adminProducts) {
 
         `;
 
+
         updateProductStats();
+
+
+        updateResultText(0);
+
 
         return;
     }
 
 
+
     list.forEach(product => {
+
 
         let statusText;
 
-        if (product.status === "active") {
+
+        if (
+            product.status === "active"
+        ) {
 
             statusText = "Active";
 
-        } else if (product.status === "pending") {
+        }
+
+        else if (
+            product.status === "pending"
+        ) {
 
             statusText = "Pending";
 
-        } else {
+        }
+
+        else {
 
             statusText = "Out of Stock";
 
         }
+
 
 
         table.innerHTML += `
@@ -130,17 +164,17 @@ function displayAdminProducts(list = adminProducts) {
                     <div class="admin-product-info">
 
                         <img
-                            src="${product.image}"
-                            alt="${product.name}"
+                            src="${escapeHTML(product.image)}"
+                            alt="${escapeHTML(product.name)}"
                             onerror="
-                            this.src='https://placehold.co/60x60?text=IMA'
+                                this.src='https://placehold.co/60x60?text=IMA'
                             "
                         >
 
                         <div>
 
                             <strong>
-                                ${product.name}
+                                ${escapeHTML(product.name)}
                             </strong>
 
                             <small>
@@ -170,7 +204,23 @@ function displayAdminProducts(list = adminProducts) {
 
 
                 <td>
-                    ${product.seller}
+
+                    ${escapeHTML(product.seller)}
+
+                    ${
+                        product.verifiedSeller
+                            ? `<small
+                                style="
+                                    display:block;
+                                    color:#16834b;
+                                    margin-top:4px;
+                                "
+                               >
+                                ✓ Verified
+                               </small>`
+                            : ""
+                    }
+
                 </td>
 
 
@@ -192,13 +242,16 @@ function displayAdminProducts(list = adminProducts) {
                     <div class="table-actions">
 
                         <button
+                            type="button"
                             onclick="editAdminProduct(${product.id})"
                             title="Edit Product"
                         >
                             ✏️
                         </button>
 
+
                         <button
+                            type="button"
                             onclick="deleteAdminProduct(${product.id})"
                             title="Delete Product"
                         >
@@ -216,9 +269,38 @@ function displayAdminProducts(list = adminProducts) {
     });
 
 
+
     updateProductStats();
 
+
+    updateResultText(
+        list.length
+    );
+
 }
+
+
+
+/* =====================================================
+   ESCAPE HTML
+   ===================================================== */
+
+function escapeHTML(value) {
+
+    if (value === null || value === undefined) {
+        return "";
+    }
+
+
+    return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+}
+
 
 
 /* =====================================================
@@ -231,6 +313,7 @@ function formatCategory(category) {
         return "-";
     }
 
+
     return category
         .charAt(0)
         .toUpperCase() +
@@ -239,8 +322,46 @@ function formatCategory(category) {
 }
 
 
+
 /* =====================================================
-   UPDATE STATS
+   RESULT TEXT
+   ===================================================== */
+
+function updateResultText(count) {
+
+    const resultText =
+        document.getElementById(
+            "productResultText"
+        );
+
+
+    if (!resultText) {
+        return;
+    }
+
+
+    if (
+        count === adminProducts.length
+    ) {
+
+        resultText.textContent =
+            `Showing all ${count} products`;
+
+    }
+
+    else {
+
+        resultText.textContent =
+            `${count} products found`;
+
+    }
+
+}
+
+
+
+/* =====================================================
+   UPDATE STATISTICS
    ===================================================== */
 
 function updateProductStats() {
@@ -270,25 +391,30 @@ function updateProductStats() {
         ).length;
 
 
+
     const totalElement =
         document.getElementById(
             "totalProducts"
         );
+
 
     const activeElement =
         document.getElementById(
             "activeProducts"
         );
 
+
     const pendingElement =
         document.getElementById(
             "pendingProducts"
         );
 
+
     const outElement =
         document.getElementById(
             "outOfStockProducts"
         );
+
 
 
     if (totalElement) {
@@ -325,81 +451,17 @@ function updateProductStats() {
 }
 
 
+
 /* =====================================================
    SEARCH
    ===================================================== */
 
 function searchAdminProducts() {
 
-    const input =
-        document.getElementById(
-            "productSearch"
-        );
-
-
-    if (!input) return;
-
-
-    const keyword =
-        input.value
-            .toLowerCase()
-            .trim();
-
-
-    const category =
-        document.getElementById(
-            "adminCategoryFilter"
-        )?.value || "all";
-
-
-    const status =
-        document.getElementById(
-            "adminStatusFilter"
-        )?.value || "all";
-
-
-    const result =
-        adminProducts.filter(product => {
-
-            const searchMatch =
-
-                product.name
-                    .toLowerCase()
-                    .includes(keyword)
-
-                ||
-
-                product.seller
-                    .toLowerCase()
-                    .includes(keyword);
-
-
-            const categoryMatch =
-
-                category === "all" ||
-
-                product.category === category;
-
-
-            const statusMatch =
-
-                status === "all" ||
-
-                product.status === status;
-
-
-            return (
-                searchMatch &&
-                categoryMatch &&
-                statusMatch
-            );
-
-        });
-
-
-    displayAdminProducts(result);
+    applyProductFilters();
 
 }
+
 
 
 /* =====================================================
@@ -408,68 +470,125 @@ function searchAdminProducts() {
 
 function filterAdminProducts() {
 
-    const keyword =
+    applyProductFilters();
+
+}
+
+
+
+/* =====================================================
+   APPLY FILTERS
+   ===================================================== */
+
+function applyProductFilters() {
+
+    const input =
         document.getElementById(
             "productSearch"
-        )?.value
-        .toLowerCase()
-        .trim() || "";
+        );
+
+
+    const categorySelect =
+        document.getElementById(
+            "adminCategoryFilter"
+        );
+
+
+    const statusSelect =
+        document.getElementById(
+            "adminStatusFilter"
+        );
+
+
+
+    const keyword =
+        input
+            ? input.value
+                .toLowerCase()
+                .trim()
+            : "";
 
 
     const category =
-        document.getElementById(
-            "adminCategoryFilter"
-        )?.value || "all";
+        categorySelect
+            ? categorySelect.value
+            : "all";
 
 
     const status =
-        document.getElementById(
-            "adminStatusFilter"
-        )?.value || "all";
+        statusSelect
+            ? statusSelect.value
+            : "all";
+
 
 
     const result =
-        adminProducts.filter(product => {
-
-            const keywordMatch =
-
-                product.name
-                    .toLowerCase()
-                    .includes(keyword)
-
-                ||
-
-                product.seller
-                    .toLowerCase()
-                    .includes(keyword);
+        adminProducts.filter(
+            product => {
 
 
-            const categoryMatch =
-
-                category === "all" ||
-
-                product.category === category;
+                const name =
+                    product.name
+                        .toLowerCase();
 
 
-            const statusMatch =
-
-                status === "all" ||
-
-                product.status === status;
+                const seller =
+                    product.seller
+                        .toLowerCase();
 
 
-            return (
-                keywordMatch &&
-                categoryMatch &&
-                statusMatch
-            );
 
-        });
+                const searchMatch =
+
+                    keyword === ""
+
+                    ||
+
+                    name.includes(keyword)
+
+                    ||
+
+                    seller.includes(keyword);
 
 
-    displayAdminProducts(result);
+
+                const categoryMatch =
+
+                    category === "all"
+
+                    ||
+
+                    product.category === category;
+
+
+
+                const statusMatch =
+
+                    status === "all"
+
+                    ||
+
+                    product.status === status;
+
+
+
+                return (
+                    searchMatch &&
+                    categoryMatch &&
+                    statusMatch
+                );
+
+            }
+        );
+
+
+
+    displayAdminProducts(
+        result
+    );
 
 }
+
 
 
 /* =====================================================
@@ -479,6 +598,7 @@ function filterAdminProducts() {
 document.addEventListener(
     "DOMContentLoaded",
     function () {
+
 
         const searchInput =
             document.getElementById(
@@ -505,8 +625,10 @@ document.addEventListener(
 
         }
 
+
     }
 );
+
 
 
 /* =====================================================
@@ -521,10 +643,9 @@ function openAddProduct() {
         );
 
 
-    if (!modal) return;
-
-
-    modal.classList.add("show");
+    if (!modal) {
+        return;
+    }
 
 
     const form =
@@ -539,7 +660,33 @@ function openAddProduct() {
 
     }
 
+
+    modal.classList.add(
+        "show"
+    );
+
+
+    setTimeout(
+        function () {
+
+            const nameInput =
+                document.getElementById(
+                    "adminProductName"
+                );
+
+
+            if (nameInput) {
+
+                nameInput.focus();
+
+            }
+
+        },
+        100
+    );
+
 }
+
 
 
 /* =====================================================
@@ -554,12 +701,17 @@ function closeProductModal() {
         );
 
 
-    if (!modal) return;
+    if (!modal) {
+        return;
+    }
 
 
-    modal.classList.remove("show");
+    modal.classList.remove(
+        "show"
+    );
 
 }
+
 
 
 /* =====================================================
@@ -571,29 +723,36 @@ function saveAdminProduct(event) {
     event.preventDefault();
 
 
+
     const name =
         document.getElementById(
             "adminProductName"
-        ).value.trim();
+        )
+        .value
+        .trim();
 
 
     const category =
         document.getElementById(
             "adminProductCategory"
-        ).value;
+        )
+        .value;
 
 
     const seller =
         document.getElementById(
             "adminProductSeller"
-        ).value.trim();
+        )
+        .value
+        .trim();
 
 
     const price =
         Number(
             document.getElementById(
                 "adminProductPrice"
-            ).value
+            )
+            .value
         );
 
 
@@ -601,27 +760,36 @@ function saveAdminProduct(event) {
         Number(
             document.getElementById(
                 "adminProductStock"
-            ).value
+            )
+            .value
         );
 
 
     const image =
         document.getElementById(
             "adminProductImage"
-        ).value.trim();
+        )
+        .value
+        .trim();
 
 
     const description =
         document.getElementById(
             "adminProductDescription"
-        ).value.trim();
+        )
+        .value
+        .trim();
 
 
     const verifiedSeller =
         document.getElementById(
             "adminVerifiedSeller"
-        ).checked;
+        )
+        .checked;
 
+
+
+    /* VALIDATION */
 
     if (!name) {
 
@@ -637,7 +805,7 @@ function saveAdminProduct(event) {
     if (!category) {
 
         alert(
-            "Please select category."
+            "Please select a category."
         );
 
         return;
@@ -656,7 +824,10 @@ function saveAdminProduct(event) {
     }
 
 
-    if (price <= 0) {
+    if (
+        !Number.isFinite(price) ||
+        price <= 0
+    ) {
 
         alert(
             "Please enter a valid price."
@@ -667,16 +838,22 @@ function saveAdminProduct(event) {
     }
 
 
-    if (stock < 0) {
+    if (
+        !Number.isFinite(stock) ||
+        stock < 0
+    ) {
 
         alert(
-            "Stock cannot be negative."
+            "Please enter a valid stock quantity."
         );
 
         return;
 
     }
 
+
+
+    /* CREATE PRODUCT */
 
     const newProduct = {
 
@@ -716,10 +893,14 @@ function saveAdminProduct(event) {
     };
 
 
+
     adminProducts.unshift(
         newProduct
     );
 
+
+
+    /* UPDATE UI */
 
     displayAdminProducts();
 
@@ -732,6 +913,7 @@ function saveAdminProduct(event) {
     );
 
 }
+
 
 
 /* =====================================================
@@ -758,6 +940,7 @@ function editAdminProduct(id) {
     }
 
 
+
     const newName =
         prompt(
             "Product Name:",
@@ -766,13 +949,26 @@ function editAdminProduct(id) {
 
 
     if (
-        newName === null ||
-        newName.trim() === ""
+        newName === null
     ) {
 
         return;
 
     }
+
+
+    if (
+        newName.trim() === ""
+    ) {
+
+        alert(
+            "Product name cannot be empty."
+        );
+
+        return;
+
+    }
+
 
 
     const newPrice =
@@ -783,13 +979,29 @@ function editAdminProduct(id) {
 
 
     if (
-        newPrice === null ||
-        Number(newPrice) <= 0
+        newPrice === null
     ) {
 
         return;
 
     }
+
+
+    if (
+        !Number.isFinite(
+            Number(newPrice)
+        ) ||
+        Number(newPrice) <= 0
+    ) {
+
+        alert(
+            "Invalid price."
+        );
+
+        return;
+
+    }
+
 
 
     const newStock =
@@ -800,14 +1012,32 @@ function editAdminProduct(id) {
 
 
     if (
-        newStock === null ||
-        Number(newStock) < 0
+        newStock === null
     ) {
 
         return;
 
     }
 
+
+    if (
+        !Number.isFinite(
+            Number(newStock)
+        ) ||
+        Number(newStock) < 0
+    ) {
+
+        alert(
+            "Invalid stock."
+        );
+
+        return;
+
+    }
+
+
+
+    /* UPDATE */
 
     product.name =
         newName.trim();
@@ -821,17 +1051,23 @@ function editAdminProduct(id) {
         Number(newStock);
 
 
-    if (product.stock === 0) {
+
+    if (
+        product.stock === 0
+    ) {
 
         product.status =
             "out";
 
-    } else {
+    }
+
+    else {
 
         product.status =
             "active";
 
     }
+
 
 
     displayAdminProducts();
@@ -842,6 +1078,7 @@ function editAdminProduct(id) {
     );
 
 }
+
 
 
 /* =====================================================
@@ -857,7 +1094,10 @@ function deleteAdminProduct(id) {
         );
 
 
-    if (!product) return;
+    if (!product) {
+        return;
+    }
+
 
 
     const confirmed =
@@ -866,7 +1106,10 @@ function deleteAdminProduct(id) {
         );
 
 
-    if (!confirmed) return;
+    if (!confirmed) {
+        return;
+    }
+
 
 
     adminProducts =
@@ -874,6 +1117,7 @@ function deleteAdminProduct(id) {
             item =>
                 item.id !== id
         );
+
 
 
     displayAdminProducts();
@@ -886,15 +1130,58 @@ function deleteAdminProduct(id) {
 }
 
 
+
 /* =====================================================
    REFRESH
    ===================================================== */
 
 function refreshAdminProducts() {
 
+    const searchInput =
+        document.getElementById(
+            "productSearch"
+        );
+
+
+    const categoryFilter =
+        document.getElementById(
+            "adminCategoryFilter"
+        );
+
+
+    const statusFilter =
+        document.getElementById(
+            "adminStatusFilter"
+        );
+
+
+    if (searchInput) {
+
+        searchInput.value = "";
+
+    }
+
+
+    if (categoryFilter) {
+
+        categoryFilter.value =
+            "all";
+
+    }
+
+
+    if (statusFilter) {
+
+        statusFilter.value =
+            "all";
+
+    }
+
+
     displayAdminProducts();
 
 }
+
 
 
 /* =====================================================
@@ -909,7 +1196,9 @@ function adminLogout() {
         );
 
 
-    if (!confirmed) return;
+    if (!confirmed) {
+        return;
+    }
 
 
     window.location.href =
@@ -918,8 +1207,9 @@ function adminLogout() {
 }
 
 
+
 /* =====================================================
-   CLOSE MODAL WHEN CLICK OUTSIDE
+   CLOSE MODAL WHEN CLICKING OUTSIDE
    ===================================================== */
 
 document.addEventListener(
@@ -932,7 +1222,9 @@ document.addEventListener(
             );
 
 
-        if (!modal) return;
+        if (!modal) {
+            return;
+        }
 
 
         if (
@@ -945,6 +1237,28 @@ document.addEventListener(
 
     }
 );
+
+
+
+/* =====================================================
+   ESC KEY CLOSE MODAL
+   ===================================================== */
+
+document.addEventListener(
+    "keydown",
+    function (event) {
+
+        if (
+            event.key === "Escape"
+        ) {
+
+            closeProductModal();
+
+        }
+
+    }
+);
+
 
 
 /* =====================================================
