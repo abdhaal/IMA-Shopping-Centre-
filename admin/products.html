@@ -10,11 +10,18 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>Manage Products | IMA Admin</title>
+    <title>
+        Products | IMA Shopping Centre Admin
+    </title>
+
+    <meta
+        name="robots"
+        content="noindex, nofollow"
+    >
 
     <link
         rel="stylesheet"
-        href="admin/products.css"
+        href="products.css"
     >
 
 </head>
@@ -23,20 +30,28 @@
 <body>
 
 
-<!-- ================= SIDEBAR ================= -->
+<!-- =====================================================
+     ADMIN SIDEBAR
+     ===================================================== -->
 
 <aside class="admin-sidebar">
+
+
+    <!-- LOGO -->
 
     <div class="admin-logo">
 
         <span>IMA</span>
-
         Shopping Centre
 
-        <small>ADMIN PANEL</small>
+        <small>
+            ADMIN PANEL
+        </small>
 
     </div>
 
+
+    <!-- MENU -->
 
     <nav class="admin-menu">
 
@@ -55,8 +70,8 @@
             🛒 Orders
         </a>
 
-        <a href="users.html">
-            👥 Users
+        <a href="customers.html">
+            👥 Customers
         </a>
 
         <a href="sellers.html">
@@ -65,6 +80,14 @@
 
         <a href="creators.html">
             💰 Creators
+        </a>
+
+        <a href="categories.html">
+            🗂️ Categories
+        </a>
+
+        <a href="reviews.html">
+            ⭐ Reviews
         </a>
 
         <a href="analytics.html">
@@ -78,28 +101,38 @@
     </nav>
 
 
+    <!-- SIDEBAR BOTTOM -->
+
     <div class="admin-sidebar-bottom">
 
         <a href="../index.html">
-            🏠 View Store
+            🛍️ View Store
         </a>
 
-        <button onclick="adminLogout()">
+        <button
+            type="button"
+            onclick="adminLogout()"
+        >
             🚪 Logout
         </button>
 
     </div>
 
+
 </aside>
 
 
 
-<!-- ================= MAIN ================= -->
+<!-- =====================================================
+     MAIN
+     ===================================================== -->
 
 <main class="admin-main">
 
 
-    <!-- HEADER -->
+    <!-- =================================================
+         HEADER
+         ================================================= -->
 
     <header class="admin-header">
 
@@ -110,27 +143,32 @@
             </h1>
 
             <p>
-                Manage all products listed on IMA Shopping Centre.
+                Add, edit and manage products in IMA Shopping Centre.
             </p>
 
         </div>
 
 
         <button
+            type="button"
             class="admin-primary-btn"
             onclick="openAddProduct()"
         >
-            + Add Product
+            ➕ Add Product
         </button>
 
     </header>
 
 
 
-    <!-- ================= STATS ================= -->
+    <!-- =================================================
+         STATISTICS
+         ================================================= -->
 
     <section class="admin-stat-grid">
 
+
+        <!-- TOTAL -->
 
         <div class="admin-stat-card">
 
@@ -153,6 +191,7 @@
         </div>
 
 
+        <!-- ACTIVE -->
 
         <div class="admin-stat-card">
 
@@ -163,7 +202,7 @@
             <div>
 
                 <span>
-                    Active
+                    Active Products
                 </span>
 
                 <strong id="activeProducts">
@@ -175,6 +214,7 @@
         </div>
 
 
+        <!-- PENDING -->
 
         <div class="admin-stat-card">
 
@@ -197,11 +237,12 @@
         </div>
 
 
+        <!-- OUT OF STOCK -->
 
         <div class="admin-stat-card">
 
             <div class="stat-icon">
-                🗑️
+                ⚠️
             </div>
 
             <div>
@@ -223,26 +264,35 @@
 
 
 
-    <!-- ================= TOOLBAR ================= -->
+    <!-- =================================================
+         TOOLBAR
+         ================================================= -->
 
     <section class="admin-toolbar">
 
+
+        <!-- SEARCH -->
 
         <div class="admin-search">
 
             <input
                 type="text"
                 id="productSearch"
-                placeholder="Search products..."
+                placeholder="Search product or seller..."
+                autocomplete="off"
             >
 
-            <button onclick="searchAdminProducts()">
+            <button
+                type="button"
+                onclick="searchAdminProducts()"
+            >
                 🔍
             </button>
 
         </div>
 
 
+        <!-- CATEGORY -->
 
         <select
             id="adminCategoryFilter"
@@ -276,6 +326,7 @@
         </select>
 
 
+        <!-- STATUS -->
 
         <select
             id="adminStatusFilter"
@@ -305,10 +356,14 @@
 
 
 
-    <!-- ================= PRODUCT TABLE ================= -->
+    <!-- =================================================
+         PRODUCT TABLE
+         ================================================= -->
 
     <section class="admin-table-card">
 
+
+        <!-- TABLE HEADER -->
 
         <div class="table-header">
 
@@ -318,14 +373,15 @@
                     Product List
                 </h2>
 
-                <p>
-                    View and manage your products.
+                <p id="productResultText">
+                    Showing all products
                 </p>
 
             </div>
 
 
             <button
+                type="button"
                 class="secondary-btn"
                 onclick="refreshAdminProducts()"
             >
@@ -335,6 +391,8 @@
         </div>
 
 
+
+        <!-- TABLE -->
 
         <div class="table-wrapper">
 
@@ -379,7 +437,7 @@
 
                 <tbody id="adminProductTable">
 
-                    <!-- Products inserted by JS -->
+                    <!-- JavaScript loads products -->
 
                 </tbody>
 
@@ -391,11 +449,14 @@
     </section>
 
 
+
 </main>
 
 
 
-<!-- ================= ADD PRODUCT MODAL ================= -->
+<!-- =====================================================
+     ADD PRODUCT MODAL
+     ===================================================== -->
 
 <div
     id="productModal"
@@ -405,6 +466,8 @@
 
     <div class="admin-modal-content">
 
+
+        <!-- MODAL HEADER -->
 
         <div class="modal-header">
 
@@ -422,6 +485,7 @@
 
 
             <button
+                type="button"
                 class="modal-close"
                 onclick="closeProductModal()"
             >
@@ -431,6 +495,8 @@
         </div>
 
 
+
+        <!-- FORM -->
 
         <form
             id="productForm"
@@ -442,14 +508,14 @@
 
             <div class="form-group">
 
-                <label>
-                    Product Name
+                <label for="adminProductName">
+                    Product Name *
                 </label>
 
                 <input
                     type="text"
                     id="adminProductName"
-                    placeholder="Enter product name"
+                    placeholder="Example: Smart LED Bulb"
                     required
                 >
 
@@ -459,85 +525,81 @@
 
             <!-- CATEGORY -->
 
-            <div class="form-row">
+            <div class="form-group">
 
+                <label for="adminProductCategory">
+                    Category *
+                </label>
 
-                <div class="form-group">
+                <select
+                    id="adminProductCategory"
+                    required
+                >
 
-                    <label>
-                        Category
-                    </label>
+                    <option value="">
+                        Select Category
+                    </option>
 
-                    <select
-                        id="adminProductCategory"
-                        required
-                    >
+                    <option value="electronics">
+                        Electronics
+                    </option>
 
-                        <option value="">
-                            Select Category
-                        </option>
+                    <option value="fashion">
+                        Fashion
+                    </option>
 
-                        <option value="electronics">
-                            Electronics
-                        </option>
+                    <option value="home">
+                        Home
+                    </option>
 
-                        <option value="fashion">
-                            Fashion
-                        </option>
+                    <option value="kitchen">
+                        Kitchen
+                    </option>
 
-                        <option value="home">
-                            Home
-                        </option>
+                    <option value="beauty">
+                        Beauty
+                    </option>
 
-                        <option value="kitchen">
-                            Kitchen
-                        </option>
-
-                        <option value="beauty">
-                            Beauty
-                        </option>
-
-                    </select>
-
-                </div>
-
-
-
-                <div class="form-group">
-
-                    <label>
-                        Seller
-                    </label>
-
-                    <input
-                        type="text"
-                        id="adminProductSeller"
-                        placeholder="Seller name"
-                        required
-                    >
-
-                </div>
-
+                </select>
 
             </div>
 
 
 
-            <!-- PRICE -->
+            <!-- SELLER -->
+
+            <div class="form-group">
+
+                <label for="adminProductSeller">
+                    Seller Name *
+                </label>
+
+                <input
+                    type="text"
+                    id="adminProductSeller"
+                    placeholder="Example: IMA Verified Store"
+                    required
+                >
+
+            </div>
+
+
+
+            <!-- PRICE + STOCK -->
 
             <div class="form-row">
 
 
                 <div class="form-group">
 
-                    <label>
-                        Selling Price
+                    <label for="adminProductPrice">
+                        Price (₹) *
                     </label>
 
                     <input
                         type="number"
                         id="adminProductPrice"
-                        placeholder="₹"
+                        placeholder="299"
                         min="1"
                         required
                     >
@@ -545,42 +607,22 @@
                 </div>
 
 
-
                 <div class="form-group">
 
-                    <label>
-                        Original Price
+                    <label for="adminProductStock">
+                        Stock *
                     </label>
 
                     <input
                         type="number"
-                        id="adminProductOldPrice"
-                        placeholder="₹"
-                        min="1"
+                        id="adminProductStock"
+                        placeholder="100"
+                        min="0"
+                        required
                     >
 
                 </div>
 
-
-            </div>
-
-
-
-            <!-- STOCK -->
-
-            <div class="form-group">
-
-                <label>
-                    Stock Quantity
-                </label>
-
-                <input
-                    type="number"
-                    id="adminProductStock"
-                    placeholder="Enter stock"
-                    min="0"
-                    required
-                >
 
             </div>
 
@@ -590,14 +632,14 @@
 
             <div class="form-group">
 
-                <label>
+                <label for="adminProductImage">
                     Product Image URL
                 </label>
 
                 <input
                     type="text"
                     id="adminProductImage"
-                    placeholder="assets/images/product.jpg"
+                    placeholder="../assets/images/product.jpg"
                 >
 
             </div>
@@ -608,14 +650,14 @@
 
             <div class="form-group">
 
-                <label>
-                    Product Description
+                <label for="adminProductDescription">
+                    Description
                 </label>
 
                 <textarea
                     id="adminProductDescription"
                     rows="4"
-                    placeholder="Enter product description"
+                    placeholder="Enter product description..."
                 ></textarea>
 
             </div>
@@ -631,10 +673,11 @@
                     <input
                         type="checkbox"
                         id="adminVerifiedSeller"
-                        checked
                     >
 
-                    Verified Seller
+                    <span>
+                        ✓ Verified Seller
+                    </span>
 
                 </label>
 
@@ -642,7 +685,7 @@
 
 
 
-            <!-- BUTTONS -->
+            <!-- ACTIONS -->
 
             <div class="modal-actions">
 
@@ -659,7 +702,7 @@
                     type="submit"
                     class="admin-primary-btn"
                 >
-                    Add Product
+                    💾 Save Product
                 </button>
 
             </div>
@@ -670,578 +713,16 @@
 
     </div>
 
+
 </div>
 
 
 
-<!-- ================= JAVASCRIPT ================= -->
-
-<script src="admin/products.js"></script>
-
-
-<script>
-
-
-/* ================= SAMPLE ADMIN PRODUCTS ================= */
-
-let adminProducts = [
-
-    {
-        id: 1,
-        name: "Smart LED Bulb",
-        category: "electronics",
-        price: 299,
-        stock: 120,
-        seller: "IMA Verified Store",
-        status: "active",
-        image: "../assets/images/bulb.jpg"
-    },
-
-
-    {
-        id: 2,
-        name: "Portable Mini Fan",
-        category: "electronics",
-        price: 399,
-        stock: 85,
-        seller: "Smart Deals",
-        status: "active",
-        image: "../assets/images/fan.jpg"
-    },
-
-
-    {
-        id: 3,
-        name: "Kitchen Storage Box",
-        category: "kitchen",
-        price: 249,
-        stock: 0,
-        seller: "Home Store",
-        status: "out",
-        image: "../assets/images/storage.jpg"
-    },
-
-
-    {
-        id: 4,
-        name: "Motion Sensor Light",
-        category: "home",
-        price: 449,
-        stock: 30,
-        seller: "IMA Home",
-        status: "pending",
-        image: "../assets/images/light.jpg"
-    }
-
-];
-
-
-
-/* ================= DISPLAY ================= */
-
-function displayAdminProducts(list = adminProducts) {
-
-    const table =
-        document.getElementById(
-            "adminProductTable"
-        );
-
-
-    if (!table) return;
-
-
-    table.innerHTML = "";
-
-
-    if (list.length === 0) {
-
-        table.innerHTML = `
-
-            <tr>
-
-                <td
-                    colspan="7"
-                    style="text-align:center;padding:40px"
-                >
-
-                    🔍 No products found
-
-                </td>
-
-            </tr>
-
-        `;
-
-        return;
-
-    }
-
-
-    list.forEach(product => {
-
-        let statusClass =
-            product.status;
-
-
-        let statusText =
-            product.status === "active"
-                ? "Active"
-                : product.status === "pending"
-                ? "Pending"
-                : "Out of Stock";
-
-
-        table.innerHTML += `
-
-            <tr>
-
-                <td>
-
-                    <div class="admin-product-info">
-
-                        <img
-                            src="${product.image}"
-                            onerror="
-                            this.src='https://placehold.co/60x60?text=IMA'
-                            "
-                        >
-
-                        <div>
-
-                            <strong>
-                                ${product.name}
-                            </strong>
-
-                            <small>
-                                #${product.id}
-                            </small>
-
-                        </div>
-
-                    </div>
-
-                </td>
-
-
-                <td>
-                    ${product.category}
-                </td>
-
-
-                <td>
-                    ₹${product.price}
-                </td>
-
-
-                <td>
-                    ${product.stock}
-                </td>
-
-
-                <td>
-                    ${product.seller}
-                </td>
-
-
-                <td>
-
-                    <span
-                        class="status-badge ${statusClass}"
-                    >
-
-                        ${statusText}
-
-                    </span>
-
-                </td>
-
-
-                <td>
-
-                    <div class="table-actions">
-
-                        <button
-                            onclick="editAdminProduct(${product.id})"
-                            title="Edit"
-                        >
-                            ✏️
-                        </button>
-
-
-                        <button
-                            onclick="deleteAdminProduct(${product.id})"
-                            title="Delete"
-                        >
-                            🗑️
-                        </button>
-
-                    </div>
-
-                </td>
-
-            </tr>
-
-        `;
-
-    });
-
-
-    updateProductStats();
-
-}
-
-
-
-/* ================= STATS ================= */
-
-function updateProductStats() {
-
-    const total =
-        adminProducts.length;
-
-
-    const active =
-        adminProducts.filter(
-            p => p.status === "active"
-        ).length;
-
-
-    const pending =
-        adminProducts.filter(
-            p => p.status === "pending"
-        ).length;
-
-
-    const out =
-        adminProducts.filter(
-            p => p.status === "out"
-        ).length;
-
-
-    document.getElementById(
-        "totalProducts"
-    ).textContent = total;
-
-
-    document.getElementById(
-        "activeProducts"
-    ).textContent = active;
-
-
-    document.getElementById(
-        "pendingProducts"
-    ).textContent = pending;
-
-
-    document.getElementById(
-        "outOfStockProducts"
-    ).textContent = out;
-
-}
-
-
-
-/* ================= SEARCH ================= */
-
-function searchAdminProducts() {
-
-    const keyword =
-        document.getElementById(
-            "productSearch"
-        ).value
-        .toLowerCase()
-        .trim();
-
-
-    const result =
-        adminProducts.filter(product =>
-
-            product.name
-                .toLowerCase()
-                .includes(keyword)
-
-        );
-
-
-    displayAdminProducts(result);
-
-}
-
-
-
-/* ================= FILTER ================= */
-
-function filterAdminProducts() {
-
-    const category =
-        document.getElementById(
-            "adminCategoryFilter"
-        ).value;
-
-
-    const status =
-        document.getElementById(
-            "adminStatusFilter"
-        ).value;
-
-
-    const result =
-        adminProducts.filter(product => {
-
-            const categoryMatch =
-                category === "all" ||
-                product.category === category;
-
-
-            const statusMatch =
-                status === "all" ||
-                product.status === status;
-
-
-            return categoryMatch && statusMatch;
-
-        });
-
-
-    displayAdminProducts(result);
-
-}
-
-
-
-/* ================= ADD PRODUCT ================= */
-
-function openAddProduct() {
-
-    document.getElementById(
-        "productModal"
-    ).classList.add("show");
-
-}
-
-
-
-function closeProductModal() {
-
-    document.getElementById(
-        "productModal"
-    ).classList.remove("show");
-
-}
-
-
-
-/* ================= SAVE PRODUCT ================= */
-
-function saveAdminProduct(event) {
-
-    event.preventDefault();
-
-
-    const name =
-        document.getElementById(
-            "adminProductName"
-        ).value.trim();
-
-
-    const category =
-        document.getElementById(
-            "adminProductCategory"
-        ).value;
-
-
-    const seller =
-        document.getElementById(
-            "adminProductSeller"
-        ).value.trim();
-
-
-    const price =
-        Number(
-            document.getElementById(
-                "adminProductPrice"
-            ).value
-        );
-
-
-    const stock =
-        Number(
-            document.getElementById(
-                "adminProductStock"
-            ).value
-        );
-
-
-    const image =
-        document.getElementById(
-            "adminProductImage"
-        ).value.trim()
-        ||
-        "../assets/images/product.jpg";
-
-
-    const product = {
-
-        id:
-            Date.now(),
-
-        name,
-
-        category,
-
-        price,
-
-        stock,
-
-        seller,
-
-        status:
-            stock > 0
-                ? "active"
-                : "out",
-
-        image
-
-    };
-
-
-    adminProducts.unshift(
-        product
-    );
-
-
-    displayAdminProducts();
-
-
-    document.getElementById(
-        "productForm"
-    ).reset();
-
-
-    closeProductModal();
-
-
-    alert(
-        "Product added successfully!"
-    );
-
-}
-
-
-
-/* ================= EDIT ================= */
-
-function editAdminProduct(id) {
-
-    const product =
-        adminProducts.find(
-            p => p.id === id
-        );
-
-
-    if (!product) return;
-
-
-    const newName =
-        prompt(
-            "Enter new product name:",
-            product.name
-        );
-
-
-    if (
-        newName === null ||
-        newName.trim() === ""
-    ) return;
-
-
-    product.name =
-        newName.trim();
-
-
-    displayAdminProducts();
-
-}
-
-
-
-/* ================= DELETE ================= */
-
-function deleteAdminProduct(id) {
-
-    const product =
-        adminProducts.find(
-            p => p.id === id
-        );
-
-
-    if (!product) return;
-
-
-    const confirmDelete =
-        confirm(
-            `Delete "${product.name}"?`
-        );
-
-
-    if (!confirmDelete) return;
-
-
-    adminProducts =
-        adminProducts.filter(
-            p => p.id !== id
-        );
-
-
-    displayAdminProducts();
-
-}
-
-
-
-/* ================= REFRESH ================= */
-
-function refreshAdminProducts() {
-
-    displayAdminProducts();
-
-}
-
-
-
-/* ================= LOGOUT ================= */
-
-function adminLogout() {
-
-    const confirmLogout =
-        confirm(
-            "Are you sure you want to logout?"
-        );
-
-
-    if (!confirmLogout) return;
-
-
-    window.location.href =
-        "../login.html";
-
-}
-
-
-
-/* ================= INITIAL LOAD ================= */
-
-document.addEventListener(
-    "DOMContentLoaded",
-    function () {
-
-        displayAdminProducts();
-
-    }
-);
-
-
-</script>
+<!-- =====================================================
+     JAVASCRIPT
+     ===================================================== -->
+
+<script src="admin-products.js"></script>
 
 
 </body>
