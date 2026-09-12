@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Orders | IMA Shopping Centre Admin
+    </title>
+
+    <meta
+        name="robots"
+        content="noindex, nofollow"
+    >
+
+    <link
+        rel="stylesheet"
+        href="admin-orders.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     SIDEBAR
+     ===================================================== -->
+
+<aside class="admin-sidebar">
+
+
+    <!-- LOGO -->
+
+    <div class="admin-logo">
+
+        <span>IMA</span>
+        Shopping Centre
+
+        <small>
+            ADMIN PANEL
+        </small>
+
+    </div>
+
+
+    <!-- MENU -->
+
+    <nav class="admin-menu">
+
+
+        <a href="dashboard.html">
+            📊 Dashboard
+        </a>
+
+
+        <a href="products.html">
+            📦 Products
+        </a>
+
+
+        <a
+            href="orders.html"
+            class="active"
+        >
+            🛒 Orders
+        </a>
+
+
+        <a href="customers.html">
+            👥 Customers
+        </a>
+
+
+        <a href="sellers.html">
+            🏪 Sellers
+        </a>
+
+
+        <a href="creators.html">
+            💰 Creators
+        </a>
+
+
+        <a href="categories.html">
+            🗂️ Categories
+        </a>
+
+
+        <a href="reviews.html">
+            ⭐ Reviews
+        </a>
+
+
+        <a href="analytics.html">
+            📈 Analytics
+        </a>
+
+
+        <a href="settings.html">
+            ⚙️ Settings
+        </a>
+
+
+    </nav>
+
+
+    <!-- SIDEBAR BOTTOM -->
+
+    <div class="admin-sidebar-bottom">
+
+
+        <a href="../index.html">
+            🛍️ View Store
+        </a>
+
+
+        <button
+            type="button"
+            onclick="adminLogout()"
+        >
+            🚪 Logout
+        </button>
+
+
+    </div>
+
+
+</aside>
+
+
+
+<!-- =====================================================
+     MAIN
+     ===================================================== -->
+
+<main class="admin-main">
+
+
+    <!-- =================================================
+         HEADER
+         ================================================= -->
+
+    <header class="admin-header">
+
+
+        <div>
+
+            <h1>
+                Orders
+            </h1>
+
+            <p>
+                Manage customer orders and delivery status.
+            </p>
+
+        </div>
+
+
+        <button
+            class="admin-primary-btn"
+            onclick="refreshOrders()"
+        >
+            🔄 Refresh Orders
+        </button>
+
+
+    </header>
+
+
+
+    <!-- =================================================
+         STATISTICS
+         ================================================= -->
+
+    <section class="orders-stat-grid">
+
+
+        <!-- TOTAL -->
+
+        <div class="orders-stat-card">
+
+            <div class="stat-icon">
+                🛒
+            </div>
+
+            <div>
+
+                <span>
+                    Total Orders
+                </span>
+
+                <strong id="totalOrders">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- PENDING -->
+
+        <div class="orders-stat-card">
+
+            <div class="stat-icon">
+                ⏳
+            </div>
+
+            <div>
+
+                <span>
+                    Pending
+                </span>
+
+                <strong id="pendingOrders">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- SHIPPED -->
+
+        <div class="orders-stat-card">
+
+            <div class="stat-icon">
+                🚚
+            </div>
+
+            <div>
+
+                <span>
+                    Shipped
+                </span>
+
+                <strong id="shippedOrders">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- DELIVERED -->
+
+        <div class="orders-stat-card">
+
+            <div class="stat-icon">
+                ✅
+            </div>
+
+            <div>
+
+                <span>
+                    Delivered
+                </span>
+
+                <strong id="deliveredOrders">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- CANCELLED -->
+
+        <div class="orders-stat-card">
+
+            <div class="stat-icon">
+                ❌
+            </div>
+
+            <div>
+
+                <span>
+                    Cancelled
+                </span>
+
+                <strong id="cancelledOrders">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =================================================
+         FILTER TOOLBAR
+         ================================================= -->
+
+    <section class="orders-toolbar">
+
+
+        <!-- SEARCH -->
+
+        <div class="order-search">
+
+            <input
+                type="text"
+                id="orderSearch"
+                placeholder="Search order ID, customer or phone..."
+            >
+
+            <button
+                type="button"
+                onclick="searchOrders()"
+            >
+                🔍
+            </button>
+
+        </div>
+
+
+
+        <!-- STATUS -->
+
+        <select
+            id="orderStatusFilter"
+            onchange="filterOrders()"
+        >
+
+            <option value="all">
+                All Status
+            </option>
+
+            <option value="pending">
+                Pending
+            </option>
+
+            <option value="confirmed">
+                Confirmed
+            </option>
+
+            <option value="packed">
+                Packed
+            </option>
+
+            <option value="shipped">
+                Shipped
+            </option>
+
+            <option value="delivered">
+                Delivered
+            </option>
+
+            <option value="cancelled">
+                Cancelled
+            </option>
+
+        </select>
+
+
+
+        <!-- PAYMENT -->
+
+        <select
+            id="paymentFilter"
+            onchange="filterOrders()"
+        >
+
+            <option value="all">
+                All Payments
+            </option>
+
+            <option value="cod">
+                Cash on Delivery
+            </option>
+
+            <option value="online">
+                Online Payment
+            </option>
+
+            <option value="paid">
+                Paid
+            </option>
+
+            <option value="pending">
+                Payment Pending
+            </option>
+
+        </select>
+
+
+
+        <!-- DATE -->
+
+        <select
+            id="dateFilter"
+            onchange="filterOrders()"
+        >
+
+            <option value="all">
+                All Dates
+            </option>
+
+            <option value="today">
+                Today
+            </option>
+
+            <option value="7days">
+                Last 7 Days
+            </option>
+
+            <option value="30days">
+                Last 30 Days
+            </option>
+
+        </select>
+
+
+    </section>
+
+
+
+    <!-- =================================================
+         ORDERS TABLE
+         ================================================= -->
+
+    <section class="orders-table-card">
+
+
+        <!-- TABLE HEADER -->
+
+        <div class="orders-table-header">
+
+
+            <div>
+
+                <h2>
+                    Customer Orders
+                </h2>
+
+                <p id="orderResultText">
+                    Showing all orders
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- TABLE -->
+
+        <div class="orders-table-wrapper">
+
+
+            <table>
+
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Order
+                        </th>
+
+                        <th>
+                            Customer
+                        </th>
+
+                        <th>
+                            Products
+                        </th>
+
+                        <th>
+                            Amount
+                        </th>
+
+                        <th>
+                            Payment
+                        </th>
+
+                        <th>
+                            Status
+                        </th>
+
+                        <th>
+                            Date
+                        </th>
+
+                        <th>
+                            Actions
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="adminOrdersTable">
+
+                    <!-- Orders inserted by JS -->
+
+                </tbody>
+
+
+            </table>
+
+
+        </div>
+
+
+    </section>
+
+
+
+</main>
+
+
+
+<!-- =====================================================
+     VIEW ORDER MODAL
+     ===================================================== -->
+
+<div
+    id="orderModal"
+    class="admin-modal"
+>
+
+
+    <div class="order-modal-content">
+
+
+        <!-- HEADER -->
+
+        <div class="modal-header">
+
+
+            <div>
+
+                <h2>
+                    Order Details
+                </h2>
+
+                <p id="modalOrderId">
+                    Order
+                </p>
+
+            </div>
+
+
+            <button
+                class="modal-close"
+                onclick="closeOrderModal()"
+            >
+                ✕
+            </button>
+
+
+        </div>
+
+
+
+        <!-- BODY -->
+
+        <div class="modal-body">
+
+
+            <!-- CUSTOMER -->
+
+            <div class="modal-section">
+
+
+                <h3>
+                    👤 Customer Details
+                </h3>
+
+
+                <div class="detail-grid">
+
+
+                    <div>
+
+                        <span>
+                            Name
+                        </span>
+
+                        <strong id="modalCustomerName">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Phone
+                        </span>
+
+                        <strong id="modalCustomerPhone">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Email
+                        </span>
+
+                        <strong id="modalCustomerEmail">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Payment
+                        </span>
+
+                        <strong id="modalPayment">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- ADDRESS -->
+
+            <div class="modal-section">
+
+
+                <h3>
+                    📍 Delivery Address
+                </h3>
+
+
+                <p
+                    id="modalAddress"
+                    class="address-text"
+                >
+                    -
+                </p>
+
+
+            </div>
+
+
+
+            <!-- PRODUCTS -->
+
+            <div class="modal-section">
+
+
+                <h3>
+                    📦 Products
+                </h3>
+
+
+                <div
+                    id="modalProducts"
+                    class="modal-products"
+                >
+                </div>
+
+
+            </div>
+
+
+
+            <!-- TOTAL -->
+
+            <div class="modal-total">
+
+
+                <span>
+                    Order Total
+                </span>
+
+
+                <strong id="modalTotal">
+                    ₹0
+                </strong>
+
+
+            </div>
+
+
+
+            <!-- STATUS -->
+
+            <div class="modal-section">
+
+
+                <h3>
+                    🚚 Order Status
+                </h3>
+
+
+                <select
+                    id="modalStatus"
+                >
+
+                    <option value="pending">
+                        Pending
+                    </option>
+
+                    <option value="confirmed">
+                        Confirmed
+                    </option>
+
+                    <option value="packed">
+                        Packed
+                    </option>
+
+                    <option value="shipped">
+                        Shipped
+                    </option>
+
+                    <option value="delivered">
+                        Delivered
+                    </option>
+
+                    <option value="cancelled">
+                        Cancelled
+                    </option>
+
+                </select>
+
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- FOOTER -->
+
+        <div class="modal-footer">
+
+
+            <button
+                class="secondary-btn"
+                onclick="closeOrderModal()"
+            >
+                Close
+            </button>
+
+
+            <button
+                class="admin-primary-btn"
+                onclick="saveOrderStatus()"
+            >
+                💾 Update Status
+            </button>
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+     ===================================================== -->
+
+<script src="admin-orders.js"></script>
+
+
+</body>
+
+</html>
