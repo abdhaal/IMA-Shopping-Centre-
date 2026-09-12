@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Users | IMA Shopping Centre</title>
+
+    <link
+        rel="stylesheet"
+        href="admin-users.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     SIDEBAR
+     ===================================================== -->
+
+<aside class="admin-sidebar">
+
+    <div class="admin-logo">
+
+        <span>IMA</span>
+
+        Shopping Centre
+
+        <small>
+            ADMIN PANEL
+        </small>
+
+    </div>
+
+
+    <nav class="admin-menu">
+
+        <a href="dashboard.html">
+            📊 Dashboard
+        </a>
+
+        <a href="products.html">
+            📦 Products
+        </a>
+
+        <a href="orders.html">
+            🛒 Orders
+        </a>
+
+        <a
+            href="users.html"
+            class="active"
+        >
+            👥 Users
+        </a>
+
+        <a href="sellers.html">
+            🏪 Sellers
+        </a>
+
+        <a href="creators.html">
+            💰 Creators
+        </a>
+
+        <a href="categories.html">
+            🗂️ Categories
+        </a>
+
+        <a href="reviews.html">
+            ⭐ Reviews
+        </a>
+
+        <a href="coupons.html">
+            🎟️ Coupons
+        </a>
+
+        <a href="analytics.html">
+            📈 Analytics
+        </a>
+
+        <a href="settings.html">
+            ⚙️ Settings
+        </a>
+
+    </nav>
+
+
+    <div class="admin-sidebar-bottom">
+
+        <a href="../index.html">
+            🏠 View Store
+        </a>
+
+        <button onclick="adminLogout()">
+            🚪 Logout
+        </button>
+
+    </div>
+
+</aside>
+
+
+
+<!-- =====================================================
+     MAIN
+     ===================================================== -->
+
+<main class="admin-main">
+
+
+    <!-- =================================================
+         HEADER
+         ================================================= -->
+
+    <header class="admin-header">
+
+        <div>
+
+            <h1>
+                Users
+            </h1>
+
+            <p>
+                Manage IMA Shopping Centre customers
+            </p>
+
+        </div>
+
+
+        <button
+            class="admin-primary-btn"
+            onclick="refreshUsers()"
+        >
+            🔄 Refresh
+        </button>
+
+    </header>
+
+
+
+    <!-- =================================================
+         STATISTICS
+         ================================================= -->
+
+    <section class="users-stat-grid">
+
+
+        <div class="users-stat-card">
+
+            <div class="stat-icon">
+                👥
+            </div>
+
+            <div>
+
+                <span>
+                    Total Users
+                </span>
+
+                <strong id="totalUsers">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="users-stat-card">
+
+            <div class="stat-icon">
+                🟢
+            </div>
+
+            <div>
+
+                <span>
+                    Active Users
+                </span>
+
+                <strong id="activeUsers">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="users-stat-card">
+
+            <div class="stat-icon">
+                🚫
+            </div>
+
+            <div>
+
+                <span>
+                    Blocked Users
+                </span>
+
+                <strong id="blockedUsers">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="users-stat-card">
+
+            <div class="stat-icon">
+                🆕
+            </div>
+
+            <div>
+
+                <span>
+                    New Users
+                </span>
+
+                <strong id="newUsers">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =================================================
+         TOOLBAR
+         ================================================= -->
+
+    <section class="users-toolbar">
+
+
+        <!-- SEARCH -->
+
+        <div class="user-search">
+
+            <input
+                type="text"
+                id="userSearch"
+                placeholder="Search by name, email or phone..."
+            >
+
+            <button
+                type="button"
+                onclick="searchUsers()"
+            >
+                🔍
+            </button>
+
+        </div>
+
+
+
+        <!-- STATUS -->
+
+        <select
+            id="userStatusFilter"
+            onchange="filterUsers()"
+        >
+
+            <option value="all">
+                All Status
+            </option>
+
+            <option value="active">
+                Active
+            </option>
+
+            <option value="blocked">
+                Blocked
+            </option>
+
+        </select>
+
+
+
+        <!-- USER TYPE -->
+
+        <select
+            id="userTypeFilter"
+            onchange="filterUsers()"
+        >
+
+            <option value="all">
+                All Users
+            </option>
+
+            <option value="customer">
+                Customers
+            </option>
+
+            <option value="creator">
+                Creators
+            </option>
+
+            <option value="seller">
+                Sellers
+            </option>
+
+        </select>
+
+
+
+        <!-- SORT -->
+
+        <select
+            id="userSort"
+            onchange="sortUsers()"
+        >
+
+            <option value="newest">
+                Newest First
+            </option>
+
+            <option value="oldest">
+                Oldest First
+            </option>
+
+            <option value="name">
+                Name A-Z
+            </option>
+
+            <option value="orders">
+                Most Orders
+            </option>
+
+            <option value="spent">
+                Highest Spending
+            </option>
+
+        </select>
+
+
+    </section>
+
+
+
+    <!-- =================================================
+         USERS TABLE
+         ================================================= -->
+
+    <section class="users-table-card">
+
+
+        <div class="users-table-header">
+
+            <div>
+
+                <h2>
+                    Customer Accounts
+                </h2>
+
+                <p id="userResultText">
+                    Showing users
+                </p>
+
+            </div>
+
+
+            <button
+                class="secondary-btn"
+                onclick="clearUserFilters()"
+            >
+                Clear Filters
+            </button>
+
+        </div>
+
+
+
+        <div class="users-table-wrapper">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            User
+                        </th>
+
+                        <th>
+                            Contact
+                        </th>
+
+                        <th>
+                            Type
+                        </th>
+
+                        <th>
+                            Orders
+                        </th>
+
+                        <th>
+                            Total Spent
+                        </th>
+
+                        <th>
+                            Status
+                        </th>
+
+                        <th>
+                            Joined
+                        </th>
+
+                        <th>
+                            Actions
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="adminUsersTable">
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+    </section>
+
+
+
+</main>
+
+
+
+<!-- =====================================================
+     USER DETAILS MODAL
+     ===================================================== -->
+
+<div
+    id="userModal"
+    class="admin-modal"
+>
+
+
+    <div class="user-modal-content">
+
+
+        <!-- HEADER -->
+
+        <div class="modal-header">
+
+            <div>
+
+                <h2>
+                    User Details
+                </h2>
+
+                <p id="modalUserId">
+                    -
+                </p>
+
+            </div>
+
+
+            <button
+                class="modal-close"
+                onclick="closeUserModal()"
+            >
+                ✕
+            </button>
+
+        </div>
+
+
+
+        <!-- BODY -->
+
+        <div class="modal-body">
+
+
+            <!-- PROFILE -->
+
+            <div class="user-profile">
+
+                <div
+                    class="user-avatar"
+                    id="modalUserAvatar"
+                >
+                    U
+                </div>
+
+
+                <div>
+
+                    <h3 id="modalUserName">
+                        User
+                    </h3>
+
+                    <p id="modalUserType">
+                        Customer
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- INFORMATION -->
+
+            <div class="modal-section">
+
+                <h3>
+                    Contact Information
+                </h3>
+
+
+                <div class="detail-grid">
+
+
+                    <div>
+
+                        <span>
+                            Email
+                        </span>
+
+                        <strong id="modalUserEmail">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Phone
+                        </span>
+
+                        <strong id="modalUserPhone">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Joined
+                        </span>
+
+                        <strong id="modalUserJoined">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Status
+                        </span>
+
+                        <strong id="modalUserStatus">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+
+            <!-- SHOPPING -->
+
+            <div class="modal-section">
+
+                <h3>
+                    Shopping Information
+                </h3>
+
+
+                <div class="detail-grid">
+
+
+                    <div>
+
+                        <span>
+                            Total Orders
+                        </span>
+
+                        <strong id="modalUserOrders">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Total Spent
+                        </span>
+
+                        <strong id="modalUserSpent">
+                            ₹0
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Wishlist Items
+                        </span>
+
+                        <strong id="modalUserWishlist">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Last Order
+                        </span>
+
+                        <strong id="modalUserLastOrder">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ADDRESS -->
+
+            <div class="modal-section">
+
+                <h3>
+                    Address
+                </h3>
+
+
+                <div
+                    class="address-text"
+                    id="modalUserAddress"
+                >
+                    No address available.
+                </div>
+
+            </div>
+
+
+
+            <!-- STATUS -->
+
+            <div class="modal-section">
+
+                <h3>
+                    Account Status
+                </h3>
+
+
+                <select id="modalAccountStatus">
+
+                    <option value="active">
+                        Active
+                    </option>
+
+                    <option value="blocked">
+                        Blocked
+                    </option>
+
+                </select>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- FOOTER -->
+
+        <div class="modal-footer">
+
+            <button
+                class="secondary-btn"
+                onclick="closeUserModal()"
+            >
+                Cancel
+            </button>
+
+
+            <button
+                class="admin-primary-btn"
+                onclick="saveUserStatus()"
+            >
+                Save Changes
+            </button>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+     ===================================================== -->
+
+<script src="admin-users.js"></script>
+
+
+</body>
+
+</html>
