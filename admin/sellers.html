@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Sellers | IMA Shopping Centre</title>
+
+    <link
+        rel="stylesheet"
+        href="admin-sellers.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     SIDEBAR
+     ===================================================== -->
+
+<aside class="admin-sidebar">
+
+    <div class="admin-logo">
+
+        <span>IMA</span>
+
+        Shopping Centre
+
+        <small>
+            ADMIN PANEL
+        </small>
+
+    </div>
+
+
+    <nav class="admin-menu">
+
+        <a href="dashboard.html">
+            📊 Dashboard
+        </a>
+
+        <a href="products.html">
+            📦 Products
+        </a>
+
+        <a href="orders.html">
+            🛒 Orders
+        </a>
+
+        <a href="users.html">
+            👥 Users
+        </a>
+
+        <a
+            href="sellers.html"
+            class="active"
+        >
+            🏪 Sellers
+        </a>
+
+        <a href="creators.html">
+            💰 Creators
+        </a>
+
+        <a href="categories.html">
+            🗂️ Categories
+        </a>
+
+        <a href="reviews.html">
+            ⭐ Reviews
+        </a>
+
+        <a href="coupons.html">
+            🎟️ Coupons
+        </a>
+
+        <a href="analytics.html">
+            📈 Analytics
+        </a>
+
+        <a href="settings.html">
+            ⚙️ Settings
+        </a>
+
+    </nav>
+
+
+    <div class="admin-sidebar-bottom">
+
+        <a href="../index.html">
+            🏠 View Store
+        </a>
+
+        <button onclick="adminLogout()">
+            🚪 Logout
+        </button>
+
+    </div>
+
+</aside>
+
+
+
+<!-- =====================================================
+     MAIN
+     ===================================================== -->
+
+<main class="admin-main">
+
+
+    <!-- =================================================
+         HEADER
+         ================================================= -->
+
+    <header class="admin-header">
+
+        <div>
+
+            <h1>
+                Sellers
+            </h1>
+
+            <p>
+                Manage sellers and seller applications
+            </p>
+
+        </div>
+
+
+        <button
+            class="admin-primary-btn"
+            onclick="refreshSellers()"
+        >
+            🔄 Refresh
+        </button>
+
+    </header>
+
+
+
+    <!-- =================================================
+         STATISTICS
+         ================================================= -->
+
+    <section class="seller-stat-grid">
+
+
+        <div class="seller-stat-card">
+
+            <div class="stat-icon">
+                🏪
+            </div>
+
+            <div>
+
+                <span>
+                    Total Sellers
+                </span>
+
+                <strong id="totalSellers">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="seller-stat-card">
+
+            <div class="stat-icon">
+                🟢
+            </div>
+
+            <div>
+
+                <span>
+                    Active Sellers
+                </span>
+
+                <strong id="activeSellers">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="seller-stat-card">
+
+            <div class="stat-icon">
+                ⏳
+            </div>
+
+            <div>
+
+                <span>
+                    Pending Approval
+                </span>
+
+                <strong id="pendingSellers">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="seller-stat-card">
+
+            <div class="stat-icon">
+                🚫
+            </div>
+
+            <div>
+
+                <span>
+                    Blocked Sellers
+                </span>
+
+                <strong id="blockedSellers">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =================================================
+         TOOLBAR
+         ================================================= -->
+
+    <section class="seller-toolbar">
+
+
+        <!-- SEARCH -->
+
+        <div class="seller-search">
+
+            <input
+                type="text"
+                id="sellerSearch"
+                placeholder="Search seller, store, email..."
+            >
+
+            <button
+                onclick="searchSellers()"
+            >
+                🔍
+            </button>
+
+        </div>
+
+
+
+        <!-- STATUS -->
+
+        <select
+            id="sellerStatusFilter"
+            onchange="filterSellers()"
+        >
+
+            <option value="all">
+                All Status
+            </option>
+
+            <option value="active">
+                Active
+            </option>
+
+            <option value="pending">
+                Pending
+            </option>
+
+            <option value="blocked">
+                Blocked
+            </option>
+
+        </select>
+
+
+
+        <!-- SORT -->
+
+        <select
+            id="sellerSort"
+            onchange="sortSellers()"
+        >
+
+            <option value="newest">
+                Newest First
+            </option>
+
+            <option value="oldest">
+                Oldest First
+            </option>
+
+            <option value="sales">
+                Highest Sales
+            </option>
+
+            <option value="rating">
+                Highest Rating
+            </option>
+
+        </select>
+
+
+    </section>
+
+
+
+    <!-- =================================================
+         SELLER TABLE
+         ================================================= -->
+
+    <section class="seller-table-card">
+
+
+        <div class="seller-table-header">
+
+            <div>
+
+                <h2>
+                    Seller Accounts
+                </h2>
+
+                <p id="sellerResultText">
+                    Showing sellers
+                </p>
+
+            </div>
+
+
+            <button
+                class="secondary-btn"
+                onclick="clearSellerFilters()"
+            >
+                Clear Filters
+            </button>
+
+        </div>
+
+
+
+        <div class="seller-table-wrapper">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Seller
+                        </th>
+
+                        <th>
+                            Store
+                        </th>
+
+                        <th>
+                            Contact
+                        </th>
+
+                        <th>
+                            Products
+                        </th>
+
+                        <th>
+                            Sales
+                        </th>
+
+                        <th>
+                            Rating
+                        </th>
+
+                        <th>
+                            Status
+                        </th>
+
+                        <th>
+                            Joined
+                        </th>
+
+                        <th>
+                            Actions
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="adminSellersTable">
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+    </section>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     SELLER DETAILS MODAL
+     ===================================================== -->
+
+<div
+    id="sellerModal"
+    class="admin-modal"
+>
+
+
+    <div class="seller-modal-content">
+
+
+        <!-- HEADER -->
+
+        <div class="modal-header">
+
+            <div>
+
+                <h2>
+                    Seller Details
+                </h2>
+
+                <p id="modalSellerId">
+                    -
+                </p>
+
+            </div>
+
+
+            <button
+                class="modal-close"
+                onclick="closeSellerModal()"
+            >
+                ✕
+            </button>
+
+        </div>
+
+
+
+        <!-- BODY -->
+
+        <div class="modal-body">
+
+
+            <!-- PROFILE -->
+
+            <div class="seller-profile">
+
+                <div
+                    class="seller-avatar"
+                    id="modalSellerAvatar"
+                >
+                    S
+                </div>
+
+
+                <div>
+
+                    <h3 id="modalSellerName">
+                        Seller
+                    </h3>
+
+                    <p id="modalStoreName">
+                        Store
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- CONTACT -->
+
+            <div class="modal-section">
+
+                <h3>
+                    Contact Information
+                </h3>
+
+
+                <div class="detail-grid">
+
+
+                    <div>
+
+                        <span>
+                            Email
+                        </span>
+
+                        <strong id="modalSellerEmail">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Phone
+                        </span>
+
+                        <strong id="modalSellerPhone">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Joined
+                        </span>
+
+                        <strong id="modalSellerJoined">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Status
+                        </span>
+
+                        <strong id="modalSellerStatus">
+                            -
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- BUSINESS -->
+
+            <div class="modal-section">
+
+                <h3>
+                    Business Information
+                </h3>
+
+
+                <div class="detail-grid">
+
+
+                    <div>
+
+                        <span>
+                            Products
+                        </span>
+
+                        <strong id="modalSellerProducts">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Total Sales
+                        </span>
+
+                        <strong id="modalSellerSales">
+                            ₹0
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Rating
+                        </span>
+
+                        <strong id="modalSellerRating">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Reviews
+                        </span>
+
+                        <strong id="modalSellerReviews">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ADDRESS -->
+
+            <div class="modal-section">
+
+                <h3>
+                    Business Address
+                </h3>
+
+
+                <div
+                    class="address-text"
+                    id="modalSellerAddress"
+                >
+                    No address available.
+                </div>
+
+            </div>
+
+
+
+            <!-- STATUS -->
+
+            <div class="modal-section">
+
+                <h3>
+                    Seller Status
+                </h3>
+
+
+                <select id="modalSellerAccountStatus">
+
+                    <option value="active">
+                        Active
+                    </option>
+
+                    <option value="pending">
+                        Pending
+                    </option>
+
+                    <option value="blocked">
+                        Blocked
+                    </option>
+
+                </select>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- FOOTER -->
+
+        <div class="modal-footer">
+
+            <button
+                class="secondary-btn"
+                onclick="closeSellerModal()"
+            >
+                Cancel
+            </button>
+
+
+            <button
+                class="admin-primary-btn"
+                onclick="saveSellerStatus()"
+            >
+                Save Changes
+            </button>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+     ===================================================== -->
+
+<script src="admin-sellers.js"></script>
+
+
+</body>
+
+</html>
